@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="welcome-traits.css">
+    <!-- Reference to your main translation script -->
+   <script src="translation.js"></script>
 </head>
 <body class="bg-black text-white antialiased">
 
@@ -18,31 +20,40 @@
     <div class="nebula-background" aria-hidden="true"></div>
 
     <div class="min-h-screen flex items-center justify-center p-4">
-        <div class="max-w-lg w-full bg-gray-800 p-8 border-4 border-gray-700 rounded-lg text-center">
+        <div class="max-w-lg w-full bg-gray-800 p-8 border-4 border-gray-700 rounded-lg">
 
-            <!-- UPDATED: More engaging, thematic title -->
-            <h1 class="text-xl md:text-2xl mb-6">
-                YOUR MISSION BRIEFING<span class="blinking-cursor">_</span>
-            </h1>
+            <!-- === Header with Back and Skip links === -->
+            <header class="flex justify-between items-center mb-8">
+                <a href="javascript:history.back()" class="text-gray-400 hover:text-white transition font-semibold" data-translate-key="back">
+                    Back
+                </a>
+                <a href="dashboard.html" class="text-sm text-blue-400 hover:underline font-semibold" data-translate-key="skip">
+                    Skip
+                </a>
+            </header>
+            <!-- === END OF HEADER === -->
+            
+            <div class="text-center">
+                <!-- Title is now centered -->
+                <h1 class="text-xl md:text-2xl mb-6" data-translate-key="welcomeTraitsTitle">
+                    YOUR MISSION BRIEFING<span class="blinking-cursor">_</span>
+                </h1>
 
-            <!-- UPDATED: Rewritten copy to be more compelling -->
-            <div class="text-gray-300 text-base md:text-lg leading-relaxed mb-8 space-y-4">
-                <p>Greetings, Player. To unlock better matches and find your perfect squad, we need to calibrate your core traits.</p>
-                <p>This is a quick mission—a speedrun that will take under 5 minutes!</p>
+                <div class="text-gray-300 text-base md:text-lg leading-relaxed mb-8 space-y-4">
+                    <p data-translate-key="welcomeTraitsDesc1">Greetings, Player. To unlock better matches and find your perfect squad, we need to calibrate your core traits.</p>
+                    <p data-translate-key="welcomeTraitsDesc2">This is a quick mission—a speedrun that will take under 5 minutes!</p>
+                </div>
+
+                <a href="select-traits.html" class="block w-full bg-blue-600 text-white font-bold py-3 text-center transition-all btn-8bit mt-8 rounded-md text-lg" data-translate-key="welcomeTraitsBegin">
+                    BEGIN MISSION
+                </a>
             </div>
-
-            <!-- UPDATED: Stronger call-to-action button -->
-            <a href="select-traits.html" class="block w-full bg-blue-600 text-white font-bold py-3 text-center transition-all btn-8bit mt-8 rounded-md text-lg">
-                BEGIN MISSION
-            </a>
-
-            <!-- === NEW LINK ADDED HERE === -->
-             <div class="mt-6">
-            <a href="resources.html" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline text-sm">
-                Learn more about Personalities and more here
-            </a>
-        </div>
-            <!-- === END OF NEW LINK === -->
+            
+             <div class="mt-6 text-center">
+                <a href="resources.html" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline text-sm" data-translate-key="welcomeTraitsLearnMore">
+                    Learn more about Personalities and more here
+                </a>
+            </div>
 
         </div>
     </div>
