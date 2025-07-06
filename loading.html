@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Boot... – GamiCon</title>
+    
+    <!-- External Stylesheets -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Link to the dedicated loading screen CSS -->
+    <link rel="stylesheet" href="loading.css">
+</head>
+<body class="bg-black text-white antialiased">
+
+    <!-- Background Layer: 8-bit space theme -->
+    <div class="stars-background" aria-hidden="true"></div>
+    <div class="nebula-background" aria-hidden="true"></div>
+
+    <!-- Overlay Layer: Futuristic scanlines -->
+    <div class="scanlines-overlay" aria-hidden="true"></div>
+
+    <!-- Main Content Container -->
+    <div class="loading-container">
+        <!-- Your Logo with animated glow effect -->
+        <img src="logo/logo1.png" alt="GamiCon Logo" class="loading-logo">
+
+        <!-- Glitching percentage text, updated by the script -->
+        <h1 id="percentage-text">0%</h1>
+
+        <!-- The progress bar and its dynamic status text -->
+        <div class="progress-container">
+            <!-- Status message text, updated by the script -->
+            <p id="status-text">INITIALIZING...</p>
+            <div class="progress-bar">
+                <!-- The animated fill of the progress bar, updated by the script -->
+                <div id="progress-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your revamped JavaScript file, deferred for optimal performance -->
+    <script src="loading.js" defer></script>
+</body>
+</html>

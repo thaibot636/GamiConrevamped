@@ -1,0 +1,91 @@
+/* === MODIFIED: Colors updated to match the default website theme === */
+    :root {
+      --main-bg: #1f2937;
+      --form-bg: #111827;
+      --text-color: white;
+      --text-subtle: #9ca3af;
+      --border-color: #374151; 
+      --accent: #3b82f6; /* Neon Blue */
+      --legendary: #f59e0b; /* Amber/Gold */
+    }
+
+    /* --- FONT STRATEGY --- */
+    body { font-family: 'Poppins', sans-serif; background-color: var(--main-bg); color: var(--text-color); }
+    .font-8bit, h1, .data-pack h3, .pack-price, .value-tag, .btn-purchase { font-family: 'Press Start 2P', cursive; }
+    header, header a, header button { font-family: 'Poppins', sans-serif; }
+    .brand-logo { font-family: 'Press Start 2P', cursive; }
+    
+    .pixel-underline { position: relative; display: inline-block; padding-bottom: 5px; }
+    .pixel-underline::after { 
+        content: ''; 
+        position: absolute; 
+        left: 0; 
+        bottom: 0; 
+        width: 100%; 
+        height: 2px;
+        background-color: var(--accent); /* Underline uses accent color */
+        transform: scaleX(0); 
+        transform-origin: center; 
+        transition: transform 0.2s ease-out; 
+    }
+    .pixel-underline:hover::after { transform: scaleX(1); }
+
+    .bg-grid {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 35px 35px; animation: move-grid 2s linear infinite;
+    }
+    @keyframes move-grid { from { background-position: 0 0; } to { background-position: 35px 35px; } }
+    
+    .data-pack {
+        background-color: var(--form-bg);
+        border: 2px solid var(--border-color);
+        display: flex; flex-direction: column; justify-content: space-between;
+        padding: 1.5rem;
+        transition: all 0.2s ease-out;
+    }
+    .data-pack:hover {
+        transform: translateY(-8px);
+        border-color: var(--accent);
+        box-shadow: 0 0 15px var(--accent);
+    }
+    .pack-price {
+        font-size: 2.5rem;
+        color: var(--accent);
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+    
+    .legendary-pack {
+        border-color: var(--legendary);
+        transform: scale(1.05);
+        box-shadow: 0 0 20px var(--legendary);
+        animation: pulse-legendary 2.5s infinite;
+    }
+    .legendary-pack:hover {
+        border-color: var(--legendary);
+        box-shadow: 0 0 25px var(--legendary), 0 0 35px var(--legendary);
+    }
+    .legendary-pack .pack-price { color: var(--legendary); text-shadow: 0 0 10px var(--legendary); }
+    @keyframes pulse-legendary { 0%, 100% { box-shadow: 0 0 15px var(--legendary); } 50% { box-shadow: 0 0 25px var(--legendary); } }
+
+    .value-tag {
+        color: var(--legendary);
+        margin-bottom: 1.5rem;
+        animation: blink-value 1s infinite;
+        font-size: 0.8rem;
+    }
+    @keyframes blink-value { 50% { opacity: 0.6; } }
+
+    .btn-purchase {
+        background: var(--accent);
+        color: var(--text-color);
+        padding: 0.75rem; text-align: center;
+        margin-top: 1.5rem; text-transform: uppercase;
+        transition: all 0.2s;
+    }
+    .btn-purchase:hover { filter: brightness(1.2); }
+    .legendary-pack .btn-purchase { background: var(--legendary); }
+
+    header { background-color: var(--form-bg); border-bottom: 1px solid var(--border-color); }
+    #mobile-menu { background-color: var(--form-bg); }
+    footer { background-color: var(--form-bg); border-top: 1px solid var(--border-color); }

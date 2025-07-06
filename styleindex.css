@@ -1,0 +1,561 @@
+/* ========================================================= */
+/*                   GLOBAL & UTILITY STYLES                 */
+/* ========================================================= */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1,
+.font-8bit,
+.brand-logo,
+.default-h2,
+.default-h3 {
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* SPECIFIC OVERRIDE: Sections that should use Oswald (Now only the #signup section) */
+#signup h2,
+#signup .final-cta {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* MODIFIED: Improved mobile menu button readability */
+#mobile-menu-button {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.hero-bg-hybrid {
+    background-image: url('https://images.unsplash.com/photo-1580327344181-c1163234e5a0?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animation-delay-300 {
+    animation-delay: 300ms;
+}
+
+.animation-delay-500 {
+    animation-delay: 500ms;
+}
+
+.btn-8bit:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+}
+
+.hover-underline {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.hover-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.2s ease-out;
+}
+
+.hover-underline:hover::after {
+    transform: scaleX(1);
+}
+
+.feature-card {
+    transition: all 0.2s ease-in-out;
+}
+
+.feature-card:hover {
+    border-color: #3b82f6;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2);
+}
+
+.feature-card:hover h3 {
+    color: #3b82f6;
+}
+
+/* ========================================================= */
+/*            FUTURISTIC / SCI-FI SIGNUP SECTION             */
+/* ========================================================= */
+
+:root {
+    --critical-glow-color: hsl(325, 100%, 55%);
+}
+
+#signup {
+    background: #0a0a1a;
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    will-change: transform;
+    transition: transform 0.1s linear;
+    transform: translate(var(--mouse-x, 0px), var(--mouse-y, 0px));
+}
+
+#planet-1 {
+    --planet-size: 400px;
+    width: var(--planet-size);
+    height: var(--planet-size);
+    top: -15%;
+    right: -20%;
+    background: radial-gradient(circle at 30% 30%, #5a6a9a, #1a2a4a 70%);
+    border-radius: 50%;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(78, 102, 175, 0.3);
+}
+
+#planet-2 {
+    --planet-size: 100px;
+    width: var(--planet-size);
+    height: var(--planet-size);
+    bottom: 15%;
+    left: 10%;
+    background: radial-gradient(circle at 70% 20%, #e0cda9, #b8860b 80%);
+    border-radius: 50%;
+    box-shadow: inset -20px -10px 40px rgba(0, 0, 0, 0.7);
+}
+
+#planet-2::after {
+    content: '';
+    position: absolute;
+    left: -40%;
+    top: 40%;
+    width: 180%;
+    height: 25%;
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transform: rotate(-30deg) skewX(60deg);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes slow-float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+#starfield-bg {
+    background: transparent;
+    box-shadow: 10vw 20vh 1px 1px rgba(255, 255, 255, 0.7), 80vw 30vh 1px 1px rgba(255, 255, 255, 0.8), 50vw 90vh 1px 1px rgba(255, 255, 255, 0.6), 25vw 75vh 0px 0px rgba(255, 255, 255, 0.9), 90vw 60vh 1px 1px rgba(255, 255, 255, 0.7), 40vw 10vh 2px 2px rgba(255, 255, 255, 0.9), 70vw 80vh 2px 2px rgba(255, 255, 255, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    #planet-1 {
+        animation: slow-float 25s infinite ease-in-out;
+    }
+    #planet-2 {
+        animation: slow-float 20s infinite ease-in-out 2s;
+    }
+    #starfield-bg {
+        animation: twinkle 5s infinite alternate;
+    }
+    #signup {
+        animation: critical-border-glow 2s infinite, glitch-container 7s infinite step-end;
+    }
+    #signup-grid {
+        animation: move-grid-fast 1s linear infinite;
+    }
+    #signup-scanline {
+        animation: scan-fast 4s linear infinite;
+    }
+    #signup h2 {
+        animation: critical-alert 1.5s infinite;
+    }
+    .hud-corner::before,
+    .hud-corner::after {
+        animation: glitch-corners 2s infinite alternate;
+    }
+    #signup .final-cta:hover {
+        transform: translate(0, -5px) scale(1.05);
+    }
+    .spaceship.fighter {
+        animation: fly-by-ltr 8s linear infinite 1s;
+    }
+    .spaceship.cruiser {
+        animation: fly-by-rtl 14s linear infinite 5s;
+    }
+    @keyframes scan-fast {
+        from {
+            background-position-y: 0px;
+        }
+        to {
+            background-position-y: -100px;
+        }
+    }
+    @keyframes move-grid-fast {
+        from {
+            background-position: 0 0;
+        }
+        to {
+            background-position: 30px 30px;
+        }
+    }
+    @keyframes twinkle {
+        from {
+            opacity: 0.7;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes critical-border-glow {
+        0%,
+        100% {
+            box-shadow: inset 0 0 15px rgba(6, 182, 212, 0.5), 0 0 15px rgba(6, 182, 212, 0.5);
+        }
+        50% {
+            box-shadow: inset 0 0 25px var(--critical-glow-color), 0 0 25px var(--critical-glow-color);
+        }
+    }
+    @keyframes glitch-container {
+        0%,
+        94%,
+        100% {
+            transform: translate(0);
+            clip-path: inset(0);
+        }
+        95% {
+            transform: translate(10px, -5px);
+            clip-path: inset(0 0 50% 0);
+        }
+        96% {
+            transform: translate(-10px, 5px);
+            clip-path: inset(50% 0 0 0);
+        }
+        97% {
+            transform: translate(5px, -3px);
+            clip-path: inset(0 50% 0 0);
+        }
+        98% {
+            transform: translate(-5px, 3px);
+            clip-path: inset(0 0 0 50%);
+        }
+        99% {
+            transform: translate(2px, -2px);
+            clip-path: inset(25% 25% 25% 25%);
+        }
+    }
+    @keyframes critical-alert {
+        0%,
+        100% {
+            color: white;
+            text-shadow: none;
+        }
+        50% {
+            color: var(--critical-glow-color);
+            text-shadow: 0 0 10px var(--critical-glow-color), 0 0 20px var(--critical-glow-color);
+        }
+    }
+    @keyframes glitch-corners {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.6;
+        }
+    }
+    @keyframes fly-by-ltr {
+        from {
+            left: -10%;
+        }
+        to {
+            left: 110%;
+        }
+    }
+    @keyframes fly-by-rtl {
+        from {
+            right: -10%;
+        }
+        to {
+            right: 110%;
+        }
+    }
+}
+
+/* MODIFIED: Added this media query to disable distracting animations on mobile */
+@media (max-width: 767px) {
+    #planet-1,
+    #planet-2,
+    #signup,
+    #signup-grid,
+    #signup-scanline,
+    #signup h2,
+    .spaceship,
+    .how-it-works-section::before {
+        animation: none !important;
+    }
+    /* Make planets smaller on mobile to not obstruct content */
+    #planet-1 {
+        --planet-size: 200px;
+        right: -25%;
+    }
+    #planet-2 {
+        --planet-size: 60px;
+    }
+}
+
+#signup-grid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(6, 182, 212, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 0;
+}
+
+#signup-scanline {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.5) 51%);
+    background-size: 100% 4px;
+    z-index: 2;
+}
+
+#signup::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #0a0a1a 90%);
+    z-index: 1;
+}
+
+.hud-corner::before,
+.hud-corner::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border: 3px solid #06b6d4;
+}
+
+.hud-corner:nth-of-type(1)::before {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.hud-corner:nth-of-type(1)::after {
+    top: 10px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.hud-corner:nth-of-type(2)::before {
+    bottom: 10px;
+    left: 10px;
+    border-right: none;
+    border-top: none;
+}
+
+.hud-corner:nth-of-type(2)::after {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+}
+
+#signup .final-cta {
+    background-color: transparent;
+    color: #22d3ee;
+    border: 2px solid #06b6d4;
+    border-radius: 0;
+    transition: all 0.2s ease-out;
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+#signup .final-cta:hover {
+    background: #06b6d4;
+    color: #0a0a1a;
+    box-shadow: 0 0 20px #06b6d4, 0 0 30px #06b6d4;
+}
+
+.spaceship {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAxMiI+PHBhdGggZmlsbD0iIzIyZDNlZSIgZD0iTTAgNCAyNCAwIDE4IDYgMjQgMTIgMCA4eiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik00IDVsNi0xIDYgMSA0IDItMjAgMHoiLz48L3N2Zz4=");
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    z-index: 5;
+    opacity: 0.7;
+}
+
+.spaceship.cruiser {
+    width: 60px;
+    height: 30px;
+    bottom: 25%;
+    transform: scaleX(-1);
+}
+
+/* ========================================================= */
+/*   ENHANCED "HOW IT WORKS" SECTION (PIXEL THEME)           */
+/* ========================================================= */
+
+.how-it-works-section {
+    position: relative;
+    overflow: hidden;
+    background-color: #111827;
+    /* A slightly different dark blue-gray */
+    border-top: 4px solid #4b5563;
+    /* Bolder, more defined top border */
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+/* --- Optional: Make the background grid chunkier for a more lo-res feel --- */
+.how-it-works-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: linear-gradient(rgba(107, 114, 128, 0.1) 2px, transparent 2px), linear-gradient(90deg, rgba(107, 114, 128, 0.1) 2px, transparent 2px);
+    background-size: 50px 50px;
+    /* Increased from 35px to look more "pixelated" */
+    animation: move-grid-fast 1.5s linear infinite;
+}
+
+/* --- The most important change: Use the pixel font for all text in this section --- */
+.how-it-works-section h2,
+.how-it-works-section h3 {
+    font-family: 'Press Start 2P', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    /* Pixel fonts often look best with default letter spacing */
+}
+
+.how-it-works-section h2 {
+    color: #f3f4f6;
+    margin-bottom: 4rem;
+    /* More space below the main title */
+}
+
+/*
+* PIXEL CARD STYLE:
+* - Solid background (no blur)
+* - Thicker, solid border
+* - Removed the complex corner HUDs for a cleaner look
+* - Short, snappy transition
+*/
+.step-card {
+    position: relative;
+    z-index: 1;
+    background-color: #1f2937;
+    /* Solid, darker panel background */
+    border: 4px solid #4b5563;
+    /* Bolder border */
+    padding: 1.5rem;
+    /* Snappier transition instead of a soft ease-out */
+    transition: transform 0.1s linear, box-shadow 0.1s linear, border-color 0.1s linear;
+}
+
+/* --- REPLACING SOFT SHADOW WITH HARD, 8-BIT STYLE SHADOW ON HOVER --- */
+.step-card:hover {
+    border-color: #3b82f6;
+    /* A classic blue for highlighting */
+    /* This creates the pixelated shadow effect */
+    transform: translate(-6px, -6px);
+    box-shadow: 6px 6px 0px #111827, 8px 8px 0px #3b82f6;
+}
+
+.step-card h3 {
+    color: #f3f4f6;
+    /* Start with a white-ish color */
+    transition: color 0.1s linear;
+}
+
+.step-card:hover h3 {
+    color: #60a5fa;
+    /* Lighten the highlight color on hover for the heading */
+}
+
+/* --- Removing the old corner HUDs as they are replaced by the bolder border/shadow --- */
+.step-card-hud::before,
+.step-card-hud::after,
+.step-card-hud>div::before,
+.step-card-hud>div::after {
+    content: none;
+    /* We disable the old HUD corners */
+}
+
+/* --- Styling the connector arrow to match the new pixel aesthetic --- */
+.step-connector {
+    position: relative;
+}
+
+.step-connector::after {
+    content: '>>';
+    /* Using a double arrow for a more classic game feel */
+    display: none;
+    /* CRITICAL: Use the pixel font here too! */
+    font-family: 'Press Start 2P', cursive;
+    color: #4b5563;
+    /* Match the inactive border color */
+    position: absolute;
+    top: 50%;
+    right: calc(-0.5 * (4rem));
+    /* Adjust as needed based on gap */
+    transform: translate(50%, -50%);
+    font-size: 2rem;
+    text-shadow: none;
+    transition: all 0.2s linear;
+}
+
+@media (min-width: 768px) {
+    .step-connector::after {
+        display: block;
+    }
+}
+
+/* Make the connector "light up" on hover of the card before it */
+.step-connector:hover::after {
+    color: #3b82f6;
+    text-shadow: 2px 2px 0px #111827;
+    /* Add a matching hard shadow to the arrow */
+}

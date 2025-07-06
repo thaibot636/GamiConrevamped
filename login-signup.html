@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GamiCon – Player Select</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="login-signup.css">
+</head>
+<body class="bg-black text-white antialiased">
+
+  <!-- NEW: Background elements for the space theme -->
+  <div class="stars-background" aria-hidden="true"></div>
+  <div class="nebula-background" aria-hidden="true"></div>
+
+
+  <!-- Your original page content (remains unchanged) -->
+  <section class="min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="text-center mb-6">
+      <h1 id="main-header" class="text-3xl font-bold mb-2"></h1>
+      <p id="subtitle-text" class="text-base text-gray-400"></p>
+    </div>
+    <section class="max-w-md w-full mx-auto bg-gray-800 p-8 border-4 border-gray-700 rounded-lg">
+      <div class="text-center mb-6"><img src="logo/logo1.png" alt="GamiCon Logo" class="mx-auto h-24 w-24"></div>
+      <form id="auth-form" class="space-y-4">
+        <div>
+          <label id="email-label" class="block mb-2 text-sm font-semibold"></label>
+          <input id="email-input" type="email" required class="w-full p-3 bg-black text-white border-2 border-gray-600 focus:outline-none focus:border-blue-500 rounded-md">
+        </div>
+        <div id="username-field">
+          <label class="block mb-2 text-sm font-semibold" data-translate-key="usernameLabel"></label>
+          <input id="username-input" type="text" required class="w-full p-3 bg-black text-white border-2 border-gray-600 focus:outline-none focus:border-blue-500 rounded-md" data-translate-key="usernamePlaceholder">
+        </div>
+        <div id="birthday-field">
+          <label class="block mb-2 text-sm font-semibold" data-translate-key="birthdayLabel"></label>
+          <input id="birthday-input" type="date" required class="w-full p-3 bg-black text-white border-2 border-gray-600 focus:outline-none focus:border-blue-500 rounded-md" style="color-scheme: dark;">
+        </div>
+        <div id="gender-field">
+            <label class="block mb-2 text-sm font-semibold" data-translate-key="genderLabel"></label>
+            <select id="gender-select" required class="w-full p-3 bg-black text-white border-2 border-gray-600 focus:outline-none focus:border-blue-500 rounded-md">
+                <option value="" selected disabled hidden data-translate-key="genderPlaceholder"></option>
+                <option value="male" data-translate-key="genderMale"></option>
+                <option value="female" data-translate-key="genderFemale"></option>
+                <option value="non-binary" data-translate-key="genderOthers"></option>
+            </select>
+        </div>
+        <div>
+            <label class="block mb-2 text-sm font-semibold" data-translate-key="passwordLabel"></label>
+            <input id="password" type="password" required class="w-full p-3 bg-black text-white border-2 border-gray-600 focus:outline-none focus:border-blue-500 rounded-md" data-translate-key="passwordPlaceholder">
+        </div>
+        <div id="confirm-password-field">
+            <label class="block mb-2 text-sm font-semibold" data-translate-key="confirmPasswordLabel"></label>
+            <input id="confirm-password" type="password" required class="w-full p-3 bg-black text-white border-2 border-gray-600 focus:outline-none focus:border-blue-500 rounded-md" data-translate-key="passwordPlaceholder">
+            <p class="text-xs text-gray-500 mt-2" data-translate-key="confirmPasswordNote"></p>
+        </div>
+        <div id="show-password-container" class="flex items-center space-x-3 pt-2">
+            <input id="show-password-checkbox" type="checkbox" class="h-4 w-4 bg-gray-900 border-gray-600 rounded-sm">
+            <label for="show-password-checkbox" class="text-sm text-gray-300 cursor-pointer" data-translate-key="showPasswordLabel"></label>
+        </div>
+        <a id="form-action-button" href="#" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 text-center transition-all btn-8bit !mt-8 rounded-md text-lg"></a>
+      </form>
+      <div class="text-center mt-6">
+        <a href="index.html" class="text-sm text-blue-400 hover:underline" data-translate-key="backToHome"></a>
+      </div>
+    </section>
+  </section>
+
+  <script src="translation.js" defer></script>
+  <script src="login-signup.js" defer></script>
+
+</body>
+</html>
