@@ -29,7 +29,7 @@
                         <a href="index.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors hover-underline" data-translate-key="navHome">Home</a>
                         <a href="products.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors hover-underline" data-translate-key="navProducts">Products</a>
                         <a href="resources.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors hover-underline" data-translate-key="navResources">Resources</a>
-                        <a href="contact-us.html" class="text-sm font-semibold text-white transition-colors hover-underline" data-translate-key="navContactus">Contact Us</a>
+                        <a href="contact-us.html" class="text-sm font-semibold text-white transition-colors hover-underline" data-translate-key="navContactus">About Us</a>
                     </div>
                 </div>
                 <div class="flex items-center">
@@ -42,8 +42,17 @@
                 </div>
             </div>
         </div>
+        <!-- FIXED: Added all the necessary links for the mobile menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-black border-t-2 border-gray-800">
-             <!-- Mobile nav links here -->
+             <div class="p-4 space-y-4">
+                <a href="index.html" class="block text-base text-gray-300" data-translate-key="navHome">Home</a>
+                <a href="products.html" class="block text-base text-gray-300" data-translate-key="navProducts">Products</a>
+                <a href="resources.html" class="block text-base text-gray-300" data-translate-key="navResources">Resources</a>
+                <a href="contact-us.html" class="block text-base text-gray-300" data-translate-key="navContactus">About Us</a>
+                <a href="loading.html?action=login" class="block text-base text-gray-300" data-translate-key="login">Log In</a>
+                <a href="loading.html?action=signup" class="block text-base text-gray-300" data-translate-key="signup">Sign Up</a>
+                <a href="#" class="lang-toggle block text-base text-blue-400">ไทย</a>
+            </div>
         </div>
     </header>
 
@@ -51,8 +60,9 @@
         <!-- Hero Section -->
         <section class="contact-hero">
             <div class="hero-content">
-                <h1 class="font-8bit">Contact HQ</h1>
-                <p class="subtitle">Have a question, feedback, or a partnership idea? Open a comms channel.</p>
+                <!-- FIXED: Added data-translate-key attributes -->
+                <h1 class="font-8bit" data-translate-key="contactH1">Contact HQ</h1>
+                <p class="subtitle" data-translate-key="contactSubtitle">Have a question, feedback, or a partnership idea? Open a comms channel.</p>
             </div>
         </section>
 
@@ -60,44 +70,49 @@
         <section class="contact-section">
             <div class="container-8bit">
                 <div class="contact-panel">
-                    <h2 class="font-8bit">TRANSMISSION FORM</h2>
-                    <form action="#" method="POST" class="contact-form">
+                    <!-- FIXED: Added data-translate-key attribute -->
+                    <h2 class="font-8bit" data-translate-key="contactFormTitle">TRANSMISSION FORM</h2>
+                    <!-- FIXED: Added form ID -->
+                    <form action="#" method="POST" class="contact-form" id="contact-form">
+                        <!-- FIXED: Added data-translate-key attributes to all form elements -->
                         <div class="form-group">
-                            <label for="name" class="font-8bit">PLAYER_TAG:</label>
+                            <label for="name" class="font-8bit" data-translate-key="formPlayerTag">PLAYER_TAG:</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="font-8bit">EMAIL_ADDRESS:</label>
+                            <label for="email" class="font-8bit" data-translate-key="formEmail">EMAIL_ADDRESS:</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="subject" class="font-8bit">SUBJECT:</label>
+                            <label for="subject" class="font-8bit" data-translate-key="formSubject">SUBJECT:</label>
                             <input type="text" id="subject" name="subject" required>
                         </div>
                         <div class="form-group">
-                            <label for="message" class="font-8bit">MESSAGE:</label>
+                            <label for="message" class="font-8bit" data-translate-key="formMessage">MESSAGE:</label>
                             <textarea id="message" name="message" rows="6" required></textarea>
                         </div>
-                        <button type="submit" class="submit-btn font-8bit">SEND MESSAGE</button>
+                        <button type="submit" class="submit-btn font-8bit" data-translate-key="formSubmit">SEND MESSAGE</button>
                     </form>
+                    <!-- FIXED: Added div to show form status messages -->
+                    <div id="form-status" class="mt-4 text-center"></div>
                 </div>
 
                 <div class="contact-panel">
-                    <h2 class="font-8bit">DIRECT LINKS</h2>
+                    <h2 class="font-8bit" data-translate-key="contactDirectLinks">DIRECT LINKS</h2>
                     <div class="info-group">
                         <div class="info-item">
-                            <h3 class="font-8bit">SUPPORT</h3>
-                            <p>For technical issues & support.</p>
+                            <h3 class="font-8bit" data-translate-key="contactSupportTitle">SUPPORT</h3>
+                            <p data-translate-key="contactSupportDesc">For technical issues & support.</p>
                             <a href="mailto:support@gamicon.com" class="info-link">support@gamicon.com</a>
                         </div>
                         <div class="info-item">
-                            <h3 class="font-8bit">PARTNERSHIPS</h3>
-                            <p>For business & collaboration.</p>
+                            <h3 class="font-8bit" data-translate-key="contactPartnershipsTitle">PARTNERSHIPS</h3>
+                            <p data-translate-key="contactPartnershipsDesc">For business & collaboration.</p>
                             <a href="mailto:partners@gamicon.com" class="info-link">partners@gamicon.com</a>
                         </div>
                         <div class="info-item">
-                            <h3 class="font-8bit">SOCIALS</h3>
-                            <p>Find us on the network.</p>
+                            <h3 class="font-8bit" data-translate-key="contactSocialsTitle">SOCIALS</h3>
+                            <p data-translate-key="contactSocialsDesc">Find us on the network.</p>
                             <div class="social-links">
                                 <a href="#" class="info-link">Discord</a>
                                 <a href="#" class="info-link">Twitter</a>
@@ -111,10 +126,11 @@
     </main>
 
     <!-- GamiCon Footer (Consistent with other pages) -->
-    <footer class="bg-gray-900 py-6 text-center text-gray-500 text-sm">
+    <footer class="bg-gray-900 py-6 text-center text-gray-500 text-sm" data-translate-key="footer">
         © 2025 GamiCon. All rights reserved.
     </footer>
-  <script src="translation.js"></script> 
+
+  <script src="translation.js"></script>
     <!-- 'contact-us.js' now handles the mobile menu AND the form -->
     <script src="contact-us.js"></script>
 </body>
