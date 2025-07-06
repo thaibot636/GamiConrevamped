@@ -305,6 +305,13 @@ document.addEventListener('DOMContentLoaded', () => {
         friendsSearchBtn: { en: 'Search', th: 'ค้นหา' },
         friendsAccept: { en: 'Accept', th: 'ยอมรับ' },
         friendsDecline: { en: 'Decline', th: 'ปฏิเสธ' },
+
+        // --- welcome-traits.html ---
+        welcomeTraitsTitle: { en: 'YOUR MISSION BRIEFING', th: 'สรุปภารกิจของคุณ' },
+        welcomeTraitsDesc1: { en: 'Greetings, Player. To unlock better matches and find your perfect squad, we need to calibrate your core traits.', th: 'สวัสดีผู้เล่น เพื่อปลดล็อกการจับคู่ที่ดีขึ้นและค้นหาทีมที่สมบูรณ์แบบของคุณ เราต้องปรับเทียบลักษณะหลักของคุณ' },
+        welcomeTraitsDesc2: { en: 'This is a quick mission—a speedrun that will take under 5 minutes!', th: 'นี่คือภารกิจด่วน—ที่จะใช้เวลาไม่ถึง 5 นาที!' },
+        welcomeTraitsBegin: { en: 'BEGIN MISSION', th: 'เริ่มภารกิจ' },
+        welcomeTraitsLearnMore: { en: 'Learn more about Personalities and more here', th: 'เรียนรู้เพิ่มเติมเกี่ยวกับบุคลิกภาพและอื่นๆ ที่นี่' },
     };
 
     // Define the main function in the global scope
