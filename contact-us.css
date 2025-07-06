@@ -1,0 +1,181 @@
+/* ========================================================= */
+/*                   CONTACT PAGE STYLES                     */
+/* ========================================================= */
+
+/* Re-using font-8bit class from main stylesheet */
+.font-8bit {
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* --- Hero Section --- */
+.contact-hero {
+    /* Using a new, but similar, thematic background */
+    background: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)), url('https://images.unsplash.com/photo-1593305844229-9e3f71afc3c4?q=80&w=1974&auto=format&fit=crop') no-repeat center center/cover;
+    color: #f3f4f6;
+    padding: 160px 20px 80px; /* More padding top to account for fixed header */
+    text-align: center;
+    border-bottom: 4px solid #3b82f6;
+}
+
+.contact-hero h1 {
+    font-size: 2.5rem; /* 40px */
+    text-shadow: 4px 4px 0px #000;
+}
+
+.contact-hero .subtitle {
+    font-size: 1.125rem; /* 18px */
+    max-width: 600px;
+    margin: 1rem auto 0;
+    color: #d1d5db; /* Lighter gray */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- Main Content & Form Section --- */
+.contact-section {
+    background-color: #111827;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Reusing the grid background from the original theme */
+.contact-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: linear-gradient(rgba(107, 114, 128, 0.1) 2px, transparent 2px), linear-gradient(90deg, rgba(107, 114, 128, 0.1) 2px, transparent 2px);
+    background-size: 50px 50px;
+}
+
+.container-8bit {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 992px) {
+    .container-8bit {
+        grid-template-columns: 3fr 2fr;
+    }
+}
+
+.contact-panel {
+    background-color: #1f2937;
+    border: 4px solid #4b5563;
+    padding: 2rem;
+}
+
+.contact-panel h2 {
+    color: #f3f4f6;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+/* --- Form Specific Styling --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: #60a5fa; /* Light blue from your theme */
+    font-size: 0.75rem; /* 12px */
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    background-color: #111827;
+    border: 2px solid #4b5563;
+    color: #f3f4f6;
+    padding: 0.75rem 1rem;
+    font-family: 'VT323', monospace; /* A great pixel/terminal font */
+    font-size: 1.1rem;
+    transition: border-color 0.2s linear;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.submit-btn {
+    background-color: transparent;
+    border: 3px solid #3b82f6;
+    color: #3b82f6;
+    padding: 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s linear;
+}
+
+.submit-btn:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 4px 4px 0px #3b82f6;
+    background-color: #3b82f6;
+    color: #111827;
+}
+
+/* --- Direct Info Styling --- */
+.info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.info-item h3 {
+    color: #f3f4f6;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-item p {
+    color: #9ca3af;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0.5rem;
+}
+
+.info-link {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    word-break: break-all;
+    position: relative;
+}
+
+.info-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #60a5fa;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease-out;
+}
+
+.info-link:hover::after {
+    transform: scaleX(1);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
