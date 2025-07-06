@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         skip: { en: 'SKIP >>', th: 'ข้าม >>' },
         backToHome: { en: '.. Back to Home', th: '.. กลับหน้าหลัก' },
         select: { en: 'SELECT', th: 'เลือก' },
+        navResources: { en: 'Resources', th: 'คลังข้อมูล'},
+        navAboutus: { en: 'About us', th: 'เกี่ยวกับเรา'},
 
         // --- index.html ---
         heroSubtitle: { en: 'Buddy Finder for Thai Gamers! Connect via traits, vibes, and games.', th: 'แอปหาเพื่อนเล่นเกมสำหรับคนไทย! เชื่อมต่อผ่านลักษณะนิสัย สไตล์ และเกมที่ใช่' },
@@ -31,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         step3Desc: { en: 'Jump into games and build lasting squads.', th: 'เริ่มเล่นเกมและสร้างทีมที่ยั่งยืน' },
         ctaTitle: { en: 'Ready to find your buddy?', th: 'พร้อมหาเพื่อนเล่นเกมหรือยัง?' },
         ctaSubtitle: { en: 'Sign up for early access!', th: 'สมัครเพื่อเข้าใช้งานก่อนใคร!' },
-        navResources: { en: 'Resources', th: 'คลังข้อมูล'},
 
         // --- products.html ---
         productsTitle: { en: 'SUBSCRIPTION PLANS', th: 'แพ็กเกจสมาชิก' },
