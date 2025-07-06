@@ -34,6 +34,23 @@ document.addEventListener('DOMContentLoaded', () => {
         ctaTitle: { en: 'Ready to find your buddy?', th: 'พร้อมหาเพื่อนเล่นเกมหรือยัง?' },
         ctaSubtitle: { en: 'Sign up for early access!', th: 'สมัครเพื่อเข้าใช้งานก่อนใคร!' },
 
+        // --- ADDED FOR CONTACT-US.HTML ---
+        contactH1: { en: 'Contact HQ', th: 'ติดต่อแอดมิน' },
+        contactSubtitle: { en: 'Have a question, feedback, or a partnership idea? Open a comms channel.', th: 'มีคำถาม, ข้อเสนอแนะ, หรือไอเดียสำหรับความร่วมมือ? เปิดช่องทางการสื่อสารได้เลย' },
+        contactFormTitle: { en: 'TRANSMISSION FORM', th: 'แบบฟอร์มส่งข้อความ' },
+        formPlayerTag: { en: 'PLAYER_TAG:', th: 'ชื่อผู้เล่น:' },
+        formEmail: { en: 'EMAIL_ADDRESS:', th: 'อีเมล:' },
+        formSubject: { en: 'SUBJECT:', th: 'หัวข้อ:' },
+        formMessage: { en: 'MESSAGE:', th: 'ข้อความ:' },
+        formSubmit: { en: 'SEND MESSAGE', th: 'ส่งข้อความ' },
+        contactDirectLinks: { en: 'DIRECT LINKS', th: 'ลิงก์โดยตรง' },
+        contactSupportTitle: { en: 'SUPPORT', th: 'ฝ่ายสนับสนุน' },
+        contactSupportDesc: { en: 'For technical issues & support.', th: 'สำหรับปัญหาทางเทคนิคและการสนับสนุน' },
+        contactPartnershipsTitle: { en: 'PARTNERSHIPS', th: 'พันธมิตรทางธุรกิจ' },
+        contactPartnershipsDesc: { en: 'For business & collaboration.', th: 'สำหรับธุรกิจและความร่วมมือ' },
+        contactSocialsTitle: { en: 'SOCIALS', th: 'โซเชียลมีเดีย' },
+        contactSocialsDesc: { en: 'Find us on the network.', th: 'พบกับเราบนโซเชียลเน็ตเวิร์ค' },
+
         // --- products.html ---
         productsTitle: { en: 'SUBSCRIPTION PLANS', th: 'แพ็กเกจสมาชิก' },
         productsSubtitle: { en: 'Unlock a premium experience with an ad-free environment, exclusive cosmetics, and special perks from our game partners.', th: 'ปลดล็อกประสบการณ์พรีเมียม ไร้โฆษณา รับของตกแต่งพิเศษ และสิทธิประโยชน์จากพาร์ทเนอร์เกมของเรา' },
