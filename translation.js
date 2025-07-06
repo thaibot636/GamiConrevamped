@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         backToHome: { en: '.. Back to Home', th: '.. กลับหน้าหลัก' },
         select: { en: 'SELECT', th: 'เลือก' },
         navResources: { en: 'Resources', th: 'คลังข้อมูล'},
-        navAboutus: { en: 'About us', th: 'เกี่ยวกับเรา'},
+        navContactus: { en: 'Contact us', th: 'ติดต่อเรา'},
 
         // --- index.html ---
         heroSubtitle: { en: 'Buddy Finder for Thai Gamers! Connect via traits, vibes, and games.', th: 'แอปหาเพื่อนเล่นเกมสำหรับคนไทย! เชื่อมต่อผ่านลักษณะนิสัย สไตล์ และเกมที่ใช่' },
