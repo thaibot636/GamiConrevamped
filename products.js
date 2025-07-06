@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         th: {
             navHome: "หน้าแรก",
             navProducts: "สินค้า",
-            navResources: "ข้อมูล", 
+            navResources: "คลังข้อมูล", 
             login: "เข้าสู่ระบบ",
             signup: "สมัครสมาชิก",
             menu: "เมนู",
