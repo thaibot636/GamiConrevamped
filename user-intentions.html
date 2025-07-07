@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 User Intention – GamiCon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="user-intetions.css">
+</head>
+<body>
+
+    <!-- Background elements -->
+    <div class="stars-background" aria-hidden="true"></div>
+    <div class="nebula-background" aria-hidden="true"></div>
+
+    <div class="main-container">
+        <div class="content-box">
+
+            <!-- Header -->
+            <header class="flex justify-between items-center mb-8">
+                <a href="javascript:history.back()" class="text-gray-400 hover:text-white transition font-semibold" data-translate-key="userIntentionBack">
+                    < Back
+                </a>
+                <a href="dashboard.html" class="text-sm text-blue-400 hover:underline font-semibold" data-translate-key="userIntentionSkip">
+                    Skip
+                </a>
+            </header>
+            
+            <div class="text-center">
+                <!-- Title -->
+                <h1 class="text-xl md:text-2xl mb-4" data-translate-key="userIntentionTitle">
+                    What are you looking for?<span class="blinking-cursor">_</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-gray-300 text-base leading-relaxed" data-translate-key="userIntentionSubtitle">
+                    All good if it changes. There's something for everyone.
+                </p>
+            </div>
+
+       <!-- Options Grid -->
+       <div class="options-grid" id="optionsGrid">
+            <div class="option-card" data-value="long-term-buddy">
+                <div class="emoji">💖</div>
+                <div data-translate-key="intentionLongTerm">Long term Buddy</div>
+            </div>
+            <div class="option-card" data-value="play-now">
+                <div class="emoji">🎮</div>
+                <div data-translate-key="intentionPlayNow">Play Now, Chill Later</div>
+            </div>
+            <div class="option-card" data-value="ranking">
+                <div class="emoji">🏆</div>
+                <div data-translate-key="intentionRanking">Climb the Ranks</div>
+            </div>
+            <div class="option-card" data-value="short-term">
+                <div class="emoji">🎉</div>
+                <div data-translate-key="intentionOneMatch">One Match Wonder</div>
+            </div>
+            <div class="option-card" data-value="Form-a-Team">
+                <div class="emoji">👋</div>
+                <div data-translate-key="intentionFormTeam">Form a Team</div>
+            </div>
+            <div class="option-card" data-value="figuring-out">
+                <div class="emoji">🤔</div>
+                <div data-translate-key="intentionFiguringOut">Still figuring it out</div>
+            </div>
+        </div>
+
+
+            <a href="dashboard.html" class="btn-8bit" data-translate-key="userIntentionNext">
+                Next
+            </a>
+            
+        </div>
+    </div>
+    
+<script src="user-intentions.js"></script>
+<script src="translation.js" defer></script>
+
+</body>
+</html>
