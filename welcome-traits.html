@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Welcome – GamiCon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="welcome-traits.css">
+    <!-- Reference to your main translation script -->
+   <script src="translation.js"></script>
+
+
+</head>
+<body class="bg-black text-white antialiased">
+
+    <!-- Background elements for the space theme -->
+    <div class="stars-background" aria-hidden="true"></div>
+    <div class="nebula-background" aria-hidden="true"></div>
+
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-lg w-full bg-gray-800 p-8 border-4 border-gray-700 rounded-lg">
+
+            <!-- === Header with Back and Skip links === -->
+            <header class="flex justify-between items-center mb-8">
+                <a href="javascript:history.back()" class="text-gray-400 hover:text-white transition font-semibold delay-link" data-translate-key="back">
+                    Back
+                </a>
+                <a href="user-intentions.html" class="text-sm text-blue-400 hover:underline font-semibold delay-link" data-translate-key="skip">
+                    Skip
+                </a>
+            </header>
+            <!-- === END OF HEADER === -->
+            
+            <div class="text-center">
+                <!-- Title is now centered -->
+                <h1 class="text-xl md:text-2xl mb-6" data-translate-key="welcomeTraitsTitle">
+                    YOUR MISSION BRIEFING<span class="blinking-cursor">_</span>
+                </h1>
+
+                <div class="text-gray-300 text-base md:text-lg leading-relaxed mb-8 space-y-4">
+                    <p data-translate-key="welcomeTraitsDesc1">Greetings, Player. To unlock better matches and find your perfect squad, we need to calibrate your core traits.</p>
+                    <p data-translate-key="welcomeTraitsDesc2">This is a quick mission—a speedrun that will take under 5 minutes!</p>
+                </div>
+
+                <a href="user-intentions.html" class="block w-full bg-blue-600 text-white font-bold py-3 text-center transition-all btn-8bit mt-8 rounded-md text-lg delay-link" data-translate-key="welcomeTraitsBegin">
+                    BEGIN MISSION
+                </a>
+            </div>
+            
+             <div class="mt-6 text-center">
+                <a href="resources.html" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline text-sm" data-translate-key="welcomeTraitsLearnMore">
+                    Learn more about Personalities and more here
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODIFIED: Replaced inline script with a link to the external JS file -->
+    <script src="welcome-traits.js" defer></script>
+</body>
+</html>
