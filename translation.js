@@ -330,6 +330,20 @@ document.addEventListener('DOMContentLoaded', () => {
         welcomeTraitsDesc2: { en: 'This is a quick mission—a speedrun that will take under 5 minutes!', th: 'นี่คือภารกิจด่วน—ที่จะใช้เวลาไม่ถึง 5 นาที!' },
         welcomeTraitsBegin: { en: 'BEGIN MISSION', th: 'เริ่มภารกิจ' },
         welcomeTraitsLearnMore: { en: 'Learn more about Personalities and more here', th: 'เรียนรู้เพิ่มเติมเกี่ยวกับบุคลิกภาพและอื่นๆ ที่นี่' },
+
+          // --- user-intentions.html (NEWLY ADDED) ---
+        userIntentionBack: { en: '< Back', th: '< กลับ' },
+        userIntentionSkip: { en: 'Skip', th: 'ข้าม' },
+        userIntentionTitle: { en: 'What are you looking for?', th: 'คุณกำลังมองหาอะไรอยู่?' },
+        userIntentionSubtitle: { en: "All good if it changes. There's something for everyone.", th: 'ไม่เป็นไรถ้าเปลี่ยนใจ เรามีบางอย่างสำหรับทุกคน' },
+        intentionLongTerm: { en: 'Long term Buddy', th: 'เพื่อนเล่นระยะยาว' },
+        intentionPlayNow: { en: 'Play Now, Chill Later', th: 'เล่นตอนนี้ ชิลล์ทีหลัง' },
+        intentionRanking: { en: 'Climb the Ranks', th: 'ไต่อันดับ' },
+        intentionOneMatch: { en: 'One Match Wonder', th: 'หาเพื่อนเล่นแค่นัดเดียว' },
+        intentionFormTeam: { en: 'Form a Team', th: 'สร้างทีม' },
+        intentionFiguringOut: { en: 'Still figuring it out', th: 'ยังไม่แน่ใจ' },
+        userIntentionNext: { en: 'Next', th: 'ต่อไป' },
+    
     };
 
     // Define the main function in the global scope
