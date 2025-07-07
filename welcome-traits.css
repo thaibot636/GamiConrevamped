@@ -27,3 +27,9 @@ h1 { font-family: 'Press Start 2P', cursive; }
     font-weight: bold;
     margin-left: 0.25rem; /* Small space between text and cursor */
 }
+
+.link-delayed {
+       opacity: 0.3;
+       pointer-events: none;
+       cursor: not-allowed;
+     }
