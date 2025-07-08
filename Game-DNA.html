@@ -43,8 +43,7 @@
                <!-- Question 2: Genres -->
                 <section class="question-group" data-group="genre">
                     <h3 data-translate-key="gameDnaQ_Genres">Genres/Categories?</h3>
-                    <!-- *** THIS IS THE NEW TIP YOU REQUESTED *** -->
-                    <p class="question-tip">Tip: Selecting a genre may reveal new options below. If user end choose all roles the system will automically choose "All Rounnder" for you.</p>
+                    <p class="question-tip">Tip: Selecting a genre may reveal new options below. If you select all roles for a genre, the system will automatically choose "All-rounder" for you.</p>
                     <div class="options-grid">
                         <label class="option-card"><input type="checkbox" name="genre" id="genre-moba"><span class="emoji">🌳</span><span data-translate-key="traitTagMoba">MOBA</span></label>
                         <label class="option-card"><input type="checkbox" name="genre" id="genre-fps"><span class="emoji">🎯</span><span data-translate-key="traitTagFps">FPS</span></label>
@@ -52,27 +51,33 @@
                     </div>
                     <p class="error-message" data-error-for="genre"></p>
                 </section>
-<!-- Hidden by default: MOBA Roles -->
+                
+                <!-- Hidden by default: MOBA Roles -->
                 <section class="question-group hidden" id="roles-moba" data-group="moba-roles">
                     <h3 data-translate-key="gameDnaQ_MobaRoles">What's your preferred role in MOBA?</h3>
-                    <div class="options-grid">
+                    <div class="options-grid" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
                         <label class="option-card"><input type="checkbox" name="moba-roles"><span>Top</span></label>
                         <label class="option-card"><input type="checkbox" name="moba-roles"><span>Mid</span></label>
                         <label class="option-card"><input type="checkbox" name="moba-roles"><span>ADC</span></label>
                         <label class="option-card"><input type="checkbox" name="moba-roles"><span>Support</span></label>
                         <label class="option-card"><input type="checkbox" name="moba-roles"><span>Jungle</span></label>
+                        <label class="option-card"><input type="checkbox" name="moba-roles" id="moba-all-rounder"><span>All-rounder</span></label>
+                        <label class="option-card"><input type="checkbox" name="moba-roles" id="moba-not-sure"><span>Not sure</span></label>
                     </div>
                     <p class="error-message" data-error-for="moba-roles"></p>
                 </section>
+                
                  <!-- Hidden by default: FPS Roles -->
                 <section class="question-group hidden" id="roles-fps" data-group="fps-roles">
                     <h3 data-translate-key="gameDnaQ_FpsRoles">What's your preferred role in FPS?</h3>
-                    <div class="options-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+                    <div class="options-grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));">
                         <label class="option-card"><input type="checkbox" name="fps-roles"><span>Entry Fragger</span></label>
                         <label class="option-card"><input type="checkbox" name="fps-roles"><span>Support</span></label>
                         <label class="option-card"><input type="checkbox" name="fps-roles"><span>Sniper</span></label>
                         <label class="option-card"><input type="checkbox" name="fps-roles"><span>IGL</span></label>
                         <label class="option-card"><input type="checkbox" name="fps-roles"><span>Lurker</span></label>
+                        <label class="option-card"><input type="checkbox" name="fps-roles" id="fps-all-rounder"><span>All-rounder</span></label>
+                        <label class="option-card"><input type="checkbox" name="fps-roles" id="fps-not-sure"><span>Not sure</span></label>
                     </div>
                     <p class="error-message" data-error-for="fps-roles"></p>
                 </section>
