@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate-key="langPersonalityTitle">Language & Personality</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Link to your new external CSS file -->
+    <link rel="stylesheet" href="langs-pers.css">
+    
+    <script src="translation.js" defer></script>
+</head>
+<body>
+    <div class="nebula-background"></div>
+    <div class="stars-background"></div>
+    <div class="main-container">
+        <div class="content-box">
+            <header class="header-nav">
+                <a href="javascript:history.back()" class="back-button" data-translate-key="userIntentionBack"> < Back </a>
+                <a href="ur-identity.html" class="skip-button" data-translate-key="userIntentionSkip"> Skip </a>
+            </header>
+
+            <h1><span data-translate-key="langPersonalityTitle">Language & Personality</span><span class="blinking-cursor">_</span></h1>
+            <p class="subtitle" data-translate-key="langPersonalitySubtitle">"Tell us how you vibe and communicate."</p>
+
+            <form id="lang-pers-form">
+                <h3 data-translate-key="q_language">What language(s) do you use?</h3>
+                <div class="options-grid">
+                    <label class="option-card"><input type="checkbox" name="language"><span class="flag">🇹🇭</span><span data-translate-key="lang_th">Thai</span></label>
+                    <label class="option-card"><input type="checkbox" name="language"><span class="flag">🇺🇸</span><span data-translate-key="lang_en">English</span></label>
+                    <label class="option-card"><input type="checkbox" name="language"><span class="flag">🇲🇲</span><span data-translate-key="lang_bu">Burmese</span></label>
+                    <label class="option-card"><input type="checkbox" name="language"><span class="flag">🇨🇳</span><span data-translate-key="lang_cn">Chinese</span></label>
+                    <label class="option-card"><input type="checkbox" name="language"><span class="flag">🇰🇭</span><span data-translate-key="lang_kh">Khmer</span></label>
+                </div>
+                <!-- ADDED: Error message placeholder for languages -->
+                <p class="error-message" data-error-for="language"></p>
+
+                <div class="heading-with-tooltip" style="margin-top: 1.5rem;">
+                    <h3 data-translate-key="q_vibe" style="margin-top: 0;">What’s your in-game vibe like?</h3>
+                    <div class="tooltip-container">
+                        <span class="info-icon">ℹ</span>
+                        <span class="tooltip-text" data-translate-key="vibe_tooltip">Pick 1–3 traits that reflect how you behave or feel while playing. This helps others understand your communication style.</span>
+                    </div>
+                </div>
+                <div class="options-grid">
+                     <label class="option-card"><input type="checkbox" name="vibe"><span data-translate-key="vibe_talkative">Talkative</span></label>
+                    <label class="option-card"><input type="checkbox" name="vibe"><span data-translate-key="vibe_quiet">Quiet</span></label>
+                    <label class="option-card"><input type="checkbox" name="vibe"><span data-translate-key="vibe_funny">Funny</span></label>
+                    <label class="option-card"><input type="checkbox" name="vibe"><span data-translate-key="vibe_supportive">Supportive</span></label>
+                    <label class="option-card"><input type="checkbox" name="vibe"><span data-translate-key="vibe_thinker">Thinker</span></label>
+                    <label class="option-card"><input type="checkbox" name="vibe"><span data-translate-key="vibe_planner">Planner</span></label>
+                    <label class="option-card"><input type="checkbox" name="vibe"><span data-translate-key="vibe_calm">Calm</span></label>
+                    <label class="option-card"><input type="checkbox" name="vibe"><span data-translate-key="vibe_spontaneous">Spontaneous</span></label>
+                </div>
+                <!-- ADDED: Error message placeholder for vibes -->
+                <p class="error-message" data-error-for="vibe"></p>
+                
+                <div class="heading-with-tooltip" style="margin-top: 1.5rem;">
+                    <h3 data-translate-key="q_mbti_select" style="margin-top: 0;">What's your MBTI? (Optional)</h3>
+                     <div class="tooltip-container">
+                        <span class="info-icon">ℹ</span>
+                        <span class="tooltip-text">
+                            <span data-translate-key="mbti_tooltip_intro">Not sure? </span>
+                            <a href="https://www.16personalities.com/free-personality-test" target="_blank" data-translate-key="mbti_tooltip_link">Take this quick quiz</a>
+                            <span data-translate-key="mbti_tooltip_outro"> to find your type.</span>
+                        </span>
+                    </div>
+                </div>
+                <p class="section-tip" data-translate-key="mbti_tip_text">You can skip this or choose one that fits you best. It helps us match based on vibe compatibility!</p>
+                
+                <div class="mbti-category-container">
+                    <!-- Analysts -->
+                    <div class="mbti-category mbti-analyst-group">
+                        <h4 class="mbti-category-title" data-translate-key="mbti_group_analysts">🟣 Analysts</h4>
+                        <div class="mbti-options">
+                            <label class="option-card"><input type="radio" name="mbti" value="intj"><span data-translate-key="mbti_intj">INTJ</span></label>
+                            <label class="option-card"><input type="radio" name="mbti" value="intp"><span data-translate-key="mbti_intp">INTP</span></label>
+                            <label class="option-card"><input type="radio" name="mbti" value="entj"><span data-translate-key="mbti_entj">ENTJ</span></label>
+                            <label class="option-card"><input type="radio" name="mbti" value="entp"><span data-translate-key="mbti_entp">ENTP</span></label>
+                        </div>
+                    </div>
+                    <!-- Diplomats -->
+                    <div class="mbti-category mbti-diplomat-group">
+                        <h4 class="mbti-category-title" data-translate-key="mbti_group_diplomats">🟢 Diplomats</h4>
+                        <div class="mbti-options">
+                            <label class="option-card"><input type="radio" name="mbti" value="infj"><span data-translate-key="mbti_infj">INFJ</span></label>
+                            <label class="option-card"><input type="radio" name="mbti" value="infp"><span data-translate-key="mbti_infp">INFP</span></label>
+                            <label class="option-card"><input type="radio" name="mbti" value="enfj"><span data-translate-key="mbti_enfj">ENFJ</span></label>
+                            <label class="option-card"><input type="radio" name="mbti" value="enfp"><span data-translate-key="mbti_enfp">ENFP</span></label>
+                        </div>
+                    </div>
+                    <!-- Sentinels -->
+                    <div class="mbti-category mbti-sentinel-group">
+                        <h4 class="mbti-category-title" data-translate-key="mbti_group_sentinels">🔵 Sentinels</h4>
+                        <div class="mbti-options">
+                             <label class="option-card"><input type="radio" name="mbti" value="istj"><span data-translate-key="mbti_istj">ISTJ</span></label>
+                             <label class="option-card"><input type="radio" name="mbti" value="isfj"><span data-translate-key="mbti_isfj">ISFJ</span></label>
+                             <label class="option-card"><input type="radio" name="mbti" value="estj"><span data-translate-key="mbti_estj">ESTJ</span></label>
+                             <label class="option-card"><input type="radio" name="mbti" value="esfj"><span data-translate-key="mbti_esfj">ESFJ</span></label>
+                        </div>
+                    </div>
+                    <!-- Explorers -->
+                    <div class="mbti-category mbti-explorer-group">
+                         <h4 class="mbti-category-title" data-translate-key="mbti_group_explorers">🟡 Explorers</h4>
+                         <div class="mbti-options">
+                             <label class="option-card"><input type="radio" name="mbti" value="istp"><span data-translate-key="mbti_istp">ISTP</span></label>
+                             <label class="option-card"><input type="radio" name="mbti" value="isfp"><span data-translate-key="mbti_isfp">ISFP</span></label>
+                             <label class="option-card"><input type="radio" name="mbti" value="estp"><span data-translate-key="mbti_estp">ESTP</span></label>
+                             <label class="option-card"><input type="radio" name="mbti" value="esfp"><span data-translate-key="mbti_esfp">ESFP</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                     <span class="pagination">2 / 4</span>
+                     <a id="next-button" href="ur-identity.html" class="btn-8bit" data-translate-key="userIntentionNext">Next</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Link to your new external JavaScript file -->
+    <script src="langs-pers.js" defer></script>
+</body>
+</html>
