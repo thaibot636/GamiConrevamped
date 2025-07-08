@@ -159,29 +159,22 @@ document.addEventListener('DOMContentLoaded', () => {
         animFusion: { en: 'FUSION!', th: 'รวมร่าง!' },
 
        // --- game-dna.html (Welcome Traits Part 2) ---
-gameDnaTitle: { en: 'Your Game DNA', th: 'Game DNA ของคุณ' },
-gameDnaSubtitle: { en: "Let’s get to know how, what, and when you play.", th: "มาทำความรู้จักกับสไตล์, เกม, และเวลาที่คุณเล่นกันเถอะ" },
-gameDnaQ_Games: { en: 'What games do you play?', th: 'คุณเล่นเกมอะไรบ้าง?' },
-gameDnaQ_Genres: { en: 'Genres/Categories?', th: 'แนวเกม/หมวดหมู่?' },
-gameDnaQ_MobaRoles: { en: 'MOBA Roles', th: 'ตำแหน่งในเกมส์ MOBA'},
-gameDnaQ_FpsRoles: {en: 'FPS Roles' , th: 'ตำแหน่งในเกมส์ FPS'},
-
-// Platform Section
-gameDnaQ_Platform: { en: 'What platform(s) do you play on?', th: 'คุณเล่นบนแพลตฟอร์มอะไร?' },
-platformTip: { en: "Tip: Pick more than one if you're cross-platform", th: 'เคล็ดลับ: เลือกได้มากกว่าหนึ่งถ้าคุณเล่นหลายแพลตฟอร์ม' },
-optionOther: { en: 'Others', th: 'อื่นๆ' }, // English text updated to plural to match usage
-
-// "When you play" Section
-gameDnaQ_When: { en: 'When do you usually play?', th: 'คุณมักจะเล่นช่วงไหน?' },
-gameDnaTimeMorning: { en: 'Morning', th: 'ช่วงเช้า' },
-gameDnaTimeAfternoon: { en: 'Afternoon', th: 'ช่วงบ่าย' },
-gameDnaTimeEvening: { en: 'Evening', th: 'ช่วงเย็น' },
-traitTagLateNight: { en: 'Late night', th: 'ดึกๆ' },
-gameDnaActivityAfterWork: { en: 'After work', th: 'หลังเลิกงาน' },
-traitTagWeekdays: { en: 'Weekday', th: 'วันธรรมดา' },
-traitTagWeekends: { en: 'Weekend', th: 'สุดสัปดาห์' },
-gameDnaTimeNoFixed: { en: 'No fixed time', th: 'เวลาไม่แน่นอน' },
-gameDnaTime247: { en: '24/7 Gamer', th: 'เล่นตลอด 24/7' },
+        gameDnaTitle: { en: 'Your Game DNA', th: 'Game DNA ของคุณ' },
+        gameDnaSubtitle: { en: "Let’s get to know how, what, and when you play.", th: "มาทำความรู้จักกับสไตล์, เกม, และเวลาที่คุณเล่นกันเถอะ" },
+        gameDnaQ_Games: { en: 'What games do you play?', th: 'คุณเล่นเกมอะไรบ้าง?' },
+        gameDnaQ_Genres: { en: 'Genres/Categories?', th: 'แนวเกม/หมวดหมู่?' },
+        gameDnaQ_MobaRoles: { en: 'MOBA Roles', th: 'ตำแหน่งในเกมส์ MOBA'},
+        gameDnaQ_FpsRoles: {en: 'FPS Roles' , th: 'ตำแหน่งในเกมส์ FPS'},
+        gameDnaQ_Platform: { en: 'What platform(s) do you play on?', th: 'คุณเล่นบนแพลตฟอร์มอะไร?' },
+        platformTip: { en: "Tip: Pick more than one if you're cross-platform", th: 'เคล็ดลับ: เลือกได้มากกว่าหนึ่งถ้าคุณเล่นหลายแพลตฟอร์ม' },
+        optionOther: { en: 'Others', th: 'อื่นๆ' },
+        gameDnaQ_When: { en: 'When do you usually play?', th: 'คุณมักจะเล่นช่วงไหน?' },
+        gameDnaTimeMorning: { en: 'Morning', th: 'ช่วงเช้า' },
+        gameDnaTimeAfternoon: { en: 'Afternoon', th: 'ช่วงบ่าย' },
+        gameDnaTimeEvening: { en: 'Evening', th: 'ช่วงเย็น' },
+        gameDnaActivityAfterWork: { en: 'After work', th: 'หลังเลิกงาน' },
+        gameDnaTimeNoFixed: { en: 'No fixed time', th: 'เวลาไม่แน่นอน' },
+        gameDnaTime247: { en: '24/7 Gamer', th: 'เล่นตลอด 24/7' },
 
         // --- main.html / main1.html (Dashboard) ---
         dashHome: { en: 'Home', th: 'หน้าหลัก' },
@@ -337,7 +330,7 @@ gameDnaTime247: { en: '24/7 Gamer', th: 'เล่นตลอด 24/7' },
         profilesEditTraits: { en: 'Edit Traits', th: 'แก้ไขลักษณะ' },
         profilesSave: { en: 'Save Changes', th: 'บันทึกการเปลี่ยนแปลง' },
         profilesCancel: { en: 'Cancel', th: 'ยกเลิก' },
-        profilesEdit: { en: 'Edit', th: 'แก้ไข' }, // Added for the Edit button
+        profilesEdit: { en: 'Edit', th: 'แก้ไข' }, 
 
         // --- friends.html ---
         friendsTitle: { en: 'Manage Friends', th: 'จัดการเพื่อน' },
@@ -356,7 +349,7 @@ gameDnaTime247: { en: '24/7 Gamer', th: 'เล่นตลอด 24/7' },
         welcomeTraitsBegin: { en: 'BEGIN MISSION', th: 'เริ่มภารกิจ' },
         welcomeTraitsLearnMore: { en: 'Learn more about Personalities and more here', th: 'เรียนรู้เพิ่มเติมเกี่ยวกับบุคลิกภาพและอื่นๆ ที่นี่' },
 
-          // --- user-intentions.html (NEWLY ADDED) ---
+        // --- user-intentions.html (NEWLY ADDED) ---
         userIntentionBack: { en: 'Back', th: 'กลับ' },
         userIntentionSkip: { en: 'Skip', th: 'ข้าม' },
         userIntentionTitle: { en: 'What are you looking for?', th: 'คุณกำลังมองหาอะไรอยู่?' },
@@ -369,7 +362,7 @@ gameDnaTime247: { en: '24/7 Gamer', th: 'เล่นตลอด 24/7' },
         intentionFiguringOut: { en: 'Still figuring it out', th: 'ยังไม่แน่ใจ' },
         userIntentionNext: { en: 'Next', th: 'ต่อไป' },
     
-                // --- game-dna-2.html (Language & Personality) ---
+        // --- game-dna-2.html (Language & Personality) ---
         langPersonalityTitle: { en: 'Language & Personality', th: 'ภาษาและบุคลิก' },
         langPersonalitySubtitle: { en: "Tell us how you vibe and communicate.", th: "บอกเราหน่อยว่าคุณมีสไตล์และสื่อสารอย่างไร" },
         q_language: { en: 'What language(s) do you use while gaming?', th: 'คุณใช้ภาษาอะไรบ้างตอนเล่นเกม?' },
@@ -380,7 +373,7 @@ gameDnaTime247: { en: '24/7 Gamer', th: 'เล่นตลอด 24/7' },
         lang_kh: { en: 'Khmer', th: 'ภาษาเขมร' },
         q_vibe: { en: 'What’s your in-game vibe like?', th: 'สไตล์การเล่นเกมของคุณเป็นอย่างไร?' },
         vibe_talkative: { en: 'Talkative', th: 'ช่างคุย' },
-        vibe_quiet: { en: 'Quiet & Reliable', th: 'เงียบและไว้ใจได้' },
+        vibe_quiet: { en: 'Quiet', th: 'เงียบๆ' },
         vibe_funny: { en: 'Funny', th: 'ตลก' },
         vibe_supportive: { en: 'Supportive', th: 'คอยสนับสนุน' },
         vibe_thinker: { en: 'Thinker', th: 'นักคิด' },
@@ -388,6 +381,10 @@ gameDnaTime247: { en: '24/7 Gamer', th: 'เล่นตลอด 24/7' },
         vibe_calm: { en: 'Calm', th: 'ใจเย็น' },
         vibe_spontaneous: { en: 'Spontaneous', th: 'ด้นสด' },
         q_mbti_select: { en: "Select your MBTI (Optional)", th: "เลือก MBTI ของคุณ (ไม่บังคับ)" },
+        mbti_group_analysts: { en: '🟣 Analysts', th: '🟣 นักวิเคราะห์' },
+        mbti_group_diplomats: { en: '🟢 Diplomats', th: '🟢 นักการทูต' },
+        mbti_group_sentinels: { en: '🔵 Sentinels', th: '🔵 ผู้เฝ้ายาม' },
+        mbti_group_explorers: { en: '🟡 Explorers', th: '🟡 นักสำรวจ' },
         mbti_intj: { en: 'INTJ', th: 'INTJ' },
         mbti_intp: { en: 'INTP', th: 'INTP' },
         mbti_entj: { en: 'ENTJ', th: 'ENTJ' },
@@ -404,30 +401,19 @@ gameDnaTime247: { en: '24/7 Gamer', th: 'เล่นตลอด 24/7' },
         mbti_isfp: { en: 'ISFP', th: 'ISFP' },
         mbti_estp: { en: 'ESTP', th: 'ESTP' },
         mbti_esfp: { en: 'ESFP', th: 'ESFP' },
-        // --- ADD these keys to your game-dna-2.html section ---
-        mbti_group_analysts: { en: '🟣 Analysts', th: '🟣 นักวิเคราะห์' },
-        mbti_group_diplomats: { en: '🟢 Diplomats', th: '🟢 นักการทูต' },
-        mbti_group_sentinels: { en: '🔵 Sentinels', th: '🔵 ผู้เฝ้ายาม' },
-        mbti_group_explorers: { en: '🟡 Explorers', th: '🟡 นักสำรวจ' },
+        
+        // =============================================
+        // UPDATED: Added keys for new tooltips and tips
+        // =============================================
+        vibe_tooltip: { en: 'Pick 1–3 traits that reflect how you behave or feel while playing. This helps others understand your communication style.', th: 'เลือก 1–3 อย่างที่สะท้อนพฤติกรรมหรือความรู้สึกของคุณตอนเล่นเกม สิ่งนี้จะช่วยให้คนอื่นเข้าใจสไตล์การสื่อสารของคุณ' },
+        mbti_tip_text: { en: 'You can skip this or choose one that fits you best. It helps us match based on vibe compatibility!', th: 'คุณสามารถข้ามส่วนนี้หรือเลือกข้อที่ตรงกับคุณที่สุดได้ การเลือกจะช่วยให้เราจับคู่ตามความเข้ากันได้ของสไตล์!' },
+        mbti_tooltip_intro: { en: 'Not sure? ', th: 'ไม่แน่ใจ? ' },
+        mbti_tooltip_link: { en: 'Take this quick quiz', th: 'ทำแบบทดสอบสั้นๆ นี้' },
+        mbti_tooltip_outro: { en: ' to find your type.', th: ' เพื่อค้นหาประเภทของคุณ' },
 
-        // --- You can also update the Quiet option for clarity ---
-        vibe_quiet: { en: 'Quiet', th: 'เงียบๆ' },
-
-            // --- game-dna-3.html (Identity) ---
+        // --- game-dna-3.html (Identity & Communication) ---
         identityTitle: { en: 'Your Identity', th: 'ตัวตนของคุณ' },
         identitySubtitle: { en: "Just a few things to match you better (optional, but helpful).", th: "ข้อมูลเล็กน้อยเพื่อการจับคู่ที่ดีขึ้น (ไม่บังคับ แต่มีประโยชน์)" },
-        q_comm_style: { en: 'What’s your communication style?', th: 'สไตล์การสื่อสารของคุณเป็นอย่างไร?' },
-        comm_texter: { en: 'Big time texter', th: 'นักแชทตัวยง' },
-        comm_voice: { en: 'In-game voice', th: 'คุยเสียงในเกม' },
-        comm_person: { en: 'Better in person', th: 'คุยต่อหน้าดีกว่า' },
-        comm_caller: { en: 'Phone caller', th: 'ชอบโทรคุย' },
-        comm_badtexter: { en: 'Bad texter', th: 'ตอบแชทไม่เก่ง' },
-        q_love_lang: { en: 'How do you receive love? (Optional)', th: 'คุณรับรู้ความรักผ่านทางไหน? (ไม่บังคับ)' },
-        love_time: { en: 'Time together', th: 'การใช้เวลาร่วมกัน' },
-        love_touch: { en: 'Touch', th: 'การสัมผัส' },
-        love_compliments: { en: 'Compliments', th: 'คำชม' },
-        love_presents: { en: 'Presents', th: 'ของขวัญ' },
-        love_gestures: { en: 'Gestures', th: 'การดูแลเอาใจใส่' },
         q_education: { en: 'What’s your education level? (Optional)', th: 'ระดับการศึกษาของคุณ? (ไม่บังคับ)' },
         edu_highschool: { en: 'High School', th: 'มัธยมปลาย' },
         edu_bachelor: { en: "Bachelor's", th: 'ปริญญาตรี' },
@@ -447,26 +433,21 @@ gameDnaTime247: { en: '24/7 Gamer', th: 'เล่นตลอด 24/7' },
         zodiac_capricorn: { en: 'Capricorn', th: 'ราศีมังกร' },
         zodiac_aquarius: { en: 'Aquarius', th: 'ราศีกุมภ์' },
         zodiac_pisces: { en: 'Pisces', th: 'ราศีมีน' },
-        // --- game-dna-3.html (In-Game Communication) ---
-commTitle: { en: 'In-Game Communication', th: 'การสื่อสารในเกม' },
-q_ingame_comm: { en: 'How do you usually communicate in-game?', th: 'คุณสื่อสารในเกมอย่างไร?' },
+        commTitle: { en: 'In-Game Communication', th: 'การสื่อสารในเกม' },
+        q_ingame_comm: { en: 'How do you usually communicate in-game?', th: 'คุณสื่อสารในเกมอย่างไร?' },
+        comm_method_title: { en: 'Primary communication method', th: 'ช่องทางการสื่อสารหลัก' },
+        commMethod_text: { en: 'Text chat (in-game or external)', th: 'แชทข้อความ (ในเกมหรือนอกเกม)' },
+        commMethod_voice_external: { en: 'Voice chat (Discord, party voice, etc.)', th: 'วอยซ์แชท (Discord, ปาร์ตี้วอยซ์ ฯลฯ)' },
+        commMethod_voice_internal: { en: 'In-game voice (built-in)', th: 'วอยซ์ในเกม (ที่มากับเกม)' },
+        commMethod_none: { en: "I don't communicate at all", th: 'ฉันไม่สื่อสารเลย' },
+        comm_style_title: { en: 'Communication style', th: 'สไตล์การสื่อสาร' },
+        commStyle_strategic: { en: 'Talkative & strategic (loves shot-calling, planning)', th: 'ช่างคุย & วางแผน (ชอบนำทีม, วางแผน)' },
+        commStyle_quiet: { en: 'Quiet but responsive (only talks when needed)', th: 'เงียบแต่ตอบสนอง (พูดเมื่อจำเป็น)' },
+        commStyle_types: { en: 'Mostly types, avoids voice', th: 'พิมพ์เป็นหลัก, เลี่ยงการใช้เสียง' },
+        commStyle_mute: { en: 'Mute all / solo experience preferred', th: 'ปิดไมค์ทุกคน / ชอบเล่นคนเดียว' },
+        commStyle_open: { en: 'Open to anything / depends on team', th: 'แล้วแต่สถานการณ์ / ขึ้นอยู่กับทีม' },
 
-// Sub-section 1: Communication Method
-comm_method_title: { en: 'Primary communication method', th: 'ช่องทางการสื่อสารหลัก' },
-commMethod_text: { en: 'Text chat (in-game or external)', th: 'แชทข้อความ (ในเกมหรือนอกเกม)' },
-commMethod_voice_external: { en: 'Voice chat (Discord, party voice, etc.)', th: 'วอยซ์แชท (Discord, ปาร์ตี้วอยซ์ ฯลฯ)' },
-commMethod_voice_internal: { en: 'In-game voice (built-in)', th: 'วอยซ์ในเกม (ที่มากับเกม)' },
-commMethod_none: { en: "I don't communicate at all", th: 'ฉันไม่สื่อสารเลย' },
-
-// Sub-section 2: Communication Style
-comm_style_title: { en: 'Communication style', th: 'สไตล์การสื่อสาร' },
-commStyle_strategic: { en: 'Talkative & strategic (loves shot-calling, planning)', th: 'ช่างคุย & วางแผน (ชอบนำทีม, วางแผน)' },
-commStyle_quiet: { en: 'Quiet but responsive (only talks when needed)', th: 'เงียบแต่ตอบสนอง (พูดเมื่อจำเป็น)' },
-commStyle_types: { en: 'Mostly types, avoids voice', th: 'พิมพ์เป็นหลัก, เลี่ยงการใช้เสียง' },
-commStyle_mute: { en: 'Mute all / solo experience preferred', th: 'ปิดไมค์ทุกคน / ชอบเล่นคนเดียว' },
-commStyle_open: { en: 'Open to anything / depends on team', th: 'แล้วแต่สถานการณ์ / ขึ้นอยู่กับทีม' },
-
- // --- NEW: game-dna-4.html (Onboarding Page 4 - Interests & Hobbies) ---
+        // --- game-dna-4.html (Interests & Hobbies) ---
         interestsTitle: { en: 'Interests & Hobbies', th: 'ความสนใจและงานอดิเรก' },
         interestsSubtitle: { en: 'Let others know what you’re into — it’s fun to connect beyond the game.', th: 'ให้คนอื่นรู้ว่าคุณสนใจอะไร — การเชื่อมต่อนอกเหนือจากเกมก็สนุกนะ' },
         interestCat_music: { en: '🎵 Music & Pop Culture', th: '🎵 ดนตรีและวัฒนธรรมป๊อป' },
@@ -526,23 +507,7 @@ commStyle_open: { en: 'Open to anything / depends on team', th: 'แล้วแ
         hobby_collecting: { en: 'Collecting (cards, figures, etc.)', th: 'สะสมของ (การ์ด, ฟิกเกอร์, ฯลฯ)' },
         hobby_memes: { en: 'Memes / Internet culture', th: 'มีม / วัฒนธรรมอินเทอร์เน็ต' },
         hobby_astrology: { en: 'Astrology / MBTI / Typology', th: 'โหราศาสตร์ / MBTI / Typology' },
-        userIntentionFinish: { en: 'Finish', th: 'เสร็จสิ้น' },
-
-        // --- main.html / main1.html (Dashboard) ---
-        dashHome: { en: 'Home', th: 'หน้าหลัก' },
-        dashDashboard: { en: 'Dashboard', th: 'แดชบอร์ด' },
-        dashPlayNow: { en: 'Play Now', th: 'เล่นทันที' },
-        dashSwipeVipe: { en: 'Swipe & Vipe', th: 'ปัดและไวป์' },
-        dashChat: { en: 'Chat', th: 'แชท' },
-        dashFriends: { en: 'Friends', th: 'เพื่อน' },
-        dashNotifications: { en: 'Notifications', th: 'การแจ้งเตือน' },
-        dashWelcome: { en: 'CHOOSE YOUR MISSION,', th: 'เลือกภารกิจของคุณ,' },
-        dashSubtitle: { en: 'What are you looking for today?', th: 'วันนี้คุณมองหาอะไรอยู่?' },
-        dashLongTerm: { en: 'Find a Long-Term Buddy', th: 'หาเพื่อนเล่นระยะยาว' },
-        dashLongTermDesc: { en: 'Swipe through profiles to find your perfect gaming partner.', th: 'ปัดโปรไฟล์เพื่อค้นหาคู่หูเล่นเกมที่สมบูรณ์แบบของคุณ' },
-        dashStartSwiping: { en: 'START SWIPING', th: 'เริ่มปัดเลย' },
-        dashPlayNowDesc: { en: 'Jump into the action immediately. Browse or create a room.', th: 'เข้าสู่การต่อสู้ทันที ค้นหาหรือสร้างห้อง' },
-        dashJoinRoom: { en: 'JOIN A ROOM', th: 'เข้าร่วมห้อง' },
+        userIntentionFinish: { en: 'Finish', th: 'เสร็จสิ้น' }
     };
 
     // Define the main function in the global scope
