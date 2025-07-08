@@ -445,6 +445,24 @@ gameDnaTime247: { en: '24/7 Gamer', th: 'เล่นตลอด 24/7' },
         zodiac_capricorn: { en: 'Capricorn', th: 'ราศีมังกร' },
         zodiac_aquarius: { en: 'Aquarius', th: 'ราศีกุมภ์' },
         zodiac_pisces: { en: 'Pisces', th: 'ราศีมีน' },
+        // --- game-dna-3.html (In-Game Communication) ---
+commTitle: { en: 'In-Game Communication', th: 'การสื่อสารในเกม' },
+q_ingame_comm: { en: 'How do you usually communicate in-game?', th: 'คุณสื่อสารในเกมอย่างไร?' },
+
+// Sub-section 1: Communication Method
+comm_method_title: { en: 'Primary communication method', th: 'ช่องทางการสื่อสารหลัก' },
+commMethod_text: { en: 'Text chat (in-game or external)', th: 'แชทข้อความ (ในเกมหรือนอกเกม)' },
+commMethod_voice_external: { en: 'Voice chat (Discord, party voice, etc.)', th: 'วอยซ์แชท (Discord, ปาร์ตี้วอยซ์ ฯลฯ)' },
+commMethod_voice_internal: { en: 'In-game voice (built-in)', th: 'วอยซ์ในเกม (ที่มากับเกม)' },
+commMethod_none: { en: "I don't communicate at all", th: 'ฉันไม่สื่อสารเลย' },
+
+// Sub-section 2: Communication Style
+comm_style_title: { en: 'Communication style', th: 'สไตล์การสื่อสาร' },
+commStyle_strategic: { en: 'Talkative & strategic (loves shot-calling, planning)', th: 'ช่างคุย & วางแผน (ชอบนำทีม, วางแผน)' },
+commStyle_quiet: { en: 'Quiet but responsive (only talks when needed)', th: 'เงียบแต่ตอบสนอง (พูดเมื่อจำเป็น)' },
+commStyle_types: { en: 'Mostly types, avoids voice', th: 'พิมพ์เป็นหลัก, เลี่ยงการใช้เสียง' },
+commStyle_mute: { en: 'Mute all / solo experience preferred', th: 'ปิดไมค์ทุกคน / ชอบเล่นคนเดียว' },
+commStyle_open: { en: 'Open to anything / depends on team', th: 'แล้วแต่สถานการณ์ / ขึ้นอยู่กับทีม' },
     };
 
     // Define the main function in the global scope
