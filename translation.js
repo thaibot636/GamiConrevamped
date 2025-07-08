@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
         welcomeTraitsLearnMore: { en: 'Learn more about Personalities and more here', th: 'เรียนรู้เพิ่มเติมเกี่ยวกับบุคลิกภาพและอื่นๆ ที่นี่' },
 
           // --- user-intentions.html (NEWLY ADDED) ---
-        userIntentionBack: { en: '< Back', th: '< กลับ' },
+        userIntentionBack: { en: 'Back', th: 'กลับ' },
         userIntentionSkip: { en: 'Skip', th: 'ข้าม' },
         userIntentionTitle: { en: 'What are you looking for?', th: 'คุณกำลังมองหาอะไรอยู่?' },
         userIntentionSubtitle: { en: "All good if it changes. There's something for everyone.", th: 'ไม่เป็นไรถ้าเปลี่ยนใจ เรามีบางอย่างสำหรับทุกคน' },
