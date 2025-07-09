@@ -17,11 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const getTranslatedMessage = (key) => {
         const lang = localStorage.getItem('gamicon_lang') || 'en';
-        // Ensure the global translations object from translation.js is loaded
         if (typeof translations !== 'undefined' && translations[key] && translations[key][lang]) {
             return translations[key][lang];
         }
-        // Fallback returns the English hardcoded message from the original file if needed
         const originalMessages = {
             errorGameDnaGames: "Please select 1 to 5 games.",
             errorGameDnaGenres: "Please select 1 to 3 genres.",
@@ -29,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             errorGameDnaPlatform: "Please select at least 1 platform.",
             errorGameDnaActiveTime: "Please select 1 to 4 time slots."
         };
-        return originalMessages[key] || `[${key}]`; // Fallback to original message or key name
+        return originalMessages[key] || `[${key}]`;
     };
     
     // --- Select all relevant elements from the DOM ---
@@ -44,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobaRolesSection = document.getElementById('roles-moba');
     const fpsRolesSection = document.getElementById('roles-fps');
 
-    // --- Helper function to update a card's visual style based on its checkbox state ---
+    // --- Helper function to update a card's visual style ---
     const updateCardStyle = (checkbox) => {
         const cardLabel = checkbox.closest('.option-card');
         if (cardLabel) {
@@ -52,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- Function to show/hide role sections based on genre selection ---
+    // --- Function to show/hide role sections ---
     const updateRoleSectionsVisibility = () => {
         if (mobaRolesSection && genreMobaCheckbox) {
              mobaRolesSection.classList.toggle('hidden', !genreMobaCheckbox.checked);
@@ -62,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- NEW: Smart logic handler for role selection ---
+    // --- FIXED: Smart logic handler for role selection (Restored to your original, working version) ---
     const smartRoleHandler = (groupName, changedCheckbox) => {
         const allCheckboxesInGroup = Array.from(form.querySelectorAll(`input[name="${groupName}"]`));
         const allRounder = allCheckboxesInGroup.find(cb => cb.id && cb.id.includes('all-rounder'));
@@ -93,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         allCheckboxesInGroup.forEach(updateCardStyle);
     };
 
-    // --- REFACTORED: Main handler for any checkbox change ---
+    // --- REFACTORED: Main handler for any checkbox change (Unchanged) ---
     const handleCheckboxChange = (e) => {
         const checkbox = e.target;
         const groupName = checkbox.name;
@@ -110,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (checkedCount > rule.max) {
                 checkbox.checked = false;
                 updateCardStyle(checkbox);
-                return;
             }
         }
         
@@ -125,8 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- Function to validate the entire form when "Next" is clicked ---
-    const validateForm = (e) => {
+    // --- Function to validate and save the form when "Next" is clicked ---
+    const validateAndSaveForm = (e) => {
+        e.preventDefault(); // Control navigation
         let isFormValid = true;
 
         errorMessages.forEach(msg => {
@@ -148,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (checkedCount < rule.min) {
                 isFormValid = false;
                 if (errorElement) {
-                    // Use the helper function to get the translated message
                     errorElement.textContent = getTranslatedMessage(rule.messageKey);
                     errorElement.classList.add('visible');
                 }
@@ -156,11 +153,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!isFormValid) {
-            e.preventDefault();
             console.error("Form validation failed. Please check the errors.");
         } else {
-            console.log("Form is valid! Proceeding to the next page.");
-            window.location.href = nextButton.href;
+            // Form is valid, so we save the data.
+            console.log("Form is valid! Saving data...");
+            const gameDnaData = {};
+
+            document.querySelectorAll('.question-group').forEach(group => {
+                const groupName = group.dataset.group;
+                if (!group.classList.contains('hidden')) {
+                    const checkedInputs = group.querySelectorAll('input[type="checkbox"]:checked');
+                    if (checkedInputs.length > 0) {
+                        gameDnaData[groupName] = Array.from(checkedInputs).map(input => input.parentElement.textContent.trim());
+                    }
+                }
+            });
+
+            try {
+                const userProfile = JSON.parse(localStorage.getItem('userProfile'));
+                if (userProfile) {
+                    userProfile.gameDna = gameDnaData;
+                    localStorage.setItem('userProfile', JSON.stringify(userProfile));
+                    console.log('Game DNA saved to profile:', userProfile);
+
+                    // Once data is saved, navigate to the next page.
+                    window.location.href = nextButton.href;
+                } else {
+                    console.error('User profile not found. Cannot save Game DNA.');
+                }
+            } catch (error) {
+                console.error("Failed to save Game DNA to profile:", error);
+            }
         }
     };
 
@@ -170,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (nextButton) {
-        nextButton.addEventListener('click', validateForm);
+        nextButton.addEventListener('click', validateAndSaveForm);
     }
     
     // --- Initial Check on Page Load ---
