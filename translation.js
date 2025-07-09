@@ -507,7 +507,13 @@ document.addEventListener('DOMContentLoaded', () => {
         hobby_collecting: { en: 'Collecting (cards, figures, etc.)', th: 'สะสมของ (การ์ด, ฟิกเกอร์, ฯลฯ)' },
         hobby_memes: { en: 'Memes / Internet culture', th: 'มีม / วัฒนธรรมอินเทอร์เน็ต' },
         hobby_astrology: { en: 'Astrology / MBTI / Typology', th: 'โหราศาสตร์ / MBTI / Typology' },
-        userIntentionFinish: { en: 'Finish', th: 'เสร็จสิ้น' }
+        userIntentionFinish: { en: 'Finish', th: 'เสร็จสิ้น' },
+        interestsInstruction: { en: 'Please select up to 10 interests that best define you!' , th: 'เลือก 10 ความชอบ หรือ ความสนใจที่บงบอกตัวตนมากที่สุด '},
+           // --- ADD THIS NEW KEY ---
+        interestsWarning_atLeastOne: {
+            en: 'Please pick at least one of the options.',
+            th: 'กรุณาเลือกอย่างน้อยหนึ่งตัวเลือก'
+        },
     };
 
     // Define the main function in the global scope
