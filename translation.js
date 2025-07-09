@@ -424,6 +424,16 @@ document.addEventListener('DOMContentLoaded', () => {
         mbti_isfp: { en: 'ISFP', th: 'ISFP' },
         mbti_estp: { en: 'ESTP', th: 'ESTP' },
         mbti_esfp: { en: 'ESFP', th: 'ESFP' },
+
+         // --- Game-DNA 2 Page (Validation Error Messages) ---
+        errorSelectLanguage: {
+            en: 'Please select at least one language.',
+            th: 'กรุณาเลือกอย่างน้อยหนึ่งภาษา'
+        },
+        errorSelectVibe: {
+            en: 'Please select at least one vibe.',
+            th: 'กรุณาเลือกอย่างน้อยหนึ่งสไตล์'
+        },
         
         // =============================================
         // UPDATED: Added keys for new tooltips and tips
