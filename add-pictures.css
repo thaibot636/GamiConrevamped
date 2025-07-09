@@ -1,0 +1,305 @@
+/* ==================================== */
+/* BASE STYLES                          */
+/* ==================================== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.nebula-background, .nebula-background::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -12;
+}
+.nebula-background {
+    background-image: radial-gradient(ellipse at 70% 30%, hsla(300, 50%, 30%, .4), transparent 40%);
+}
+.nebula-background::before {
+    background-image: radial-gradient(ellipse at 20% 80%, hsla(240, 50%, 40%, .3), transparent 40%);
+}
+@keyframes move-stars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2000px); }
+}
+.stars-background, .stars-background::before, .stars-background::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.stars-background {
+    z-index: -11;
+    background-image: radial-gradient(3px 3px at 25px 25px, white, transparent);
+    background-size: 200px 200px;
+    animation: move-stars 50s linear infinite;
+}
+.stars-background::before {
+    z-index: -10;
+    background-image: radial-gradient(2px 2px at 50px 100px, #ddd, transparent);
+    background-size: 300px 300px;
+    animation: move-stars 100s linear infinite;
+}
+.stars-background::after {
+    z-index: -9;
+    background-image: radial-gradient(1px 1px at 75px 175px, #777, transparent);
+    background-size: 150px 150px;
+    animation: move-stars 150s linear infinite;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+.blinking-cursor {
+    animation: blink 1s step-end infinite;
+    font-weight: bold;
+    margin-left: 0.25rem;
+}
+.main-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+.content-box {
+    max-width: 48rem;
+    width: 100%;
+    background-color: rgba(31, 41, 55, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border: 4px solid #374151;
+    border-radius: 0.5rem;
+}
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.back-button, .skip-button {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+.back-button { color: #9ca3af; }
+.back-button:hover { color: #ffffff; }
+.skip-button { color: #60a5fa; font-size: 0.875rem; }
+.skip-button:hover { text-decoration: underline; }
+.subtitle {
+    text-align: center;
+    margin-top: -0.5rem;
+    margin-bottom: 2rem;
+    color: #d1d5db;
+}
+.section-tip {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.btn-8bit {
+    display: block;
+    width: 100%;
+    max-width: 240px;
+    background-color: #2563eb;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    padding: 0.75rem 0;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    border: 4px solid #000;
+    border-radius: 0.375rem;
+    font-size: 1.125rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-8bit:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 4px 4px 0px #3b82f6, 8px 8px 0px #000;
+}
+.error-message {
+    display: none; /* Hidden by default */
+    color: #ef4444; /* Light red for visibility */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.75rem;
+}
+
+/* ==================================== */
+/* Photo Upload Page Specific Styles    */
+/* ==================================== */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.photo-slot {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background-color: #374151;
+    border: 3px dashed #4b5563;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.photo-slot:hover {
+    border-color: #60a5fa;
+    transform: translateY(-8px) scale(1.05) rotate(3deg);
+    box-shadow: 0 10px 20px rgba(96, 165, 250, 0.3), 0 6px 6px rgba(96, 165, 250, 0.25);
+    z-index: 10;
+}
+
+.photo-slot.filled:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #3b82f6;
+    z-index: auto;
+}
+
+.photo-slot.filled {
+    border-style: solid;
+    border-color: #3b82f6;
+    background-color: #1f2937;
+}
+
+.photo-slot .plus-icon {
+    font-size: 2.5rem;
+    color: #9ca3af;
+    line-height: 1;
+    transition: opacity 0.2s ease;
+}
+
+.photo-slot.filled .plus-icon {
+    opacity: 0;
+}
+
+.photo-slot .preview-img {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.photo-slot.filled .preview-img {
+    display: block;
+}
+
+.photo-slot input[type="file"] {
+    display: none;
+}
+
+.delete-btn {
+    display: none;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.2s ease;
+}
+
+.photo-slot.filled:hover .delete-btn {
+    display: block;
+}
+
+.delete-btn:hover {
+    background-color: #ef4444;
+    transform: scale(1.1);
+}
+
+#photo-count-status {
+    font-family: 'Press Start 2P', cursive;
+    color: #9ca3af;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+/* MODIFICATION: Styles for the image modal */
+#image-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    cursor: pointer; /* To indicate the entire modal is clickable */
+}
+
+#modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    display: block;
+    object-fit: contain;
+    /* `cursor: default` is removed so pointer cursor applies everywhere */
+}
+
+/* =============================== */
+/* MOBILE STYLES                     */
+/* =============================== */
+@media (max-width: 640px) {
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .photo-slot:hover {
+        transform: none;
+        box-shadow: none;
+        z-index: auto;
+    }
+    .content-box {
+        padding: 1.5rem;
+    }
+    h1 {
+        font-size: 1.25rem;
+    }
+}
