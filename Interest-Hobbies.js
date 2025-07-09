@@ -54,21 +54,16 @@ finishBtn.addEventListener('click', (event) => {
     const selectedCount = document.querySelectorAll('input[name="hobby"]:checked').length;
 
     if (selectedCount === 0) {
-        // This part for the warning remains unchanged.
+        // If no interests are selected, show a styled warning.
         instructionTextSpan.textContent = 'Please pick at least one of the options.';
         selectionInfo.style.color = '#ef4444'; // Light red for visibility
         selectionInfo.style.fontFamily = "'Press Start 2P', cursive";
         selectionInfo.style.fontSize = '0.75rem';
     } else {
-        // --- THIS IS THE UPDATED PART ---
-        // On success, redirect to the loading screen.
-        console.log('Validation successful! Proceeding to loading screen.');
-
-        // 1. Get the final destination URL (e.g., "add-pictures.html").
-        const finalDestination = document.querySelector('.skip-button').href;
-
-        // 2. Redirect to the loading screen and pass the final destination as a parameter.
-        window.location.href = `loading2.html?next=${encodeURIComponent(finalDestination)}`;
+        // If at least one interest is selected, proceed.
+        console.log('Validation successful! Navigating to the next page.');
+        const skipButton = document.querySelector('.skip-button');
+        window.location.href = skipButton.href;
     }
 });
 
