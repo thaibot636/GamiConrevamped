@@ -42,7 +42,7 @@ h3 { font-size: 1rem; }
 
 .error-message {
     display: none; /* Hidden by default */
-    color: #fca5a5; /* Light red for visibility */
+    color:#ef4444; /* Light red for visibility */
     font-weight: bold;
     text-align: center;
     margin-top: 1rem;
