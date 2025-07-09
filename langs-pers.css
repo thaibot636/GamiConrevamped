@@ -80,7 +80,7 @@ h3, .mbti-category-title { font-size: 1rem; font-weight: bold; color: #f3f4f6; m
 /* ==================================== */
 .error-message {
     display: none; /* Hidden by default */
-    color: #fca5a5; /* Light red for visibility */
+    color: #ef4444; /* Light red for visibility */
     font-weight: bold;
     text-align: center;
     margin-top: 1rem;
