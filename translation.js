@@ -479,6 +479,20 @@ document.addEventListener('DOMContentLoaded', () => {
         commStyle_types: { en: 'Mostly types, avoids voice', th: 'พิมพ์เป็นหลัก, เลี่ยงการใช้เสียง' },
         commStyle_mute: { en: 'Mute all / solo experience preferred', th: 'ปิดไมค์ทุกคน / ชอบเล่นคนเดียว' },
         commStyle_open: { en: 'Open to anything / depends on team', th: 'แล้วแต่สถานการณ์ / ขึ้นอยู่กับทีม' },
+        // In your translation.js, add these keys inside the `translations` object:
+
+errorCommMethod: {
+    en: 'Please select a primary communication method.',
+    th: 'กรุณาเลือกช่องทางการสื่อสารหลัก'
+},
+errorCommStyle: {
+    en: 'Please select 1 or 2 communication styles.',
+    th: 'กรุณาเลือกสไตล์การสื่อสาร 1 หรือ 2 อย่าง'
+},
+errorMax2Styles: {
+    en: 'You can select a maximum of 2 styles.',
+    th: 'คุณสามารถเลือกได้สูงสุด 2 สไตล์'
+},
 
         // --- game-dna-4.html (Interests & Hobbies) ---
         interestsTitle: { en: 'Interests & Hobbies', th: 'ความสนใจและงานอดิเรก' },
