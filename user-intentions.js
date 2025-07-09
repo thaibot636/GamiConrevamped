@@ -17,19 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 selectedOption = null;
             } else {
                 // If it's a new selection, proceed as before
-                // 1. Remove 'selected' from the previously chosen option, if any
                 if (selectedOption) {
                     selectedOption.classList.remove('selected');
                 }
-                
-                // 2. Add 'selected' to the newly clicked option
                 option.classList.add('selected');
-                
-                // 3. Update the tracking variable
                 selectedOption = option;
             }
             
-            // Hide the warning message only if a selection has just been made
+            // Hide the warning message if a selection is made
             if (selectedOption && warningMessage.textContent) {
                 warningMessage.textContent = '';
                 optionsGrid.classList.remove('shake');
@@ -38,14 +33,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Event Listener for the Next Button ---
-    // (This part remains unchanged and works correctly with the new logic)
     nextButton.addEventListener('click', (event) => {
         // PREVENT the default link behavior
         event.preventDefault();
 
         if (selectedOption) {
+            // --- FIX STARTS HERE ---
+            // A. Get the value of the selected option from its 'data-value' attribute.
+            const selectedValue = selectedOption.dataset.value;
+
+            try {
+                // B. Retrieve the existing user profile from localStorage.
+                const userProfileJSON = localStorage.getItem('userProfile');
+                
+                // C. Ensure the profile exists before trying to modify it.
+                if (userProfileJSON) {
+                    const userProfile = JSON.parse(userProfileJSON);
+                    
+                    // D. Add the user's intention to the profile object.
+                    userProfile.intention = selectedValue;
+                    
+                    // E. Save the UPDATED profile back to localStorage.
+                    localStorage.setItem('userProfile', JSON.stringify(userProfile));
+                    
+                    console.log('User intention saved:', userProfile);
+                } else {
+                    console.error('User profile not found in localStorage. Cannot save intention.');
+                    // You might want to redirect to the signup page here as a fallback.
+                }
+
+            } catch (error) {
+                console.error('Failed to update user profile with intention:', error);
+            }
+            // --- FIX ENDS HERE ---
+
             // If an option IS selected, proceed to the next page
             window.location.href = nextButton.href;
+
         } else {
             // If an option IS NOT selected, show a warning and do not proceed
             warningMessage.textContent = 'Please select one choice to continue.';
