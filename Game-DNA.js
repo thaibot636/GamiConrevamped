@@ -1,16 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Define Validation Rules for all question groups ---
+    // --- Define Validation Rules using Translation Keys ---
     const validationRules = {
-        'games':       { min: 1, max: 5, message: "Please select 1 to 5 games." },
-        'genre':       { min: 1, max: 3, message: "Please select 1 to 3 genres." },
-        // Max set to 5 specific roles. "All-rounder" and "Not sure" are handled by the script.
-        'moba-roles':  { min: 1, max: 5, message: "Please select 1-5 roles, or choose 'All-rounder' / 'Not sure'." },
-        'fps-roles':   { min: 1, max: 5, message: "Please select 1-5 roles, or choose 'All-rounder' / 'Not sure'." },
-        'platform':    { min: 1, max: 5, message: "Please select at least 1 platform." },
-        'active-time': { min: 1, max: 4, message: "Please select 1 to 4 time slots." }
+        'games':       { min: 1, max: 5, messageKey: "errorGameDnaGames" },
+        'genre':       { min: 1, max: 3, messageKey: "errorGameDnaGenres" },
+        'moba-roles':  { min: 1, max: 5, messageKey: "errorGameDnaRoles" },
+        'fps-roles':   { min: 1, max: 5, messageKey: "errorGameDnaRoles" },
+        'platform':    { min: 1, max: 5, messageKey: "errorGameDnaPlatform" },
+        'active-time': { min: 1, max: 4, messageKey: "errorGameDnaActiveTime" }
     };
 
+    /**
+     * Retrieves a translated message from the global 'translations' object.
+     * @param {string} key The translation key to look up.
+     * @returns {string} The translated message or the key as a fallback.
+     */
+    const getTranslatedMessage = (key) => {
+        const lang = localStorage.getItem('gamicon_lang') || 'en';
+        // Ensure the global translations object from translation.js is loaded
+        if (typeof translations !== 'undefined' && translations[key] && translations[key][lang]) {
+            return translations[key][lang];
+        }
+        // Fallback returns the English hardcoded message from the original file if needed
+        const originalMessages = {
+            errorGameDnaGames: "Please select 1 to 5 games.",
+            errorGameDnaGenres: "Please select 1 to 3 genres.",
+            errorGameDnaRoles: "Please select 1-5 roles, or choose 'All-rounder' / 'Not sure'.",
+            errorGameDnaPlatform: "Please select at least 1 platform.",
+            errorGameDnaActiveTime: "Please select 1 to 4 time slots."
+        };
+        return originalMessages[key] || `[${key}]`; // Fallback to original message or key name
+    };
+    
     // --- Select all relevant elements from the DOM ---
     const form = document.getElementById('game-dna-form');
     const nextButton = document.getElementById('next-button');
@@ -52,27 +73,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const isNotSure = changedCheckbox === notSure;
         const isSpecific = specificRoles.includes(changedCheckbox);
 
-        // Rule: If "All-rounder" or "Not sure" is CHECKED, uncheck everything else.
         if ((isAllRounder || isNotSure) && changedCheckbox.checked) {
             allCheckboxesInGroup.forEach(cb => {
                 if (cb !== changedCheckbox) cb.checked = false;
             });
         }
         
-        // Rule: If a specific role is CHECKED, uncheck "All-rounder" and "Not sure".
         if (isSpecific && changedCheckbox.checked) {
             if (allRounder) allRounder.checked = false;
             if (notSure) notSure.checked = false;
         }
 
-        // Rule: If checking a specific role results in ALL specific roles being checked, switch to "All-rounder".
         const allSpecificAreChecked = specificRoles.length > 0 && specificRoles.every(cb => cb.checked);
         if (allSpecificAreChecked) {
             specificRoles.forEach(cb => cb.checked = false);
             if (allRounder) allRounder.checked = true;
         }
 
-        // After all logic, update the visual style for every checkbox in the group to reflect changes.
         allCheckboxesInGroup.forEach(updateCardStyle);
     };
 
@@ -81,37 +98,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const checkbox = e.target;
         const groupName = checkbox.name;
 
-        // Step 1: Apply smart logic if it's a role group.
         if (groupName === 'moba-roles' || groupName === 'fps-roles') {
             smartRoleHandler(groupName, checkbox);
         } else {
-            // For other groups, just toggle the style of the clicked card.
             updateCardStyle(checkbox);
         }
 
-        // Step 2: Enforce the MAXIMUM selection limit. This runs *after* smart logic.
         const rule = validationRules[groupName];
         if (rule) {
             const checkedCount = form.querySelectorAll(`input[name="${groupName}"]:checked`).length;
             if (checkedCount > rule.max) {
-                console.warn(`Cannot select more than ${rule.max} options for ${groupName}. Reverting selection.`);
-                // Revert the user's last click because it caused an overflow.
                 checkbox.checked = false;
-                // Re-apply styles to reflect the reversion.
                 updateCardStyle(checkbox);
-                // We don't need to run smart logic again, as we just undid the action.
-                return; // Stop further processing for this event.
+                return;
             }
         }
         
-        // Step 3: Hide any existing error message for this group.
         const errorElement = document.querySelector(`[data-error-for="${groupName}"]`);
         if (errorElement) {
             errorElement.classList.remove('visible');
             errorElement.textContent = '';
         }
 
-        // Step 4: Special check for genre to update role sections visibility.
         if (groupName === 'genre') {
             updateRoleSectionsVisibility();
         }
@@ -140,7 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (checkedCount < rule.min) {
                 isFormValid = false;
                 if (errorElement) {
-                    errorElement.textContent = rule.message;
+                    // Use the helper function to get the translated message
+                    errorElement.textContent = getTranslatedMessage(rule.messageKey);
                     errorElement.classList.add('visible');
                 }
             }
