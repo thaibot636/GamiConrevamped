@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate-key="interestsTitle">Interests & Hobbies</title>
+    
+    <!-- Google Fonts Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="Interest-Hobbies.css">
+    
+    <script src="translation.js" defer></script>
+</head>
+<body>
+    <div class="nebula-background"></div>
+    <div class="stars-background"></div>
+    <div class="main-container">
+        <div class="content-box">
+            <header class="header-nav">
+                <a href="javascript:history.back()" class="back-button" data-translate-key="userIntentionBack"> < Back </a>
+                <a href="add-pictures.html" class="skip-button" data-translate-key="userIntentionSkip"> Skip </a>
+            </header>
+
+            <h1><span data-translate-key="interestsTitle">Interests & Hobbies</span><span class="blinking-cursor">_</span></h1>
+            <p class="subtitle" data-translate-key="interestsSubtitle">"Let others know what you’re into — it’s fun to connect beyond the game."</p>
+            
+            <p id="selection-info" class="subtitle" style="font-size: 0.9rem; color: #a5f3fc; margin-top: -1.5rem;">
+                <span data-translate-key="interestsInstruction">Please select up to 10 interests that best define you!</span>
+                <strong id="selection-counter">(0/10)</strong>
+            </p>
+
+            <form>
+                <div class="interests-container">
+                    
+                    <!-- Music & Pop Culture -->
+                    <div class="category-card">
+                        <h4 class="category-title" data-translate-key="interestCat_music">🎵 Music & Pop Culture</h4>
+                        <div class="tags-container">
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_asianPop">K-pop / J-pop / Thai Pop</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_westernPop">Western Pop / Hip-hop / Indie</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_dj">Making music / DJ-ing</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_instruments">Playing instruments</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_concerts">Concerts / Music festivals</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_karaoke">Karaoke</span></label>
+                        </div>
+                    </div>
+                    
+                    <!-- Movies, TV & Animation -->
+                    <div class="category-card">
+                        <h4 class="category-title" data-translate-key="interestCat_movies">🎬 Movies, TV & Animation</h4>
+                        <div class="tags-container">
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_streaming">Netflix / Streaming shows</span></label>
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_anime">Anime / Manga</span></label>
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_cartoons">Cartoons / Animated series</span></label>
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_genreMovies">Horror / Sci-fi / Action</span></label>
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_romcom">Romcoms / Slice of life</span></label>
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_filmAnalysis">Film analysis / Editing</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Reading & Writing -->
+                     <div class="category-card">
+                        <h4 class="category-title" data-translate-key="interestCat_reading">📚 Reading & Writing</h4>
+                        <div class="tags-container">
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_books">Fiction / Non-fiction</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_webtoons">Light novels / Webtoons / Comics</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_poetry">Poetry / Journaling</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_fanfic">Fanfiction writing</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_philosophy">Philosophy / Psychology</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Tech & Gaming Culture -->
+                    <div class="category-card">
+                        <h4 class="category-title" data-translate-key="interestCat_gaming">🎮 Tech & Gaming Culture</h4>
+                        <div class="tags-container">
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_gamedev">Game development</span></label>
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_modding">Modding / Map creation</span></label>
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_speedrun">Speedrunning</span></label>
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_esports">Competitive eSports viewer</span></label>
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_vr">VR/AR gaming</span></label>
+                             <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_gamelore">Game lore & theory</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Physical Activities -->
+                     <div class="category-card">
+                        <h4 class="category-title" data-translate-key="interestCat_phys_activities">💪 Physical Activities</h4>
+                        <div class="tags-container">
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_gym">Gym / Weight training</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_cardio">Running / Biking / Hiking</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_teamSports">Team sports</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_dance">Dance / Choreography</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_martialArts">Martial arts / Boxing</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Exploration & Social Life -->
+                    <div class="category-card">
+                        <h4 class="category-title" data-translate-key="interestCat_social">✈️ Exploration & Social Life</h4>
+                        <div class="tags-container">
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_travel">Travel & Adventure</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_urbanex">Urban exploring</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_friends">Hanging with friends</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_cafe">Trying new cafes / Bars</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_events">Events / Conventions</span></label>
+                        </div>
+                    </div>
+                    
+                    <!-- Creative Arts -->
+                    <div class="category-card">
+                        <h4 class="category-title" data-translate-key="interestCat_creative">🎨 Creative Arts</h4>
+                        <div class="tags-container">
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_drawing">Drawing / Illustration</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_design">Graphic design / UI/UX</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_cosplay">Cosplay / Costume design</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_digitalArt">Digital art / NFTs</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_crafts">Painting / Crafts / DIY</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Food & Home Life -->
+                    <div class="category-card">
+                        <h4 class="category-title" data-translate-key="interestCat_home">🍳 Food & Home Life</h4>
+                        <div class="tags-container">
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_cooking">Cooking / Baking</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_foodie">Foodie / Restaurant hunter</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_beverages">Coffee / Tea enthusiast</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_interior">Interior design / Home setup</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_pets">Pet care / Animal lover</span></label>
+                        </div>
+                    </div>
+                    
+                    <!-- Niche & Nerdy -->
+                     <div class="category-card">
+                        <h4 class="category-title" data-translate-key="interestCat_niche">🧩 Niche & Nerdy</h4>
+                        <div class="tags-container">
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_boardGames">Board games / Chess / DnD</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_puzzles">Puzzles / Rubik’s cube</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_collecting">Collecting (cards, figures, etc.)</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_memes">Memes / Internet culture</span></label>
+                            <label class="hobby-tag"><input type="checkbox" name="hobby"><span data-translate-key="hobby_astrology">Astrology / MBTI / Typology</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                     <span class="pagination">4 / 4</span>
+                     <button type="button" id="finish-btn" class="btn-8bit" data-translate-key="userIntentionFinish">Finish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Link to external JS file -->
+    <script src="Interest-Hobbies.js" defer></script>
+</body>
+</html>

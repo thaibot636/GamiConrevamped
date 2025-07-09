@@ -1,0 +1,45 @@
+body { font-family: 'Poppins', sans-serif; background-color: #000; color: #fff; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; margin: 0; padding: 0; }
+h1 { font-family: 'Press Start 2P', cursive; text-align: center; font-size: 1.5rem}
+.nebula-background, .nebula-background::before { content: ''; position: fixed; inset: 0; z-index: -12; }
+.nebula-background { background-image: radial-gradient(ellipse at 70% 30%, hsla(300, 50%, 30%, .4), transparent 40%); }
+.nebula-background::before { background-image: radial-gradient(ellipse at 20% 80%, hsla(240, 50%, 40%, .3), transparent 40%); }
+@keyframes move-stars { from { transform: translateY(0); } to { transform: translateY(-2000px); } }
+.stars-background, .stars-background::before, .stars-background::after { content: ''; position: fixed; inset: 0; image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; }
+.stars-background { z-index: -11; background-image: radial-gradient(3px 3px at 25px 25px, white, transparent); background-size: 200px 200px; animation: move-stars 50s linear infinite; }
+.stars-background::before { z-index: -10; background-image: radial-gradient(2px 2px at 50px 100px, #ddd, transparent); background-size: 300px 300px; animation: move-stars 100s linear infinite; }
+.stars-background::after { z-index: -9; background-image: radial-gradient(1px 1px at 75px 175px, #777, transparent); background-size: 150px 150px; animation: move-stars 150s linear infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.blinking-cursor { animation: blink 1s step-end infinite; font-weight: bold; margin-left: 0.25rem; }
+.main-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; box-sizing: border-box; }
+.content-box { max-width: 64rem; width: 100%; background-color: rgba(31, 41, 55, 0.85); backdrop-filter: blur(10px); padding: 2rem; border: 4px solid #374151; border-radius: 0.5rem; }
+.header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.back-button, .skip-button { font-family: 'Poppins', sans-serif; text-decoration: none; font-weight: 600; transition: all 0.2s ease-in-out; }
+.back-button { color: #9ca3af; }
+.back-button:hover { color: #ffffff; }
+.skip-button { color: #60a5fa; font-size: 0.875rem; }
+.skip-button:hover { text-decoration: underline; }
+.subtitle { text-align: center; margin-top: -0.5rem; margin-bottom: 2rem; color: #d1d5db; max-width: 40rem; margin-left: auto; margin-right: auto; }
+
+.interests-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.category-card { background: rgba(17, 24, 39, 0.5); border: 1px solid #374151; border-radius: 0.5rem; padding: 1rem; }
+.category-title { font-size: 1rem; font-weight: 700; color: #f3f4f6; margin-top: 0; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #4b5563; }
+.tags-container { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.hobby-tag { background-color: #374151; border: 1px solid #4b5563; border-radius: 9999px; padding: 0.25rem 0.75rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease-in-out; user-select: none; }
+.hobby-tag:hover { border-color: #3b82f6; color: #eff6ff; }
+.hobby-tag.selected { background-color: #2563eb; border-color: #60a5fa; color: white; box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
+
+.hobby-tag.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.hobby-tag.disabled:hover {
+     border-color: #4b5563;
+     color: #fff;
+}
+
+.hobby-tag input { display: none; }
+
+.navigation { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; flex-wrap: wrap; gap: 1rem; }
+.btn-8bit { display: block; width: 100%; max-width: 180px; margin-left: auto; background-color: #16a34a; /* Green for Finish */ color: white; font-family: 'Poppins', sans-serif; font-weight: bold; padding: 0.75rem 0; text-align: center; transition: all 0.2s ease-in-out; border: 4px solid #000; border-radius: 0.375rem; font-size: 1.125rem; text-decoration: none; cursor: pointer; }
+.btn-8bit:hover { transform: translate(-4px, -4px); box-shadow: 4px 4px 0px #22c55e, 8px 8px 0px #000; } 
+.pagination { font-family: 'Press Start 2P', cursive; color: #9ca3af; }
