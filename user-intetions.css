@@ -107,8 +107,10 @@ h1 {
 
 /* --- UPDATED 'SELECTED' STATE WITH CHECKMARK --- */
 .option-card.selected {
-    border-color: #3b82f6; 
-    background-color: #4b5563;
+      border-color:  #60a5fa;
+    transform: scale(1.05);
+    background-color:  #1e40af; 
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
 }
 
 .option-card.selected::after {
@@ -164,11 +166,14 @@ h1 {
 
 /* --- Warning Text and Shake Animation from previous request --- */
 .warning-text {
-    color: #f87171; 
+    color:#ef4444; /* <-- Your new color */
+    font-weight: bold;
     text-align: center;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    height: 1.25em;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem; /* Adjusted for better spacing */
+    font-family: 'Press Start 2P', cursive; /* <-- Your new font */
+    font-size: 0.75rem; /* <-- Your new size */
+    height: 1.25em; /* Keep height to prevent layout shift */
 }
 
 @keyframes shake {
