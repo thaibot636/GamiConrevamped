@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameDnaQ_FpsRoles: {en: 'FPS Roles' , th: 'ตำแหน่งในเกมส์ FPS'},
         gameDnaQ_Platform: { en: 'What platform(s) do you play on?', th: 'คุณเล่นบนแพลตฟอร์มอะไร?' },
         platformTip: { en: "Tip: Pick more than one if you're cross-platform", th: 'เคล็ดลับ: เลือกได้มากกว่าหนึ่งถ้าคุณเล่นหลายแพลตฟอร์ม' },
+        genresTip: { en: "Tip: Selecting a genre may reveal new options below. If you select all roles for a genre, the system will automatically choose \"All-rounder\" for you.",th: 'เคล็ดลับ: เมื่อเลือกประเภทเกม อาจมีตัวเลือกเพิ่มเติมแสดงขึ้นด้านล่าง หากคุณเลือกทุกบทบาทในหมวดนั้น ระบบจะเลือก \"เล่นได้ทุกตำแหน่ง\" ให้โดยอัตโนมัติ'},
         optionOther: { en: 'Others', th: 'อื่นๆ' },
         gameDnaQ_When: { en: 'When do you usually play?', th: 'คุณมักจะเล่นช่วงไหน?' },
         gameDnaTimeMorning: { en: 'Morning', th: 'ช่วงเช้า' },
@@ -175,6 +176,28 @@ document.addEventListener('DOMContentLoaded', () => {
         gameDnaActivityAfterWork: { en: 'After work', th: 'หลังเลิกงาน' },
         gameDnaTimeNoFixed: { en: 'No fixed time', th: 'เวลาไม่แน่นอน' },
         gameDnaTime247: { en: '24/7 Gamer', th: 'เล่นตลอด 24/7' },
+          // --- Game-DNA Page (Validation Error Messages) ---
+        errorGameDnaGames: {
+            en: 'Please select 1 to 5 games.',
+            th: 'กรุณาเลือกเกม 1 ถึง 5 เกม'
+        },
+        errorGameDnaGenres: {
+            en: 'Please select 1 to 3 genres.',
+            th: 'กรุณาเลือกแนวเกม 1 ถึง 3 แนว'
+        },
+        errorGameDnaRoles: {
+            en: "Please select 1-5 roles, or choose 'All-rounder' / 'Not sure'.",
+            th: "กรุณาเลือก 1-5 บทบาท, หรือเลือก 'All-rounder' / 'Not sure'"
+        },
+        errorGameDnaPlatform: {
+            en: 'Please select at least 1 platform.',
+            th: 'กรุณาเลือกอย่างน้อย 1 แพลตฟอร์ม'
+        },
+        errorGameDnaActiveTime: {
+            en: 'Please select 1 to 4 time slots.',
+            th: 'กรุณาเลือก 1 ถึง 4 ช่วงเวลา'
+        },
+
 
         // --- main.html / main1.html (Dashboard) ---
         dashHome: { en: 'Home', th: 'หน้าหลัก' },
