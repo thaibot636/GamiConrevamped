@@ -1,75 +1,106 @@
-const maxSelections = 10;
-const allCheckboxes = document.querySelectorAll('input[name="hobby"]');
-const counterElement = document.getElementById('selection-counter');
-const finishBtn = document.getElementById('finish-btn');
-const selectionInfo = document.getElementById('selection-info');
-const instructionTextSpan = selectionInfo.querySelector('[data-translate-key="interestsInstruction"]');
+document.addEventListener('DOMContentLoaded', () => {
 
-// Storing original text and style properties to revert back to.
-const originalInstructionText = instructionTextSpan.textContent;
-const computedStyles = window.getComputedStyle(selectionInfo);
-const originalStyles = {
-    color: computedStyles.color,
-    fontFamily: computedStyles.fontFamily,
-    fontSize: computedStyles.fontSize
-};
-
-function updateSelectionState() {
-    const selectedCount = document.querySelectorAll('input[name="hobby"]:checked').length;
+    // ======================================================= //
+    //  CONFIGURATION & SETUP
+    // ======================================================= //
+    const MAX_SELECTIONS = 10;
     
-    counterElement.textContent = `(${selectedCount}/${maxSelections})`;
+    // --- Centralized DOM Element Selection ---
+    const allCheckboxes = document.querySelectorAll('input[name="hobby"]');
+    const finishBtn = document.getElementById('finish-btn'); // Renamed for consistency
+    const counterElement = document.getElementById('selection-counter');
+    const selectionInfoContainer = document.getElementById('selection-info');
+    const instructionTextSpan = selectionInfoContainer?.querySelector('[data-translate-key="interestsInstruction"]');
     
-    // If the user selects an item after seeing the warning, reset the message and styles.
-    if (selectedCount > 0 && instructionTextSpan.textContent !== originalInstructionText) {
-        instructionTextSpan.textContent = originalInstructionText;
-        selectionInfo.style.color = originalStyles.color;
-        selectionInfo.style.fontFamily = originalStyles.fontFamily;
-        selectionInfo.style.fontSize = originalStyles.fontSize;
+    if (!finishBtn || !instructionTextSpan) {
+        console.error("Required elements for the interests script are missing. Aborting.");
+        return;
     }
 
-    const limitReached = selectedCount >= maxSelections;
+    // ======================================================= //
+    //  HELPER FUNCTIONS
+    // ======================================================= //
+    const getTranslatedMessage = (key) => {
+        const lang = localStorage.getItem('gamicon_lang') || 'en';
+        if (typeof translations !== 'undefined' && translations[key] && translations[key][lang]) {
+            return translations[key][lang];
+        }
+        return 'Please pick at least one of the options.'; // Fallback
+    };
+    
+    const showError = (messageKey) => {
+        instructionTextSpan.textContent = getTranslatedMessage(messageKey);
+        selectionInfoContainer.classList.add('error-state'); // Assumes you create an .error-state CSS class
+    };
+
+    const clearError = () => {
+        if (selectionInfoContainer.classList.contains('error-state')) {
+            const originalTextKey = instructionTextSpan.dataset.translateKey;
+            instructionTextSpan.textContent = getTranslatedMessage(originalTextKey); // Reset to original message
+            selectionInfoContainer.classList.remove('error-state');
+        }
+    };
+    
+    // ======================================================= //
+    //  CORE UI & VALIDATION LOGIC
+    // ======================================================= //
+    
+    const updateUI = () => {
+        const selectedCount = document.querySelectorAll('input[name="hobby"]:checked').length;
+        
+        if (counterElement) {
+            counterElement.textContent = `(${selectedCount}/${MAX_SELECTIONS})`;
+        }
+        
+        if (selectedCount > 0) {
+            clearError();
+        }
+
+        const limitReached = selectedCount >= MAX_SELECTIONS;
+
+        allCheckboxes.forEach(checkbox => {
+            // THE KEY CHANGE IS HERE: We now target '.hobby-tag' instead of '.hobby-card'
+            const parentLabel = checkbox.closest('.hobby-tag');
+            
+            if (!checkbox.checked && limitReached) {
+                checkbox.disabled = true;
+                parentLabel?.classList.add('disabled');
+            } else {
+                checkbox.disabled = false;
+                parentLabel?.classList.remove('disabled');
+            }
+        });
+    };
+
+    const validateAndProceed = (event) => {
+        event.preventDefault(); 
+        const selectedCount = document.querySelectorAll('input[name="hobby"]:checked').length;
+
+        if (selectedCount === 0) {
+            showError('interestsWarning_atLeastOne');
+        } else {
+            console.log(`Validation successful with ${selectedCount} selections.`);
+            window.location.href = document.querySelector('.skip-button')?.href || '#';
+        }
+    };
+
+    // ======================================================= //
+    //  EVENT LISTENERS INITIALIZATION
+    // ======================================================= //
 
     allCheckboxes.forEach(checkbox => {
-        const parentLabel = checkbox.parentElement;
-
-        if (!checkbox.checked && limitReached) {
-            checkbox.disabled = true;
-            parentLabel.classList.add('disabled');
-        } else {
-            checkbox.disabled = false;
-            parentLabel.classList.remove('disabled');
-        }
+        checkbox.addEventListener('change', () => {
+            const parentLabel = checkbox.closest('.hobby-tag');
+            parentLabel?.classList.toggle('selected', checkbox.checked);
+            updateUI();
+        });
+        
+        // Initial styling on load
+        checkbox.closest('.hobby-tag')?.classList.toggle('selected', checkbox.checked);
     });
-}
 
-allCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-        checkbox.parentElement.classList.toggle('selected', checkbox.checked);
-        updateSelectionState();
-    });
+    finishBtn.addEventListener('click', validateAndProceed);
+
+    // Initial call to set up the UI on page load
+    updateUI();
 });
-
-finishBtn.addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent any default form submission behavior.
-    const selectedCount = document.querySelectorAll('input[name="hobby"]:checked').length;
-
-    if (selectedCount === 0) {
-        // If no interests are selected, show a styled warning.
-        instructionTextSpan.textContent = 'Please pick at least one of the options.';
-        selectionInfo.style.color = '#ef4444'; // Light red for visibility
-        selectionInfo.style.fontFamily = "'Press Start 2P', cursive";
-        selectionInfo.style.fontSize = '0.75rem';
-    } else {
-        // If at least one interest is selected, proceed.
-        console.log('Validation successful! Navigating to the next page.');
-        const skipButton = document.querySelector('.skip-button');
-        window.location.href = skipButton.href;
-    }
-});
-
-// Initialize state on page load.
-updateSelectionState();
-allCheckboxes.forEach(checkbox => {
-     checkbox.parentElement.classList.toggle('selected', checkbox.checked);
-});
-
