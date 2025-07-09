@@ -1,0 +1,46 @@
+/* ==================================== */
+/* BASE STYLES (Aligned with Reference) */
+/* ==================================== */
+body { font-family: 'Poppins', sans-serif; background-color: #000; color: #fff; margin: 0; padding: 0; }
+.nebula-background, .nebula-background::before { content: ''; position: fixed; inset: 0; z-index: -12; }
+.nebula-background { background-image: radial-gradient(ellipse at 70% 30%, hsla(300, 50%, 30%, .4), transparent 40%); }
+.nebula-background::before { background-image: radial-gradient(ellipse at 20% 80%, hsla(240, 50%, 40%, .3), transparent 40%); }
+@keyframes move-stars { from { transform: translateY(0); } to { transform: translateY(-2000px); } }
+.stars-background, .stars-background::before, .stars-background::after { content: ''; position: fixed; inset: 0; image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; }
+.stars-background { z-index: -11; background-image: radial-gradient(3px 3px at 25px 25px, white, transparent); background-size: 200px 200px; animation: move-stars 50s linear infinite; }
+.stars-background::before { z-index: -10; background-image: radial-gradient(2px 2px at 50px 100px, #ddd, transparent); background-size: 300px 300px; animation: move-stars 100s linear infinite; }
+.stars-background::after { z-index: -9; background-image: radial-gradient(1px 1px at 75px 175px, #777, transparent); background-size: 150px 150px; animation: move-stars 150s linear infinite; }
+h1 { font-family: 'Press Start 2P', cursive; text-align: center; font-size: 1.5rem; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.blinking-cursor { animation: blink 1s step-end infinite; font-weight: bold; margin-left: 0.25rem; }
+.main-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; box-sizing: border-box; }
+.content-box { max-width: 48rem; width: 100%; background-color: rgba(31, 41, 55, 0.85); backdrop-filter: blur(10px); padding: 2rem; border: 4px solid #374151; border-radius: 0.5rem; }
+.header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.back-button, .skip-button { font-family: 'Poppins', sans-serif; text-decoration: none; font-weight: 600; transition: all 0.2s ease-in-out; }
+.back-button { color: #9ca3af; }
+.back-button:hover { color: #ffffff; }
+.skip-button { color: #60a5fa; font-size: 0.875rem; }
+.skip-button:hover { text-decoration: underline; }
+.subtitle { text-align: center; margin-top: -0.5rem; margin-bottom: 2rem; color: #d1d5db; }
+.navigation { display: flex; justify-content: center; align-items: center; margin-top: 2rem; flex-wrap: wrap; gap: 1rem; }
+.btn-8bit { background-color: #2563eb; color: white; font-family: 'Poppins', sans-serif; font-weight: bold; padding: 0.75rem 1.5rem; text-align: center; transition: all 0.2s ease-in-out; border: 4px solid #000; border-radius: 0.375rem; font-size: 1.125rem; text-decoration: none; cursor: pointer; }
+.btn-8bit:hover { transform: translate(-4px, -4px); box-shadow: 4px 4px 0px #3b82f6, 8px 8px 0px #000; }
+
+/* ==================================== */
+/* STATUS EDITOR STYLES (CONSISTENT)    */
+/* ==================================== */
+.status-editor { margin-top: 2rem; position: relative; }
+#status-input, #status-display { width: 100%; box-sizing: border-box; background-color: #1f2937; border: 3px dashed #4b5563; border-radius: 0.5rem; color: #d1d5db; font-family: 'Poppins', sans-serif; font-size: 1rem; padding: 0.75rem; transition: border-color 0.2s; }
+#status-input { height: 120px; resize: vertical; }
+#status-input:focus { outline: none; border-style: solid; border-color: #60a5fa; box-shadow: none; }
+#status-display { min-height: 120px; background-color: transparent; white-space: pre-wrap; word-wrap: break-word; cursor: pointer; }
+#status-display.is-filled { border-style: solid; border-color: #374151; background-color: #1f2937; }
+#status-display.placeholder { color: #6b7280; font-style: italic; }
+.status-controls { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem; align-items: center; }
+.btn-secondary { background-color: #4b5563; padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 600; }
+.btn-secondary:hover { transform: translate(-4px, -4px); box-shadow: 4px 4px 0px #6b7280, 8px 8px 0px #000; }
+#char-counter { font-size: 0.875rem; color: #9ca3af; text-align: right; margin: 0.5rem 0.25rem 0 0; }
+.status-editor.is-editing #status-display { display: none; }
+.status-editor:not(.is-editing) #status-input,
+.status-editor:not(.is-editing) #edit-mode-controls,
+.status-editor:not(.is-editing) #char-counter { display: none; }

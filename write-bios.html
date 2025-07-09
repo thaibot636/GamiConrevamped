@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Status</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="write-bios.css">
+</head>
+<body>
+    <div class="nebula-background"></div>
+    <div class="stars-background"></div>
+    <div class="main-container">
+        <div class="content-box">
+            <header class="header-nav">
+                <a href="add-pictures.html" class="back-button"> Back </a>
+                <a href="final-profile.html" class="skip-button"> Skip </a>
+            </header>
+
+            <h1><span>Your Bio</span><span class="blinking-cursor">_</span></h1>
+            <p class="subtitle"> Craft your legend. Tell the world who you are.</p>
+
+            <div id="status-container" class="status-editor">
+                <!-- VIEW MODE -->
+                <div id="status-display"></div>
+
+                <!-- EDIT MODE -->
+                <textarea id="status-input" placeholder="Type your status here..."></textarea>
+                <p id="char-counter">0/150</p>
+                <div id="edit-mode-controls" class="status-controls">
+                    <button id="cancel-button" class="btn-8bit btn-secondary">CANCEL</button>
+                    <button id="save-button" class="btn-8bit">SAVE</button>
+                </div>
+            </div>
+           
+            <div id="submit-navigation" class="navigation">
+                 <a href="final-profile.html" class="btn-8bit">SUBMIT</a>
+            </div>
+        </div>
+    </div>
+   
+    <!-- Link to the external JavaScript file -->
+    <script src="write-bios.js"></script>
+</body>
+</html>
