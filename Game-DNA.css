@@ -49,11 +49,14 @@ h3 { font-size: 1rem; font-weight: bold; color: #f3f4f6; margin-bottom: 1rem; ma
 
 /* Add this to style and control visibility of error messages */
 .error-message {
-    color: #ef4444; /* A bright red color */
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
-    min-height: 1.2rem; /* Reserve space to prevent layout shift */
-    display: none; /* Hide by default */
+    display: none; /* Hidden by default */
+    color: #ef4444; /* Light red for visibility */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.75rem;
 }
 .error-message.visible {
     display: block; /* Show when validation fails */
