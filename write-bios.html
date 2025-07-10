@@ -9,8 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     
-    <!-- Link to the external stylesheet -->
     <link rel="stylesheet" href="write-bios.css">
+    
+    <!-- Link to the translation and page-specific scripts. 'defer' ensures they run in order after the HTML is parsed. -->
+    <script src="translation.js" defer></script>
+    <script src="write-bios.js" defer></script>
 </head>
 <body>
     <div class="nebula-background"></div>
@@ -19,32 +22,32 @@
         <div class="content-box">
             <header class="header-nav">
                 <a href="javascript:history.back()" class="back-button" data-translate-key="userIntentionBack"> Back </a>
-                <a href="final-profile.html" class="skip-button"> Skip </a>
+                <div style="display: flex; align-items: center;">
+                    <a href="review-profile.html" class="skip-button" data-translate-key="userIntentionSkip"> Skip </a>
+                    <!-- Language toggle button has been removed from here -->
+                </div>
             </header>
 
-            <h1><span>Your Bio</span><span class="blinking-cursor">_</span></h1>
-            <p class="subtitle"> Craft your legend. Tell the world who you are.</p>
+            <h1><span data-translate-key="writeBioTitle">Your Bio</span><span class="blinking-cursor">_</span></h1>
+            <p class="subtitle" data-translate-key="writeBioSubtitle"> Craft your legend. Tell the world who you are.</p>
 
             <div id="status-container" class="status-editor">
                 <!-- VIEW MODE -->
                 <div id="status-display"></div>
 
                 <!-- EDIT MODE -->
-                <textarea id="status-input" placeholder="Type your status here..."></textarea>
+                <textarea id="status-input" data-translate-key="writeBioPlaceholder" data-translate-target="placeholder" placeholder="Type your status here..."></textarea>
                 <p id="char-counter">0/150</p>
                 <div id="edit-mode-controls" class="status-controls">
-                    <button id="cancel-button" class="btn-8bit btn-secondary">CANCEL</button>
-                    <button id="save-button" class="btn-8bit">SAVE</button>
+                    <button id="cancel-button" class="btn-8bit btn-secondary" data-translate-key="profilesCancel">CANCEL</button>
+                    <button id="save-button" class="btn-8bit" data-translate-key="save">SAVE</button>
                 </div>
             </div>
            
             <div id="submit-navigation" class="navigation">
-                 <a href="final-profile.html" class="btn-8bit">SUBMIT</a>
+                 <a href="review-profile.html" class="btn-8bit" data-translate-key="submit">SUBMIT</a>
             </div>
         </div>
     </div>
-   
-    <!-- Link to the external JavaScript file -->
-    <script src="write-bios.js"></script>
 </body>
 </html>
