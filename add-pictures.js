@@ -1,3 +1,5 @@
+// [File: add-pictures.js]
+
 document.addEventListener('DOMContentLoaded', () => {
     const photoGrid = document.querySelector('.photo-grid');
     const photoCountEl = document.getElementById('photo-count');
@@ -92,24 +94,44 @@ document.addEventListener('DOMContentLoaded', () => {
         modalContent.src = '';
     }
 
-    // MODIFICATION: Simplified event listener for closing the modal.
-    // Any click anywhere on the modal will now close it.
     imageModal.addEventListener('click', closeModal);
 
    submitButton.addEventListener('click', function(event) {
-    event.preventDefault();
+        event.preventDefault(); // Always prevent default to handle logic here
 
-    const photosRequired = 2;
+        const photosRequired = 2;
+        photosAdded = document.querySelectorAll('.photo-slot.filled').length; // Recalculate just in case
 
-    // Check if the photo requirement is met
-    if (photosAdded >= photosRequired) {
-        // If met, hide the error message and proceed
-        errorEl.style.display = 'none'; 
+        if (photosAdded < photosRequired) {
+            // If not met, show the error and stop.
+            errorEl.style.display = 'block';
+            return; 
+        }
+
+        // --- NEW LOGIC TO SAVE PHOTOS ---
+        
+        // 1. Get all filled preview images
+        const filledImages = document.querySelectorAll('.photo-slot.filled .preview-img');
+        
+        // 2. Extract their Base64 src data
+        const photoData = Array.from(filledImages).map(img => img.src);
+        
+        // 3. Get the existing profile from localStorage
+        const userProfile = JSON.parse(localStorage.getItem('userProfile')) || {};
+
+        // 4. Add the photo data under a 'media' key
+        userProfile.media = {
+            ...userProfile.media, // Preserve other media data if it exists
+            photos: photoData
+        };
+
+        // 5. Save the updated profile back to localStorage
+        localStorage.setItem('userProfile', JSON.stringify(userProfile));
+        
+        // --- END OF NEW LOGIC ---
+
+        // Hide the error message and proceed to the next page
+        errorEl.style.display = 'none';
         window.location.href = submitButton.href;
-    } else {
-        // If not met, simply display the error element.
-        // The text is already handled by translation.js via the data-translate-key.
-        errorEl.style.display = 'block';
-    }
-});
+    });
 });
