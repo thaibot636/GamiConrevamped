@@ -33,24 +33,20 @@
                 <h4 data-translate-key="comm_method_title">Primary communication method</h4>
                 <div class="options-grid">
                     <label class="option-card">
-                        <input type="checkbox" name="comm-method">
-                        <span class="emoji">📝</span>
-                        <span class="text" data-translate-key="commMethod_text">Text chat (in-game or external)</span>
+                        <input type="checkbox" name="comm-method" value="Text Chat">
+                        <span class="emoji">📝</span><span class="text" data-translate-key="commMethod_text">Text chat (in-game or external)</span>
                     </label>
                     <label class="option-card">
-                        <input type="checkbox" name="comm-method">
-                        <span class="emoji">🎙️</span>
-                        <span class="text" data-translate-key="commMethod_voice_external">Voice chat (Discord, party voice, etc.)</span>
+                        <input type="checkbox" name="comm-method" value="Voice Chat (External)">
+                        <span class="emoji">🎙️</span><span class="text" data-translate-key="commMethod_voice_external">Voice chat (Discord, party voice, etc.)</span>
                     </label>
                     <label class="option-card">
-                        <input type="checkbox" name="comm-method">
-                        <span class="emoji">🗨️</span>
-                        <span class="text" data-translate-key="commMethod_voice_internal">In-game voice (built-in)</span>
+                        <input type="checkbox" name="comm-method" value="In-Game Voice">
+                        <span class="emoji">🗨️</span><span class="text" data-translate-key="commMethod_voice_internal">In-game voice (built-in)</span>
                     </label>
                     <label class="option-card">
-                        <input type="checkbox" name="comm-method">
-                        <span class="emoji">❌</span>
-                        <span class="text" data-translate-key="commMethod_none">I don't communicate at all</span>
+                        <input type="checkbox" name="comm-method" value="No Communication">
+                        <span class="emoji">❌</span><span class="text" data-translate-key="commMethod_none">I don't communicate at all</span>
                     </label>
                 </div>
                 <p class="error-message" data-error-for="comm-method"></p>
@@ -59,61 +55,56 @@
                 <h4 data-translate-key="comm_style_title">Communication style</h4>
                  <div class="options-grid">
                     <label class="option-card">
-                        <input type="checkbox" name="comm-style">
-                        <span class="emoji">🧠</span>
-                        <span class="text" data-translate-key="commStyle_strategic">Talkative & strategic</span>
+                        <input type="checkbox" name="comm-style" value="Talkative & Strategic">
+                        <span class="emoji">🧠</span><span class="text" data-translate-key="commStyle_strategic">Talkative & strategic</span>
                     </label>
                     <label class="option-card">
-                        <input type="checkbox" name="comm-style">
-                        <span class="emoji">😶</span>
-                        <span class="text" data-translate-key="commStyle_quiet">Quiet but responsive</span>
+                        <input type="checkbox" name="comm-style" value="Quiet & Responsive">
+                        <span class="emoji">😶</span><span class="text" data-translate-key="commStyle_quiet">Quiet but responsive</span>
                     </label>
                     <label class="option-card">
-                        <input type="checkbox" name="comm-style">
-                        <span class="emoji">📲</span>
-                        <span class="text" data-translate-key="commStyle_types">Mostly types, avoids voice</span>
+                        <input type="checkbox" name="comm-style" value="Mostly Types">
+                        <span class="emoji">📲</span><span class="text" data-translate-key="commStyle_types">Mostly types, avoids voice</span>
                     </label>
                     <label class="option-card">
-                        <input type="checkbox" name="comm-style">
-                        <span class="emoji">🙉</span>
-                        <span class="text" data-translate-key="commStyle_mute">Mute all / solo preferred</span>
+                        <input type="checkbox" name="comm-style" value="Solo Preferred">
+                        <span class="emoji">🙉</span><span class="text" data-translate-key="commStyle_mute">Mute all / solo preferred</span>
                     </label>
                      <label class="option-card" id="comm-style-open">
-                        <input type="checkbox" name="comm-style">
-                        <span class="emoji">🤷</span>
-                        <span class="text" data-translate-key="commStyle_open">Open to anything</span>
+                        <input type="checkbox" name="comm-style" value="Open To Anything">
+                        <span class="emoji">🤷</span><span class="text" data-translate-key="commStyle_open">Open to anything</span>
                     </label>
                 </div>
                 <p class="error-message" data-error-for="comm-style"></p>
 
                 <h3 data-translate-key="q_education">What’s your education level? (Optional)</h3>
                 <div class="options-grid">
-                    <label class="option-card"><input type="radio" name="education"><span class="emoji">🏫</span><span data-translate-key="edu_highschool">High School</span></label>
-                    <label class="option-card"><input type="radio" name="education"><span class="emoji">🎓</span><span data-translate-key="edu_bachelor">Bachelor</span></label>
-                    <label class="option-card"><input type="radio" name="education"><span class="emoji">🛠️</span><span data-translate-key="edu_trade">Trade School</span></label>
-                    <label class="option-card"><input type="radio" name="education"><span class="emoji">🧑‍🏫</span><span data-translate-key="edu_master">Master</span></label>
-                    <label class="option-card"><input type="radio" name="education"><span class="emoji">👩‍🔬</span><span data-translate-key="edu_phd">PhD</span></label>
+                    <label class="option-card"><input type="radio" name="education" value="High School"><span class="emoji">🏫</span><span data-translate-key="edu_highschool">High School</span></label>
+                    <label class="option-card"><input type="radio" name="education" value="Bachelor"><span class="emoji">🎓</span><span data-translate-key="edu_bachelor">Bachelor</span></label>
+                    <label class="option-card"><input type="radio" name="education" value="Trade School"><span class="emoji">🛠️</span><span data-translate-key="edu_trade">Trade School</span></label>
+                    <label class="option-card"><input type="radio" name="education" value="Master"><span class="emoji">🧑‍🏫</span><span data-translate-key="edu_master">Master</span></label>
+                    <label class="option-card"><input type="radio" name="education" value="PhD"><span class="emoji">👩‍🔬</span><span data-translate-key="edu_phd">PhD</span></label>
                 </div>
                 
                 <h3 data-translate-key="q_zodiac">What’s your zodiac sign? (Optional)</h3>
                 <div class="zodiac-grid">
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♈</span><span data-translate-key="zodiac_aries">Aries</span></label>
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♉</span><span data-translate-key="zodiac_taurus">Taurus</span></label>
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♊</span><span data-translate-key="zodiac_gemini">Gemini</span></label>
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♋</span><span data-translate-key="zodiac_cancer">Cancer</span></label>
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♌</span><span data-translate-key="zodiac_leo">Leo</span></label>
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♍</span><span data-translate-key="zodiac_virgo">Virgo</span></label>
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♎</span><span data-translate-key="zodiac_libra">Libra</span></label>
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♏</span><span data-translate-key="zodiac_scorpio">Scorpio</span></label>
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♐</span><span data-translate-key="zodiac_sagittarius">Sagittarius</span></label>
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♑</span><span data-translate-key="zodiac_capricorn">Capricorn</span></label>
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♒</span><span data-translate-key="zodiac_aquarius">Aquarius</span></label>
-                    <label class="option-card"><input type="radio" name="zodiac"><span class="emoji">♓</span><span data-translate-key="zodiac_pisces">Pisces</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Aries"><span class="emoji">♈</span><span data-translate-key="zodiac_aries">Aries</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Taurus"><span class="emoji">♉</span><span data-translate-key="zodiac_taurus">Taurus</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Gemini"><span class="emoji">♊</span><span data-translate-key="zodiac_gemini">Gemini</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Cancer"><span class="emoji">♋</span><span data-translate-key="zodiac_cancer">Cancer</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Leo"><span class="emoji">♌</span><span data-translate-key="zodiac_leo">Leo</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Virgo"><span class="emoji">♍</span><span data-translate-key="zodiac_virgo">Virgo</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Libra"><span class="emoji">♎</span><span data-translate-key="zodiac_libra">Libra</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Scorpio"><span class="emoji">♏</span><span data-translate-key="zodiac_scorpio">Scorpio</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Sagittarius"><span class="emoji">♐</span><span data-translate-key="zodiac_sagittarius">Sagittarius</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Capricorn"><span class="emoji">♑</span><span data-translate-key="zodiac_capricorn">Capricorn</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Aquarius"><span class="emoji">♒</span><span data-translate-key="zodiac_aquarius">Aquarius</span></label>
+                    <label class="option-card"><input type="radio" name="zodiac" value="Pisces"><span class="emoji">♓</span><span data-translate-key="zodiac_pisces">Pisces</span></label>
                 </div>
 
                 <div class="navigation">
                      <span class="pagination">3 / 4</span>
-                     <button type="button" class="btn-8bit" id="next-button" data-translate-key="userIntentionNext">Next</button>
+                     <button type="submit" class="btn-8bit" id="next-button" data-translate-key="userIntentionNext">Next</button>
                 </div>
             </form>
         </div>
