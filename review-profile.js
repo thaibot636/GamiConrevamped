@@ -1,0 +1,310 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Centralized Data & Configuration ---
+    const getProfile = () => JSON.parse(localStorage.getItem('userProfile')) || {};
+    const saveProfile = (profile) => localStorage.setItem('userProfile', JSON.stringify(profile));
+    
+    // --- UI Elements ---
+    const imageModal = document.getElementById('image-modal');
+    const modalContent = document.getElementById('modal-content');
+    const reviewContent = document.getElementById('review-content');
+
+    // --- Data Choices & Styling ---
+    const CHOICES = {
+        intention: ['Long term Buddy', 'Play Now, Chill Later', 'Climb the Ranks', 'One Match Wonder', 'Form a Team', 'Still figuring it out'], 'comm-method': ['Text Chat', 'Voice Chat (External)', 'In-Game Voice', 'No Communication'], 'comm-style': ['Talkative & Strategic', 'Quiet & Responsive', 'Mostly Types', 'Solo Preferred', 'Open To Anything'], education: ['High School', 'Bachelor', 'Trade School', 'Master', 'PhD'], zodiac: ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'], languages: ['Thai', 'English', 'Burmese', 'Chinese', 'Khmer'], vibe: ['Talkative', 'Quiet', 'Funny', 'Supportive', 'Thinker', 'Planner', 'Calm', 'Spontaneous'], mbti: ['Not Specified', 'INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'], games: ['PUBG', 'VALO', 'ROV', 'Other'], genre: ['MOBA', 'FPS', 'Other'], 'moba-roles': ['Top', 'Mid', 'ADC', 'Support', 'Jungle', 'All-rounder', 'Not sure'], 'fps-roles': ['Entry Fragger', 'Support', 'Sniper', 'IGL', 'Lurker', 'All-rounder', 'Not sure'], platform: ['PC', 'Mobile', 'PlayStation', 'Xbox', 'Others'], 'active-time': ['Morning', 'Afternoon', 'Evening', 'Late Night', 'After work', 'Weekdays', 'Weekends', 'No fixed time', '24/7 Gamer'], hobbies: [ 'K-pop / J-pop / Thai Pop', 'Western Pop / Hip-hop / Indie', 'Making music / DJ-ing', 'Playing instruments', 'Concerts / Music festivals', 'Karaoke', 'Netflix / Streaming shows', 'Anime / Manga', 'Cartoons / Animated series', 'Horror / Sci-fi / Action', 'Romcoms / Slice of life', 'Film analysis / Editing', 'Fiction / Non-fiction', 'Light novels / Webtoons / Comics', 'Poetry / Journaling', 'Fanfiction writing', 'Philosophy / Psychology', 'Game development', 'Modding / Map creation', 'Speedrunning', 'Competitive eSports viewer', 'VR/AR gaming', 'Game lore & theory', 'Gym / Weight training', 'Running / Biking / Hiking', 'Team sports', 'Dance / Choreography', 'Martial arts / Boxing', 'Travel & Adventure', 'Urban exploring', 'Hanging with friends', 'Trying new cafes / Bars', 'Events / Conventions', 'Drawing / Illustration', 'Graphic design / UI/UX', 'Cosplay / Costume design', 'Digital art / NFTs', 'Painting / Crafts / DIY', 'Cooking / Baking', 'Foodie / Restaurant hunter', 'Coffee / Tea enthusiast', 'Interior design / Home setup', 'Pet care / Animal lover', 'Board games / Chess / DnD', 'Puzzles / Rubik’s cube', 'Collecting (cards, figures, etc.)', 'Memes / Internet culture', 'Astrology / MBTI / Typology' ]
+    };
+
+    const TAG_STYLES = {
+        intention: 'bg-green-600', 'comm-method': 'bg-cyan-600', 'comm-style': 'bg-orange-600', education: 'bg-lime-600', zodiac: 'bg-fuchsia-600', languages: 'bg-pink-600', vibe: 'bg-yellow-600', mbti: 'bg-teal-600',  games: 'bg-blue-600', genre: 'bg-purple-600', roles: 'bg-gray-600', 'moba-roles': 'bg-gray-600', 'fps-roles': 'bg-gray-600', platform: 'bg-indigo-600', 'active-time': 'bg-red-600', hobbies: 'bg-rose-600', default: 'bg-gray-500'
+    };
+    
+    // --- Section Definitions ---
+    const SECTION_CONFIGS = {
+        'photos-section': {
+            profileKey: 'media', message: 'Photos updated!', fields: { photos: { type: 'photo-grid' } }
+        },
+        'user-info-section': { 
+            profileKey: null, message: 'User info updated!', fields: { username: { type: 'simple' }, birthday: { type: 'simple' }, gender: { type: 'simple' } } 
+        },
+        'bio-section': {
+            profileKey: null, message: 'Bio updated!', fields: { bio: { type: 'simple' } },
+            onEdit: (sectionEl) => {
+                const textarea = sectionEl.querySelector('textarea[data-key="bio"]');
+                const charCounter = sectionEl.querySelector('.char-counter');
+                const updateCounter = () => { charCounter.textContent = `${textarea.value.length}/150`; };
+                textarea.addEventListener('input', updateCounter);
+                updateCounter();
+            }
+        },
+        'intent-section': { 
+            profileKey: null, message: 'Intent updated!', fields: { intention: { type: 'single-select', choices: CHOICES.intention } } 
+        },
+        'interests-section': {
+            profileKey: 'interests', message: 'Interests & hobbies updated!',
+            fields: { hobbies: { type: 'multi-tag', choices: CHOICES.hobbies, limit: 10 } } // MODIFICATION: Changed limit from 5 to 10
+        },
+        'identity-section': {
+            profileKey: 'identity', message: 'Identity info updated!',
+            fields: { 'comm-method': { type: 'single-select', choices: CHOICES['comm-method'] }, 'comm-style': { type: 'multi-tag', choices: CHOICES['comm-style'], limit: 3 }, education: { type: 'single-select', choices: CHOICES.education }, zodiac: { type: 'single-select', choices: CHOICES.zodiac } }
+        },
+        'personality-section': { 
+            profileKey: 'personality', message: 'Personality info updated!', fields: { languages: { type: 'multi-tag', choices: CHOICES.languages, limit: 3 }, vibe: { type: 'multi-tag', choices: CHOICES.vibe, limit: 3 }, mbti: { type: 'single-select', choices: CHOICES.mbti } } 
+        },
+        'game-dna-section': {
+            profileKey: 'gameDna', message: 'Game DNA updated!',
+            fields: { games: { type: 'multi-tag', choices: CHOICES.games, limit: 5 }, genre: { type: 'multi-tag', choices: CHOICES.genre }, 'moba-roles': { type: 'multi-tag', choices: CHOICES['moba-roles'] }, 'fps-roles': { type: 'multi-tag', choices: CHOICES['fps-roles'] }, platform: { type: 'multi-tag', choices: CHOICES.platform }, 'active-time': { type: 'multi-tag', choices: CHOICES['active-time'], limit: 3 } },
+            onEdit: (sectionEl, data) => toggleRoleEditors(data.genre || []),
+            onSave: (data) => { if (!data.genre?.includes('MOBA')) data['moba-roles'] = []; if (!data.genre?.includes('FPS')) data['fps-roles'] = []; return data; },
+            onChange: { genre: (newData) => toggleRoleEditors(newData) }
+        }
+    };
+    
+    // --- All Generic Helper Functions ---
+    const openModal = src => { modalContent.src = src; imageModal.style.display = "flex"; };
+    const closeModal = () => { modalContent.src = ""; imageModal.style.display = "none"; };
+    const statusEl = document.getElementById("save-status");
+    const showSaveStatus = msg => { statusEl.textContent = msg; statusEl.classList.remove("opacity-0"); setTimeout(() => statusEl.classList.add("opacity-0"), 2500); };
+    const toggleRoleEditors = genres => { document.getElementById("moba-roles-editor")?.classList.toggle("hidden", !genres?.includes("MOBA")); document.getElementById("fps-roles-editor")?.classList.toggle("hidden", !genres?.includes("FPS")); };
+
+    const renderTags = (container, items, styleKey, isEditable = false) => {
+        if (!container) return;
+        const itemsArr = Array.isArray(items) ? items.filter(Boolean) : [items].filter(Boolean);
+        if (itemsArr.length === 0 || (itemsArr.length === 1 && (!itemsArr[0] || itemsArr[0].toLowerCase() === "not specified"))) {
+            container.innerHTML = '<span class="text-gray-400">Not specified</span>';
+            return;
+        }
+        container.innerHTML = itemsArr.map(item => {
+            const style = TAG_STYLES[styleKey] || TAG_STYLES.default;
+            const removeBtn = isEditable ? `<button class="remove-btn" data-key="${styleKey}" data-item="${item}">x</button>` : "";
+            return `<span class="tag ${style}">${item}${removeBtn}</span>`;
+        }).join("");
+    };
+
+    const renderPhotoGrid = (container) => (photos = []) => {
+        if (!container) return;
+        container.innerHTML = (photos.length === 0) 
+            ? '<span class="text-gray-400 col-span-full">No photos uploaded.</span>'
+            : photos.map(src => `<img src="${src}" class="w-full h-full object-cover rounded-md aspect-square bg-gray-700 cursor-pointer">`).join('');
+    };
+    
+    const renderPhotoEditor = (container) => (photos = []) => {
+        if (!container) return;
+        container.innerHTML = "";
+        for (let i = 0; i < 6; i++) {
+            const isFilled = i < photos.length && photos[i];
+            const src = isFilled ? photos[i] : "";
+            const slot = document.createElement("label");
+            slot.className = `relative aspect-square border-2 rounded-md cursor-pointer flex items-center justify-center ${isFilled ? "border-blue-500 bg-gray-900" : "border-dashed border-gray-600 hover:border-blue-400"}`;
+            slot.innerHTML = `
+                <img class="preview-img absolute w-full h-full object-cover rounded-md ${isFilled ? 'block' : 'hidden'}" src="${src}" alt="Photo slot ${i+1}">
+                <span class="plus-icon text-gray-400 text-3xl ${isFilled ? 'hidden' : 'block'}">+</span>
+                <input type="file" class="hidden" accept="image/*" data-slot-index="${i}">
+                ${isFilled ? `<div class="delete-btn absolute top-1 right-1 w-6 h-6 bg-black/60 text-white rounded-full flex items-center justify-center text-sm font-bold border border-white hover:bg-red-600 transition-colors" data-slot-index="${i}">×</div>` : ""}
+            `;
+            container.appendChild(slot);
+        }
+    };
+    
+    // --- Main Data Loading Function ---
+    const loadProfileData = () => {
+        const profile = getProfile();
+        if (!profile.username) {
+            reviewContent.innerHTML = '<p class="text-center text-red-400 font-semibold">Profile data not found. Please start over.</p>';
+            return;
+        }
+        for (const [id, config] of Object.entries(SECTION_CONFIGS)) {
+            const dataSlice = config.profileKey ? (profile[config.profileKey] || {}) : profile;
+            for(const key in config.fields){
+                if (config.fields[key].type === "photo-grid") {
+                    renderPhotoGrid(document.querySelector(`[data-display-key="photos-view-grid"]`))(dataSlice.photos);
+                } else {
+                    const displayEl = document.querySelector(`[data-display-key="${key}"]`);
+                    if (displayEl) {
+                        const value = dataSlice[key];
+                        const isTagType = TAG_STYLES[key] || Array.isArray(value);
+                        isTagType ? renderTags(displayEl, value, key) : displayEl.textContent = value || "Not specified";
+                    }
+                }
+            }
+        }
+        const roles = [...profile.gameDna?.['moba-roles'] || [], ...profile.gameDna?.['fps-roles'] || []];
+        renderTags(document.querySelector('[data-display-key="roles"]'), roles, 'roles');
+    };
+    
+    // --- Generic Section Editor Creator Function ---
+    const createSectionEditor = (id) => {
+        const config = SECTION_CONFIGS[id]; if (!config) return;
+        const sectionEl = document.getElementById(id);
+        const viewMode = sectionEl.querySelector('[data-mode="view"]');
+        const editMode = sectionEl.querySelector('[data-mode="edit"]');
+        const [editBtn, saveBtn, cancelBtn] = ['edit', 'save', 'cancel'].map(a => sectionEl.querySelector(`[data-action="${a}"]`));
+        let tempData = {};
+
+        const toggleMode = (isEditing) => {
+            viewMode.classList.toggle('hidden', isEditing);
+            editMode.classList.toggle('hidden', !isEditing);
+            [saveBtn, cancelBtn].forEach(btn => btn.classList.toggle('hidden', !isEditing));
+            editBtn.classList.toggle('hidden', isEditing);
+        };
+        
+        editBtn.addEventListener('click', () => {
+            const profile = getProfile();
+            const dataSlice = config.profileKey ? (profile[config.profileKey] || {}) : profile;
+            tempData = JSON.parse(JSON.stringify(dataSlice));
+            
+            for (const key in config.fields) {
+                const field = config.fields[key];
+                const input = editMode.querySelector(`[data-key="${key}"]`);
+                if(input) {
+                   if (field.type === 'simple' || field.type === 'single-select') {
+                        input.value = tempData[key] || '';
+                    } else if (field.type === 'multi-tag') {
+                        renderTags(editMode.querySelector(`[data-tags="${key}"]`), tempData[key] || [], key, true);
+                    }
+                }
+                if (field.type === 'photo-grid') {
+                    renderPhotoEditor(editMode.querySelector('[data-edit-grid="photos"]'))(tempData.photos || []);
+                }
+            }
+            config.onEdit?.(sectionEl, tempData);
+            toggleMode(true);
+        });
+
+        saveBtn.addEventListener('click', () => {
+            let profile = getProfile();
+            editMode.querySelectorAll('input[data-key], textarea[data-key], select[data-key]').forEach(input => {
+                if(config.fields[input.dataset.key]?.type !== 'multi-tag') {
+                    tempData[input.dataset.key] = input.value;
+                }
+            });
+            
+            const finalData = config.onSave ? config.onSave(tempData) : tempData;
+            config.profileKey ? (profile[config.profileKey] = { ...(profile[config.profileKey] || {}), ...finalData }) : (profile = { ...profile, ...finalData });
+            
+            saveProfile(profile);
+            loadProfileData();
+            showSaveStatus(config.message);
+            toggleMode(false);
+        });
+        
+        cancelBtn.addEventListener('click', () => toggleMode(false));
+        
+        editMode.querySelectorAll('select[data-key]').forEach(selectEl => {
+            const key = selectEl.dataset.key; const field = config.fields[key]; if (!field || !field.choices) return;
+            const placeholder = field.type === 'multi-tag' ? `Add a choice... (limit ${field.limit || '∞'})` : 'Select an option...';
+            selectEl.innerHTML = `<option value="" disabled selected>${placeholder}</option>${field.choices.map(opt => `<option value="${opt}">${opt}</option>`).join('')}`;
+            if(field.type === 'multi-tag') selectEl.addEventListener('change', () => {
+                const choice = selectEl.value;
+                if (!choice) return;
+                tempData[key] = tempData[key] || [];
+                if (!tempData[key].includes(choice) && (!field.limit || tempData[key].length < field.limit)) {
+                    tempData[key].push(choice);
+                    renderTags(editMode.querySelector(`[data-tags="${key}"]`), tempData[key], key, true);
+                    config.onChange?.[key]?.(tempData[key]);
+                } else if (field.limit && tempData[key].length >= field.limit) {
+                    alert(`You can only select up to ${field.limit} items for this category.`);
+                }
+                selectEl.value = "";
+            });
+        });
+
+        editMode.addEventListener('click', e => {
+            if (e.target.matches('.remove-btn')) {
+                const { key, item } = e.target.dataset;
+                if (!tempData[key]) return;
+                tempData[key] = tempData[key].filter(i => i !== item);
+                renderTags(e.target.closest('[data-tags]'), tempData[key], key, true);
+                config.onChange?.[key]?.(tempData[key]);
+            }
+            const deleteBtn = e.target.closest('.delete-btn');
+            if (deleteBtn && id === 'photos-section') {
+                e.preventDefault();
+                tempData.photos?.splice(parseInt(deleteBtn.dataset.slotIndex, 10), 1);
+                renderPhotoEditor(editMode.querySelector('[data-edit-grid="photos"]'))(tempData.photos || []);
+            }
+        });
+
+        if (id === 'photos-section') {
+            editMode.addEventListener('change', e => {
+                const file = e.target.files?.[0];
+                if (e.target.type !== 'file' || !file) return;
+                const index = parseInt(e.target.dataset.slotIndex, 10);
+                tempData.photos = tempData.photos || [];
+                if (tempData.photos.filter(p => p).length >= 6 && !tempData.photos[index]) {
+                     alert("You can add up to 6 photos.");
+                     return;
+                }
+                const reader = new FileReader();
+                reader.onload = event => {
+                    tempData.photos[index] = event.target.result;
+                    renderPhotoEditor(editMode.querySelector('[data-edit-grid="photos"]'))(tempData.photos);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+    };
+    
+    // --- Validation and Confirmation Logic ---
+    const confirmButton = document.getElementById('confirm-button');
+    const warningsContainer = document.getElementById('validation-warnings');
+
+    const applyValidationStyles = (errors) => {
+        const errorSectionIds = errors.map(e => e.sectionId);
+        document.querySelectorAll('#review-content section').forEach(section => {
+            section.classList.toggle('validation-error', errorSectionIds.includes(section.id));
+        });
+    };
+    
+    const checkAllRequirements = () => {
+        const profile = getProfile();
+        const errors = [];
+        // Rule 1: Must have at least 2 photos
+        if (!profile.media?.photos?.filter(Boolean).length || profile.media.photos.filter(Boolean).length < 2) {
+            errors.push({ sectionId: 'photos-section', message: '• You must upload at least 2 photos.' });
+        }
+        // Rule 2: Bio must be at least 20 characters
+        if (!profile.bio || profile.bio.trim().length < 20) {
+            errors.push({ sectionId: 'bio-section', message: '• Your bio must be at least 20 characters long.' });
+        }
+        // Rule 3: Intent must be selected
+        if (!profile.intention || profile.intention.toLowerCase() === 'not specified' || profile.intention === '') {
+            errors.push({ sectionId: 'intent-section', message: '• Please select your intent.' });
+        }
+        // Rule 4: Hobbies must have at least 1 item
+        if (!profile.interests?.hobbies?.length || profile.interests.hobbies.length < 1) { // MODIFICATION: Changed minimum from 3 to 1
+            errors.push({ sectionId: 'interests-section', message: '• Please select at least 1 interest or hobby.' }); // MODIFICATION: Updated error message
+        }
+        // Rule 5: Games must have at least 1 item
+        if (!profile.gameDna?.games?.length || profile.gameDna.games.length < 1) {
+            errors.push({ sectionId: 'game-dna-section', message: '• Please add at least 1 game to your profile.' });
+        }
+        return errors;
+    };
+
+    confirmButton?.addEventListener('click', () => {
+        const errors = checkAllRequirements();
+        applyValidationStyles(errors);
+
+        if (errors.length > 0) {
+            const errorMessages = errors.map(e => e.message);
+            warningsContainer.innerHTML = `
+                <p class="mb-2">Please complete the highlighted sections:</p>
+                <ul class="list-none text-left inline-block">
+                    ${errorMessages.map(msg => `<li>${msg}</li>`).join('')}
+                </ul>`;
+            // Scroll the first errored section into view for better UX
+            document.querySelector('.validation-error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            // If all good, clear warnings and proceed
+            warningsContainer.innerHTML = '';
+            alert('Profile complete! Proceeding to dashboard...'); // Or just navigate directly
+            window.location.href = 'dash-board.html';
+        }
+    });
+
+    // --- Initialization & Main Event Listeners ---
+    if (!reviewContent) return;
+    loadProfileData();
+    Object.keys(SECTION_CONFIGS).forEach(createSectionEditor);
+    reviewContent.addEventListener('click', e => {if (e.target.matches('[data-display-key="photos-view-grid"] img')) openModal(e.target.src)});
+    imageModal?.addEventListener('click', closeModal);
+});
