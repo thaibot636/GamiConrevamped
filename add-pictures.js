@@ -96,18 +96,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Any click anywhere on the modal will now close it.
     imageModal.addEventListener('click', closeModal);
 
-    submitButton.addEventListener('click', function(event) {
-        event.preventDefault();
+   submitButton.addEventListener('click', function(event) {
+    event.preventDefault();
 
-        const photosRequired = 2;
+    const photosRequired = 2;
 
-        if (photosAdded >= photosRequired) {
-            errorEl.style.display = 'none';
-            errorEl.textContent = '';
-            window.location.href = submitButton.href;
-        } else {
-            errorEl.textContent = `Please add at least ${photosRequired} photos`;
-            errorEl.style.display = 'block';
-        }
-    });
+    // Check if the photo requirement is met
+    if (photosAdded >= photosRequired) {
+        // If met, hide the error message and proceed
+        errorEl.style.display = 'none'; 
+        window.location.href = submitButton.href;
+    } else {
+        // If not met, simply display the error element.
+        // The text is already handled by translation.js via the data-translate-key.
+        errorEl.style.display = 'block';
+    }
+});
 });
