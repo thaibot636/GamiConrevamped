@@ -569,6 +569,13 @@ writeBioPlaceholder: { en: 'Type your status here...', th: 'พิมพ์ส�
 writeBioClickToEdit: { en: 'Click to edit', th: 'คลิกเพื่อแก้ไข' },
 save: { en: 'SAVE', th: 'บันทึก' },
 submit: { en: 'SUBMIT', th: 'ส่ง' },
+
+
+ // --- add-pictures.html ---
+        addPhotosSubtitle: { en: "Show 'em what you got! Add up to 6 photos.", th: "โชว์ของที่คุณมี! เพิ่มรูปภาพได้สูงสุด 6 รูป" },
+        photo_tip_text: { en: "Add at least 2 photos to continue. Clear face pics get more views!", th: "เพิ่มอย่างน้อย 2 รูปเพื่อไปต่อ รูปที่เห็นใบหน้าชัดเจนจะได้รับความสนใจมากกว่า!" },
+        errorAddPhotos: { en: "Please add at least 2 photos", th: "กรุณาเพิ่มรูปภาพอย่างน้อย 2 รูป" },
+        userIntentionSubmit: { en: "SUBMIT", th: "ส่งข้อมูล" }
     };
 
     // Define the main function in the global scope
