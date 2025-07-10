@@ -1,4 +1,7 @@
+// [File: write-bios.js] - CORRECTED VERSION
+
 document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. Get all necessary DOM elements ---
     const statusContainer = document.getElementById('status-container');
     const statusDisplay = document.getElementById('status-display');
     const statusInput = document.getElementById('status-input');
@@ -6,105 +9,107 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelButton = document.getElementById('cancel-button');
     const charCounter = document.getElementById('char-counter');
     const submitNav = document.getElementById('submit-navigation');
-
-    const MAX_CHARS = 150;
     
-    // Helper function to get the correct translation for the placeholder text
-    // It depends on the global `translations` object from translation.js
+    const MAX_CHARS = 150;
+
+    // --- 2. Centralized Profile Management (THE FIX) ---
+    // These functions ensure we read/write from the same "userProfile" object as the review page.
+    const getProfile = () => JSON.parse(localStorage.getItem('userProfile')) || {};
+    const saveProfile = (profile) => localStorage.setItem('userProfile', JSON.stringify(profile));
+    
+    // --- 3. Translation Helper (Unchanged) ---
     function getPlaceholderText() {
+        // (This function is unchanged, as it works perfectly)
         const currentLang = localStorage.getItem('gamicon_lang') || 'en';
         if (window.translations && window.translations.writeBioClickToEdit) {
             return window.translations.writeBioClickToEdit[currentLang] || window.translations.writeBioClickToEdit.en;
         }
-        return 'Click to edit'; // Fallback if translations haven't loaded
+        return 'Click to edit'; 
     }
 
-    function loadStatus() {
-        const savedStatus = localStorage.getItem('userBio');
+    // --- 4. Core Functions (UPDATED) ---
+
+    function loadBioIntoView() {
+        // Reads from the correct central profile object
+        const profile = getProfile();
+        const savedBio = profile.bio; 
+        
         const placeholderText = getPlaceholderText();
         
-        if (savedStatus) {
-            statusDisplay.textContent = savedStatus;
-            statusInput.value = savedStatus;
+        if (savedBio) {
+            statusDisplay.textContent = savedBio;
             statusDisplay.classList.remove('placeholder');
             statusDisplay.classList.add('is-filled');
         } else {
             statusDisplay.textContent = placeholderText;
             statusDisplay.classList.add('placeholder');
             statusDisplay.classList.remove('is-filled');
-            statusInput.value = '';
         }
-        updateCharCounter();
     }
     
-    function enterEditMode() {
-        // Use the helper to check against the currently translated placeholder
-        if (statusDisplay.textContent === getPlaceholderText()) {
-            statusInput.value = '';
-        }
-        statusContainer.classList.add('is-editing');
-        submitNav.style.display = 'none';
-        statusInput.focus();
-        updateCharCounter();
-    }
+    function setMode(isEditing) {
+        if (isEditing) {
+            const profile = getProfile();
+            // Pre-fill textarea with saved bio (or nothing if placeholder was showing)
+            statusInput.value = (statusDisplay.textContent === getPlaceholderText()) ? '' : profile.bio || '';
 
-    function exitEditMode() {
-        statusContainer.classList.remove('is-editing');
-        submitNav.style.display = 'flex';
-    }
-
-    statusDisplay.addEventListener('click', enterEditMode);
-
-    saveButton.addEventListener('click', () => {
-        const newStatus = statusInput.value.trim();
-        localStorage.setItem('userBio', newStatus);
-       
-        if (newStatus) {
-            statusDisplay.textContent = newStatus;
-            statusDisplay.classList.remove('placeholder');
-            statusDisplay.classList.add('is-filled');
+            statusContainer.classList.add('is-editing');
+            submitNav.style.display = 'none'; // Hide submit button while editing
+            updateCharCounter();
+            statusInput.focus();
         } else {
-            // Use the helper to set the correct translated placeholder
-            statusDisplay.textContent = getPlaceholderText();
-            statusDisplay.classList.add('placeholder');
-            statusDisplay.classList.remove('is-filled');
+            statusContainer.classList.remove('is-editing');
+            loadBioIntoView(); // Reload display to ensure it's correct
+            // Only show submit button if there is a saved bio
+            submitNav.style.display = (getProfile().bio) ? 'flex' : 'none';
         }
-        
-        exitEditMode();
-    });
-
-    cancelButton.addEventListener('click', () => {
-        const lastSavedStatus = localStorage.getItem('userBio');
-        statusInput.value = lastSavedStatus || '';
-        loadStatus(); // Rerunning loadStatus ensures the placeholder text is correct
-        exitEditMode();
-    });
-
+    }
+    
     function updateCharCounter() {
         const currentLength = statusInput.value.length;
         charCounter.textContent = `${currentLength}/${MAX_CHARS}`;
         if (currentLength > MAX_CHARS) {
             charCounter.style.color = '#ef4444';
+            statusInput.value = statusInput.value.substring(0, MAX_CHARS); // Enforce limit
         } else {
             charCounter.style.color = '#9ca3af';
         }
     }
+
+    // --- 5. Event Listeners (UPDATED) ---
+
+    statusDisplay.addEventListener('click', () => setMode(true));
+
+    saveButton.addEventListener('click', () => {
+        const profile = getProfile();
+        profile.bio = statusInput.value.trim(); // Get text and add it to the profile object
+        saveProfile(profile); // Save the entire updated profile object
+        
+        setMode(false); // Switch back to view mode
+    });
+
+    cancelButton.addEventListener('click', () => {
+        setMode(false); // Discard changes and switch back to view mode
+    });
    
     statusInput.addEventListener('input', updateCharCounter);
 
-    // Initial load of the status text
-    loadStatus();
+    // --- 6. Initialization & Language Listener ---
     
-    // Add an event listener to the language toggle to re-run loadStatus.
-    // This updates the placeholder text if it's currently displayed.
+    // Initial load: Set the mode based on whether a bio exists.
+    if (getProfile().bio) {
+        setMode(false); // Has a bio, start in view mode.
+    } else {
+        setMode(true); // No bio, start in edit mode.
+    }
+
+    // Language Toggle Listener (Unchanged, but now calls our updated load function)
     document.querySelectorAll('.lang-toggle').forEach(button => {
         button.addEventListener('click', () => {
-             // We need a tiny delay for the main translation script to update the language in localStorage
             setTimeout(() => {
-                const savedStatus = localStorage.getItem('userBio');
-                // Only update the text if the placeholder is visible
-                if (!savedStatus) {
-                    loadStatus();
+                const profile = getProfile();
+                if (!profile.bio) { // Only update text if placeholder is showing
+                    loadBioIntoView();
                 }
             }, 50); 
         });
