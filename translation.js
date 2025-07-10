@@ -561,6 +561,14 @@ errorMax2Styles: {
             en: 'Please pick at least one of the options.',
             th: 'กรุณาเลือกอย่างน้อยหนึ่งตัวเลือก'
         },
+
+        // --- write-bios.html (Bio Page) ---
+writeBioTitle: { en: 'Your Bio', th: 'ไบโอของคุณ' },
+writeBioSubtitle: { en: 'Craft your legend. Tell the world who you are.', th: 'สร้างตำนานของคุณ บอกให้โลกรู้ว่าคุณเป็นใคร' },
+writeBioPlaceholder: { en: 'Type your status here...', th: 'พิมพ์สถานะของคุณที่นี่...' },
+writeBioClickToEdit: { en: 'Click to edit', th: 'คลิกเพื่อแก้ไข' },
+save: { en: 'SAVE', th: 'บันทึก' },
+submit: { en: 'SUBMIT', th: 'ส่ง' },
     };
 
     // Define the main function in the global scope
