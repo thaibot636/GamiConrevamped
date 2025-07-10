@@ -116,8 +116,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // --- If all checks pass, proceed to the next page ---
+            // --- If all checks pass, save data then proceed to the next page ---
             if (isFormValid) {
+                
+                // --- ADDED: DATA SAVING LOGIC ---
+                // 1. Get existing profile or create one if it doesn't exist
+                const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
+
+                // 2. Gather selections
+                const languages = Array.from(document.querySelectorAll('input[name="language"]:checked'))
+                                       .map(el => el.parentElement.querySelector('span[data-translate-key]').textContent);
+                                       
+                const vibe = Array.from(document.querySelectorAll('input[name="vibe"]:checked'))
+                                   .map(el => el.parentElement.querySelector('span[data-translate-key]').textContent);
+                                   
+                const mbtiInput = document.querySelector('input[name="mbti"]:checked');
+                
+                // 3. Add the data to the profile object under a 'personality' key
+                profile.personality = {
+                    languages: languages,
+                    vibe: vibe,
+                    mbti: mbtiInput ? mbtiInput.value.toUpperCase() : "Not specified"
+                };
+
+                // 4. Save the updated profile back to localStorage
+                localStorage.setItem('userProfile', JSON.stringify(profile));
+                // --- END OF ADDED LOGIC ---
+
+                // Finally, proceed to the next page
                 window.location.href = event.currentTarget.href;
             }
         });
