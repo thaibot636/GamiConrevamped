@@ -125,7 +125,8 @@
                 </nav>
             </div>
             <div id="profile-trigger" class="flex items-center space-x-3 p-2 rounded-lg cursor-pointer transition-colors hover:bg-slate-700/50">
-                 <div class="relative"><img src="https://i.pravatar.cc/50?u=player1" alt="Avatar" class="w-10 h-10 rounded-full"><span id="status-dot" class="status-dot"></span></div>
+                 <!-- === MODIFIED LINE: Added id="sidebar-avatar" === -->
+                 <div class="relative"><img id="sidebar-avatar" src="https://i.pravatar.cc/50?u=player1" alt="Avatar" class="w-10 h-10 rounded-full object-cover"><span id="status-dot" class="status-dot"></span></div>
                  <div><h3 id="sidebar-username" class="text-sm font-bold"></h3></div>
             </div>
         </aside>
@@ -203,19 +204,27 @@
 
     <script src="translation.js"></script>
     <script>
+        // === MODIFIED SCRIPT ===
         (() => {
             document.addEventListener('DOMContentLoaded', () => {
                 // --- THEME CONTROL LOGIC ---
-                // This MUST run early to prevent a "flash" of the wrong theme.
                 const applyTheme = (theme) => {
-                    // Default to 'theme-default' if no theme is found in localStorage
                     const effectiveTheme = theme || 'theme-default';
-                    // Remove any existing theme class from the body
                     document.body.className = document.body.className.replace(/theme-\S+/g, '');
-                    // Add the new theme class
                     document.body.classList.add(effectiveTheme);
                 };
                 applyTheme(localStorage.getItem('gamicon_theme'));
+
+                // --- NEW: AVATAR AND PROFILE DATA LOGIC ---
+                // Get the full profile, which includes media and username.
+                const userProfile = JSON.parse(localStorage.getItem('userProfile')) || {};
+                const username = userProfile.username || localStorage.getItem('gamicon_username') || 'PlayerOne'; // Fallback logic
+
+                // Set the avatar image source if available
+                const sidebarAvatar = document.getElementById('sidebar-avatar');
+                if (sidebarAvatar && userProfile.media && userProfile.media.photos && userProfile.media.photos.length > 0 && userProfile.media.photos[0]) {
+                    sidebarAvatar.src = userProfile.media.photos[0];
+                }
 
                 // --- Rest of the existing interactive script ---
                 const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -238,7 +247,6 @@
 
                 const lang = localStorage.getItem('gamicon_lang') || 'en';
                 const currentStatus = localStorage.getItem('gamicon_status') || 'online';
-                const username = localStorage.getItem('gamicon_username') || 'PlayerOne';
                 const statusConfig = { online: { langKey: 'statusOnline' }, idle: { langKey: 'statusIdle' }, dnd: { langKey: 'statusDnd' }, invisible: { langKey: 'statusInvisible' } };
 
                 const openSidebar = () => { if (sidebar && sidebarOverlay) { sidebar.classList.remove('-translate-x-full'); sidebarOverlay.classList.remove('hidden'); } };
