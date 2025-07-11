@@ -610,6 +610,55 @@ errorMax2Styles: {
         "en": "No photos uploaded.",
         "th": "ไม่มีการอัพโหลดรูปภาพ"
     },
+
+    // ... all your existing keys ...
+
+    "alert_profileComplete": {
+        "en": "Profile complete! Proceeding to dashboard...",
+        "th": "โปรไฟล์เสร็จสมบูรณ์! กำลังไปที่แดชบอร์ด..."
+    },
+    
+    "validation_min_2_photos": {
+        "en": "You must upload at least 2 photos.",
+        "th": "คุณต้องอัปโหลดรูปภาพอย่างน้อย 2 รูป"
+    },
+    "validation_bio_min_20_chars": {
+        "en": "Your bio must be at least 20 characters long.",
+        "th": "ประวัติของคุณต้องมีความยาวอย่างน้อย 20 ตัวอักษร"
+    },
+    "validation_select_intent": {
+        "en": "Please select your intent.",
+        "th": "โปรดเลือกความตั้งใจของคุณ"
+    },
+    "validation_min_1_hobby": {
+        "en": "Please select at least 1 interest or hobby.",
+        "th": "โปรดเลือกความสนใจหรืองานอดิเรกอย่างน้อย 1 อย่าง"
+    },
+    "validation_select_comm_method": {
+        "en": "Please select a communication method.",
+        "th": "โปรดเลือกวิธีการสื่อสาร"
+    },
+    "validation_min_1_comm_style": {
+        "en": "Please select at least 1 communication style.",
+        "th": "โปรดเลือกสไตล์การสื่อสารอย่างน้อย 1 อย่าง"
+    },
+    "validation_min_1_language": {
+        "en": "Please select at least 1 language.",
+        "th": "โปรดเลือกอย่างน้อย 1 ภาษา"
+    },
+    "validation_min_1_vibe": {
+        "en": "Please select at least 1 in-game vibe.",
+        "th": "โปรดเลือก Vibe ในเกมของคุณอย่างน้อย 1 อย่าง"
+    },
+    "validation_min_1_game": {
+        "en": "Please add at least 1 game to your profile.",
+        "th": "โปรดเพิ่มเกมในโปรไฟล์ของคุณอย่างน้อย 1 เกม"
+    },
+    "validation_min_1_genre": {
+        "en": "Please select at least 1 game genre.",
+        "th": "โปรดเลือกแนวเกมอย่างน้อย 1 แนว"
+    },
+
         // --- write-bios.html (Bio Page) ---
 writeBioTitle: { en: 'Your Bio', th: 'ไบโอของคุณ' },
 writeBioSubtitle: { en: 'Craft your legend. Tell the world who you are.', th: 'สร้างตำนานของคุณ บอกให้โลกรู้ว่าคุณเป็นใคร' },
