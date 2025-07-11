@@ -1,91 +1,163 @@
-/* === MODIFIED: Colors updated to match the default website theme === */
-    :root {
-      --main-bg: #1f2937;
-      --form-bg: #111827;
-      --text-color: white;
-      --text-subtle: #9ca3af;
-      --border-color: #374151; 
-      --accent: #3b82f6; /* Neon Blue */
-      --legendary: #f59e0b; /* Amber/Gold */
-    }
+/* ========================================================= */
+/*       FINAL THEME FOR GAMICON PRODUCTS PAGE             */
+/* ========================================================= */
 
-    /* --- FONT STRATEGY --- */
-    body { font-family: 'Poppins', sans-serif; background-color: var(--main-bg); color: var(--text-color); }
-    .font-8bit, h1, .data-pack h3, .pack-price, .value-tag, .btn-purchase { font-family: 'Press Start 2P', cursive; }
-    header, header a, header button { font-family: 'Poppins', sans-serif; }
-    .brand-logo { font-family: 'Press Start 2P', cursive; }
-    
-    .pixel-underline { position: relative; display: inline-block; padding-bottom: 5px; }
-    .pixel-underline::after { 
-        content: ''; 
-        position: absolute; 
-        left: 0; 
-        bottom: 0; 
-        width: 100%; 
-        height: 2px;
-        background-color: var(--accent); /* Underline uses accent color */
-        transform: scaleX(0); 
-        transform-origin: center; 
-        transition: transform 0.2s ease-out; 
-    }
-    .pixel-underline:hover::after { transform: scaleX(1); }
+:root {
+    /* Primary brand palette from master theme */
+    --brand-purple: #8b5cf6;
+    --brand-purple-dark: #4f46e5;
+    --brand-glow: rgba(139, 92, 246, 0.5);
+    --dark-bg: #090a0f;
+    --dark-bg-gradient: #1b2735;
+    --text-primary: #d1d5db;
+    --text-secondary: #9ca3af;
+    --panel-bg: rgba(30, 41, 59, 0.7);
+    --border-color: #374151;
 
-    .bg-grid {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 35px 35px; animation: move-grid 2s linear infinite;
-    }
-    @keyframes move-grid { from { background-position: 0 0; } to { background-position: 35px 35px; } }
-    
-    .data-pack {
-        background-color: var(--form-bg);
-        border: 2px solid var(--border-color);
-        display: flex; flex-direction: column; justify-content: space-between;
-        padding: 1.5rem;
-        transition: all 0.2s ease-out;
-    }
-    .data-pack:hover {
-        transform: translateY(-8px);
-        border-color: var(--accent);
-        box-shadow: 0 0 15px var(--accent);
-    }
-    .pack-price {
-        font-size: 2.5rem;
-        color: var(--accent);
-        text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-    }
-    
-    .legendary-pack {
-        border-color: var(--legendary);
-        transform: scale(1.05);
-        box-shadow: 0 0 20px var(--legendary);
-        animation: pulse-legendary 2.5s infinite;
-    }
-    .legendary-pack:hover {
-        border-color: var(--legendary);
-        box-shadow: 0 0 25px var(--legendary), 0 0 35px var(--legendary);
-    }
-    .legendary-pack .pack-price { color: var(--legendary); text-shadow: 0 0 10px var(--legendary); }
-    @keyframes pulse-legendary { 0%, 100% { box-shadow: 0 0 15px var(--legendary); } 50% { box-shadow: 0 0 25px var(--legendary); } }
+    /* Secondary accent color for "Legendary" items */
+    --legendary: #f59e0b;
+    --legendary-glow: rgba(245, 158, 11, 0.5);
+}
 
-    .value-tag {
-        color: var(--legendary);
-        margin-bottom: 1.5rem;
-        animation: blink-value 1s infinite;
-        font-size: 0.8rem;
-    }
-    @keyframes blink-value { 50% { opacity: 0.6; } }
+/* --- Base Body & Background Styles --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    background-image: radial-gradient(ellipse at top, var(--dark-bg-gradient), var(--dark-bg));
+    color: var(--text-primary);
+}
 
-    .btn-purchase {
-        background: var(--accent);
-        color: var(--text-color);
-        padding: 0.75rem; text-align: center;
-        margin-top: 1.5rem; text-transform: uppercase;
-        transition: all 0.2s;
-    }
-    .btn-purchase:hover { filter: brightness(1.2); }
-    .legendary-pack .btn-purchase { background: var(--legendary); }
+.bg-grid {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+    background-image: linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: move-grid-fast 2s linear infinite;
+}
+@keyframes move-grid-fast { from { background-position: 0 0; } to { background-position: 50px 50px; } }
 
-    header { background-color: var(--form-bg); border-bottom: 1px solid var(--border-color); }
-    #mobile-menu { background-color: var(--form-bg); }
-    footer { background-color: var(--form-bg); border-top: 1px solid var(--border-color); }
+
+/* --- Font & Header Styles --- */
+.font-8bit, h1, h2, h3, .pack-price, .value-tag, .btn-purchase, .brand-logo {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    text-shadow: 0 0 8px var(--brand-glow);
+}
+p {
+    color: var(--text-secondary);
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: rgba(9, 10, 15, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+}
+.nav-link {
+    font-size: 0.875rem; /* 14px */
+    font-weight: 600; /* semibold */
+    color: var(--text-secondary);
+    transition: color 0.2s;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+.nav-link:hover { color: white; }
+.nav-link::after {
+    content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px;
+    background-color: var(--brand-purple);
+    transform: scaleX(0); transform-origin: center; transition: transform 0.2s ease-out;
+}
+.nav-link:hover::after { transform: scaleX(1); }
+#mobile-menu {
+    background-color: rgba(9, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* --- Call-to-Action Buttons --- */
+.btn-cta {
+    background: linear-gradient(90deg, var(--brand-purple), var(--brand-purple-dark));
+    color: white;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+}
+.btn-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--brand-glow);
+}
+
+/* --- Main Content: Data Packs --- */
+.data-pack {
+    background-color: var(--panel-bg);
+    border: 2px solid var(--border-color);
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 1.5rem;
+    transition: all 0.2s ease-out;
+}
+.data-pack:hover {
+    transform: translateY(-8px);
+    border-color: var(--brand-purple);
+    box-shadow: 0 0 20px var(--brand-glow);
+}
+.pack-price {
+    font-size: 2.5rem;
+    color: var(--brand-purple);
+}
+
+/* --- Legendary Pack Tier --- */
+.legendary-pack {
+    border-color: var(--legendary);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--legendary-glow);
+    animation: pulse-legendary 2.5s infinite;
+}
+.legendary-pack:hover {
+    border-color: var(--legendary);
+    box-shadow: 0 0 25px var(--legendary-glow), 0 0 40px var(--legendary-glow);
+}
+.legendary-pack .pack-price {
+    color: var(--legendary);
+    text-shadow: 0 0 10px var(--legendary-glow);
+}
+@keyframes pulse-legendary {
+    0%, 100% { box-shadow: 0 0 20px var(--legendary-glow); transform: scale(1.05); }
+    50% { box-shadow: 0 0 30px var(--legendary-glow); transform: scale(1.06); }
+}
+
+.value-tag {
+    color: var(--legendary);
+    text-shadow: 0 0 8px var(--legendary-glow);
+    margin-bottom: 1.5rem;
+    animation: blink-value 1.2s infinite;
+    font-size: 0.8rem;
+}
+@keyframes blink-value { 50% { opacity: 0.7; } }
+
+/* --- Purchase Buttons inside cards --- */
+.btn-purchase {
+    background: linear-gradient(90deg, var(--brand-purple), var(--brand-purple-dark));
+    color: white; padding: 0.8rem; text-align: center; text-transform: uppercase;
+    text-shadow: none; margin-top: 1.5rem; transition: all 0.3s ease;
+    border: none; border-radius: 6px; display: block;
+}
+.btn-purchase:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--brand-glow);
+}
+.legendary-pack .btn-purchase {
+    background: linear-gradient(90deg, #fBBF24, var(--legendary));
+}
+.legendary-pack .btn-purchase:hover {
+    box-shadow: 0 0 20px var(--legendary-glow);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark-bg);
+    border-top: 1px solid var(--border-color);
+}
+footer p {
+    color: var(--text-secondary);
+}
