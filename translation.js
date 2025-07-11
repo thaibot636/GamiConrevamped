@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginEmailPlaceholder: { en: 'your_email / username', th: 'อีเมลของคุณ / ชื่อผู้ใช้' },
         usernameLabel: { en: 'Username', th: 'กรอกชื่อผู้ใช้' },
         usernamePlaceholder: { en: 'PlayerOne', th: 'กรอกusername' },
-        birthdayLabel: { en: 'Birthday', th: 'วันเกิด (ว/ด/ป)' },
+        birthdayLabel: { en: 'Birthday', th: 'วันเกิด (เดือน/วัน/ปี)' },
         genderLabel: { en: 'Gender', th: 'เพศ' },
         genderPlaceholder: { en: 'Select your gender...', th: 'เลือกเพศของคุณ...' },
         genderMale: { en: 'Male', th: 'ชาย' },
