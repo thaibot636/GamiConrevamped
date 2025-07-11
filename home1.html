@@ -9,165 +9,209 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        /* Universal Styles & Theming Variables */
-        :root, body.theme-default {
-            --bg-body: #1f2937; --text-color: white; --text-subtle: #9ca3af; --sidebar-bg: #111827; --sidebar-border: #374151; --main-bg: #1f2937; --link-color: #9ca3af; --link-hover-bg: #374151; --link-hover-text: white; --link-active-bg: #3b82f6; --link-active-text: white; --form-bg: #111827; --neon-blue: #3b82f6; --neon-blue-glow: rgba(59, 130, 246, 0.5); --btn-secondary-bg: #4b5563; --btn-secondary-hover-bg: #6b7280; --room-card-bg: #273344; --room-card-hover-bg: #324053; --popup-bg: #111827; --popup-border: #4b5563; --popup-separator: #374151; --popup-hover-bg: #3b82f6; --popup-hover-text: white; --highlight-bg: #374151; --highlight-text: #e5e7eb;
+        /* A more vibrant, modern, and engaging theme for a gaming platform */
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* A deep space gradient for the background adds depth */
+            background-color: #090a0f;
+            background-image: radial-gradient(ellipse at top, #1b2735, #090a0f);
         }
-        body.theme-light-gray {
-            --bg-body: #f4f4f5; --text-color: #334155; --text-subtle: #64748b; --sidebar-bg: #ffffff; --sidebar-border: #e5e7eb; --main-bg: #f4f4f5; --link-color: #475569; --link-hover-bg: #f3f4f6; --link-hover-text: #1e293b; --link-active-bg: #2563eb; --link-active-text: white; --form-bg: #ffffff; --neon-blue: #2563eb; --neon-blue-glow: rgba(37, 99, 235, 0.4); --btn-secondary-bg: #e5e7eb; --btn-secondary-hover-bg: #d1d5db; --room-card-bg: #ffffff; --room-card-hover-bg: #f9fafb; --popup-bg: #ffffff; --popup-border: #e5e7eb; --popup-separator: #f3f4f6; --popup-hover-text: white; --highlight-bg: #e5e7eb; --highlight-text: #374151;
+
+        /* The "gamer" font for headers, with a neon glow effect */
+        .font-gamer {
+            font-family: 'Press Start 2P', cursive;
+            text-shadow:
+                0 0 5px rgba(139, 92, 246, 0.4),
+                0 0 10px rgba(139, 92, 246, 0.3);
         }
-        body.theme-true-dark {
-            --bg-body: #000; --text-color: #fff; --text-subtle: #aaa; --sidebar-bg: #101010; --sidebar-border: #333; --main-bg: #000; --link-color: #aaa; --link-hover-bg: #222; --link-hover-text: #fff; --link-active-bg: #fff; --link-active-text: #000; --form-bg: #181818; --neon-blue: #fff; --neon-blue-glow: rgba(255, 255, 255, 0.5); --btn-secondary-bg: #333; --btn-secondary-hover-bg: #444; --room-card-bg: #181818; --room-card-hover-bg: #222; --popup-bg: #181818; --popup-border: #333; --popup-separator: #333; --popup-hover-bg: #fff; --popup-hover-text: #000; --highlight-bg: #222; --highlight-text: #eee;
+
+        /* Sidebar: semi-transparent with a blurred backdrop for a modern glassmorphism effect */
+        .sidebar-custom {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid rgba(139, 92, 246, 0.2);
         }
-        /* Base & Typography */
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-body); color: var(--text-color); }
-        h1, h2, h3, h4, h5, h6, .form-label { font-family: 'Press Start 2P', cursive; }
-        /* Layout Components */
-        aside { background-color: var(--sidebar-bg); }
-        main { background-color: var(--main-bg); }
-        .form-section { background-color: var(--form-bg); border: 1px solid var(--sidebar-border); padding: 1.5rem; border-radius: 8px; }
-        /* Navigation & Links */
-        .nav-link { display: flex; align-items: center; padding: 0.75rem 0.5rem; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; border-radius: 4px; color: var(--link-color); }
-        .nav-link:hover { background-color: var(--link-hover-bg); color: var(--link-hover-text); }
-        .nav-link.active { background-color: var(--link-active-bg); color: var(--link-active-text); }
-        .nav-link > span { margin-left: 0.75rem; }
-        .nav-menu-trigger { justify-content: space-between; }
-        .nav-menu-trigger .chevron { transition: transform 0.2s ease-in-out; }
+
+        /* Nav links: Clean with a clear hover state */
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+            color: #9ca3af;
+        }
+        .nav-link:hover {
+            background-color: rgba(55, 65, 81, 0.5);
+            color: white;
+        }
+
+        /* Active Nav Link: Make it "glow" with a gradient and shadow */
+        .nav-link.active {
+            background: linear-gradient(90deg, #8b5cf6, #6366f1);
+            color: white;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+        }
+        
         .nav-menu.is-open > .nav-menu-trigger .chevron { transform: rotate(180deg); }
         .nav-submenu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; }
         .nav-menu.is-open .nav-submenu { max-height: 200px; }
-        .nav-submenu-link { padding-left: 2rem !important; font-size: 0.8rem !important; }
-        /* Buttons & Forms */
-        .btn { padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700; text-align: center; transition: all 0.2s; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-primary { background-color: var(--link-active-bg); color: var(--link-active-text); }
-        .btn-secondary { background-color: var(--btn-secondary-bg); color: var(--text-color); }
-        .form-label { font-size: 0.75rem; color: var(--text-subtle); letter-spacing: 1px; margin-bottom: 1rem; display: block; }
-        .custom-select, .filter-select { background-color: var(--sidebar-bg); border: 1px solid var(--sidebar-border); color: var(--text-color); border-radius: 6px; padding: 0.5rem 0.75rem; }
-        /* Profile & Status Popup */
-        #profile-trigger { cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s; }
-        #profile-trigger:hover { background-color: var(--link-hover-bg); }
-        .status-dot { width: 12px; height: 12px; border-radius: 50%; position: absolute; bottom: 0; right: 0; border: 3px solid var(--sidebar-bg); }
+
+        /* Step Cards: Interactive and clean design */
+        .step-card {
+            background-color: rgba(30, 41, 59, 0.6);
+            border: 1px solid #374151;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        .step-card:hover {
+            transform: translateY(-8px);
+            border-color: #8b5cf6;
+        }
+
+        /* Highlighted text inside descriptions, for emphasis */
+        .highlight {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: #c4b5fd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Main CTA Button: impossible to miss */
+        .btn-cta {
+            background: linear-gradient(90deg, #8b5cf6, #4f46e5);
+            transition: all 0.3s ease;
+        }
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+        }
+        
+        /* Status dot styles */
+        .status-dot { width: 12px; height: 12px; border-radius: 50%; position: absolute; bottom: 0; right: 0; border: 3px solid #111827; }
         .status-online { background-color: #22c55e; }
         .status-idle { background-color: #f59e0b; }
         .status-dnd { background-color: #ef4444; }
         .status-invisible { background-color: #6b7280; }
-        #status-popup { position: fixed; border-radius: 8px; width: 240px; padding: 0.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); z-index: 50; background-color: var(--popup-bg); border: 1px solid var(--popup-border); color: var(--text-color); }
-        .popup-header { padding: 0.75rem; }
-        .popup-username { font-size: 1rem; font-weight: 700; }
-        .popup-status-text { font-size: 0.8rem; color: var(--text-subtle); }
-        .popup-separator { margin: 0.5rem 0; border-color: var(--popup-separator); }
-        .popup-option { display: flex; align-items: center; padding: 0.75rem; border-radius: 4px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-        .popup-option .status-dot { position: static; border: none; margin-right: 0.75rem; }
-        .popup-option:hover { background-color: var(--popup-hover-bg); color: var(--popup-hover-text); }
-        /* Page-Specific Components */
-        .highlight { background-color: var(--highlight-bg); color: var(--highlight-text); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
-        .step-icon { color: var(--link-active-bg); }
-        .room-card { background-color: var(--room-card-bg); padding: 1rem; border-radius: 8px; display: flex; align-items: center; gap: 1rem; transition: background-color 0.2s ease-in-out; border: 1px solid var(--sidebar-border); }
-        .room-card:hover { background-color: var(--room-card-hover-bg); }
-        .room-card-img { width: 80px; height: 80px; object-fit: cover; border-radius: 6px; flex-shrink: 0; background-color: var(--sidebar-bg); }
-        .room-card h3 { font-size: 0.9rem !important; font-family: 'Poppins', sans-serif; font-weight: 700; }
+
+        /* Status popup styles to match the new theme */
+        .status-popup-custom {
+            background-color: #111827; /* Darker than sidebar for contrast */
+            border: 1px solid #374151;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .popup-option:hover { background-color: #8b5cf6; color: white; }
     </style>
 </head>
-<body class="theme-default">
+<body class="text-slate-200">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
-        <aside id="sidebar" class="w-64 p-4 flex-col justify-between fixed inset-y-0 left-0 z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:flex">
-            <div>
-                <div class="flex items-center justify-between pb-4 md:hidden">
-                    <h2 class="text-xl font-bold font-['Press_Start_2P']">GamiCon</h2>
-                    <button id="sidebar-close-button" class="p-2 -mr-2">
+        <aside id="sidebar" class="sidebar-custom w-64 p-4 flex-col justify-between fixed inset-y-0 left-0 z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:flex">
+             <div>
+                <div class="flex items-center justify-between pb-6 md:justify-start">
+                    <h2 class="font-gamer text-xl text-white">GamiCon</h2>
+                    <button id="sidebar-close-button" class="p-2 -mr-2 text-slate-400 hover:text-white md:hidden">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
                 </div>
                 <nav class="space-y-2">
-                    <a href="home1.html" class="nav-link active">
+                    <a href="home1.html" class="nav-link active flex items-center p-2 rounded-lg font-semibold">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                        <span data-translate-key="dashHome">Home</span>
+                        <span class="ml-3" data-translate-key="dashHome">Home</span>
                     </a>
                     <div class="nav-menu" id="dashboard-menu">
-                        <button class="nav-link nav-menu-trigger w-full">
+                        <button class="nav-link nav-menu-trigger w-full flex items-center justify-between p-2 rounded-lg font-semibold">
                             <div class="flex items-center">
                                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-                                <span data-translate-key="dashDashboard">Dashboard</span>
+                                <span class="ml-3" data-translate-key="dashDashboard">Dashboard</span>
                             </div>
-                            <svg class="w-4 h-4 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg class="w-4 h-4 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div class="nav-submenu">
-                            <a href="playnow.html" class="nav-link nav-submenu-link">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.362-6.867 8.21 8.21 0 003 2.48z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1.001A3.75 3.75 0 0012 18z" />
-                                </svg>
+                        <div class="nav-submenu ml-4 mt-1 space-y-1">
+                            <a href="playnow.html" class="nav-link flex items-center p-2 rounded-md text-sm font-semibold">
+                                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.362-6.867 8.21 8.21 0 003 2.48z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1.001A3.75 3.75 0 0012 18z" /></svg>
                                 <span data-translate-key="dashPlayNow">Play Now</span>
                             </a>
-                            <a href="swipevibe.html" class="nav-link nav-submenu-link">
-                                <svg class="w-5 h-5" viewBox="0 0 24 24">
-                                    <path d="M6 3h12c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                                    <path d="M12 15.55L10.9 14.54C8.61 12.46 7 11.02 7 9.25C7 7.8 8.2 6.67 9.72 6.67C10.58 6.67 11.41 7.03 12 7.64C12.59 7.03 13.42 6.67 14.28 6.67C15.8 6.67 17 7.8 17 9.25C17 11.02 15.39 12.46 13.1 14.54L12 15.55z" fill="currentColor"/>
-                                </svg>
-                                <span data-translate-key="dashSwipeVipe">Swipe & Vipe</span>
+                            <a href="swipevibe.html" class="nav-link flex items-center p-2 rounded-md text-sm font-semibold">
+                                 <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24"><path d="M6 3h12c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 15.55L10.9 14.54C8.61 12.46 7 11.02 7 9.25C7 7.8 8.2 6.67 9.72 6.67C10.58 6.67 11.41 7.03 12 7.64C12.59 7.03 13.42 6.67 14.28 6.67C15.8 6.67 17 7.8 17 9.25C17 11.02 15.39 12.46 13.1 14.54L12 15.55z" fill="currentColor"/></svg>
+                                <span data-translate-key="dashSwipeVipe">Swipe & Vibe</span>
                             </a>
                         </div>
                     </div>
-                    <a href="#" class="nav-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span data-translate-key="dashChat">Chat</span></a>
-                    <a href="#" class="nav-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M12 14a4 4 0 100-8 4 4 0 000 8z"></path></svg><span data-translate-key="dashFriends">Friends</span></a>
-                    <a href="#" class="nav-link"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg><span data-translate-key="dashNotifications">Notifications</span></a>
+                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span class="ml-3" data-translate-key="dashChat">Chat</span></a>
+                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M12 14a4 4 0 100-8 4 4 0 000 8z"></path></svg><span class="ml-3" data-translate-key="dashFriends">Friends</span></a>
+                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg><span class="ml-3" data-translate-key="dashNotifications">Notifications</span></a>
                 </nav>
             </div>
-            <div id="profile-trigger" class="flex items-center space-x-3">
+            <div id="profile-trigger" class="flex items-center space-x-3 p-2 rounded-lg cursor-pointer transition-colors hover:bg-slate-700/50">
                  <div class="relative"><img src="https://i.pravatar.cc/50?u=player1" alt="Avatar" class="w-10 h-10 rounded-full"><span id="status-dot" class="status-dot"></span></div>
-                 <div><h3 id="sidebar-username" class="text-sm font-bold"></h3></div>
+                 <div><h3 id="sidebar-username" class="text-sm font-bold text-white"></h3></div>
             </div>
         </aside>
 
         <!-- Main content area -->
-        <main class="flex-1 p-4 md:p-8">
-            <header class="mb-8 flex justify-between items-center">
+        <main class="flex-1 p-6 md:p-10">
+            <header class="mb-10 flex justify-between items-center">
                 <div>
-                    <h1 class="text-2xl md:text-3xl" data-translate-key="homeWelcomeTitle">Welcome to GamiCon!</h1>
-                    <p class="text-base mt-2" style="color: var(--text-subtle);" data-translate-key="homeWelcomeSub">
-                        We're thrilled to have you, <span id="main-username" class="font-semibold" style="color: var(--link-active-bg);"></span>. Here's a quick guide to get you started.
+                    <h1 class="font-gamer text-3xl md:text-4xl text-white" data-translate-key="homeWelcomeTitle">Welcome to GamiCon!</h1>
+                    <p class="text-slate-400 mt-3 text-lg" data-translate-key="homeWelcomeSub">
+                        We're thrilled to have you, <span id="main-username" class="font-semibold text-purple-400"></span>. Here's your mission brief.
                     </p>
                 </div>
-                <button id="mobile-menu-button" class="p-2 -mr-2 md:hidden">
+                <button id="mobile-menu-button" class="p-2 -mr-2 text-slate-400 hover:text-white md:hidden">
                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </header>
             
-            <div class="form-section">
-                <div class="space-y-8">
-                    <!-- Steps -->
-                    <div class="flex items-start space-x-4"><svg class="w-8 h-8 flex-shrink-0 mt-1 step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg><div><h3 class="text-lg font-bold mb-2" data-translate-key="homeStep1Title">Step 1: Set Up Your Profile</h3><p style="color: var(--text-subtle);" data-translate-key="homeStep1Desc">Your journey begins with you! Click on your avatar in the bottom-left corner to open the profile menu. From there you can <span class="highlight">Edit Profile</span> or change your <span class="highlight">Settings</span>.</p></div></div>
-                    <div class="flex items-start space-x-4"><svg class="w-8 h-8 flex-shrink-0 mt-1 step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><div><h3 class="text-lg font-bold mb-2" data-translate-key="homeStep2Title">Step 2: Jump Into a Game</h3><p style="color: var(--text-subtle);" data-translate-key="homeStep2Desc">Ready for action? The <span class="highlight">Dashboard</span> menu on the left has a <span class="highlight">Play Now</span> button. This is your gateway to finding and joining game rooms.</p></div></div>
-                    <div class="flex items-start space-x-4"><svg class="w-8 h-8 flex-shrink-0 mt-1 step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M12 14a4 4 0 100-8 4 4 0 000 8z"></path></svg><div><h3 class="text-lg font-bold mb-2" data-translate-key="homeStep3Title">Step 3: Connect With Friends</h3><p style="color: var(--text-subtle);" data-translate-key="homeStep3Desc">Gaming is better together. Use the <span class="highlight">Friends</span> and <span class="highlight">Chat</span> links in the sidebar to add new friends, manage your friend list, and start conversations.</p></div></div>
+            <!-- Grid-based Step Cards -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Step 1 Card -->
+                <div class="step-card p-6 rounded-lg text-center">
+                    <div class="p-4 bg-slate-900 rounded-lg inline-block mb-4"><svg class="w-12 h-12 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></div>
+                    <h3 class="font-gamer text-lg mb-3 text-white" data-translate-key="homeStep1Title">Customize Profile</h3>
+                    <p class="text-slate-400 text-sm" data-translate-key="homeStep1Desc">Your journey begins with you! Click your avatar to <span class="highlight">Edit Profile</span> or tweak your <span class="highlight">Settings</span>.</p>
                 </div>
-                <div class="text-center mt-12"><a href="playnow.html" class="btn btn-primary px-8 py-3 text-lg hover:scale-105 transform transition-transform" data-translate-key="homeCtaButton">Find Your Buddy Now!</a></div>
+
+                <!-- Step 2 Card -->
+                <div class="step-card p-6 rounded-lg text-center">
+                    <div class="p-4 bg-slate-900 rounded-lg inline-block mb-4"><svg class="w-12 h-12 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                    <h3 class="font-gamer text-lg mb-3 text-white" data-translate-key="homeStep2Title">Jump Into Action</h3>
+                    <p class="text-slate-400 text-sm" data-translate-key="homeStep2Desc">Ready for action? Hit <span class="highlight">Play Now</span> in the Dashboard to find game rooms and start your adventure.</p>
+                </div>
+                
+                <!-- Step 3 Card -->
+                <div class="step-card p-6 rounded-lg text-center">
+                    <div class="p-4 bg-slate-900 rounded-lg inline-block mb-4"><svg class="w-12 h-12 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M12 14a4 4 0 100-8 4 4 0 000 8z"></path></svg></div>
+                    <h3 class="font-gamer text-lg mb-3 text-white" data-translate-key="homeStep3Title">Assemble Your Crew</h3>
+                    <p class="text-slate-400 text-sm" data-translate-key="homeStep3Desc">Use the <span class="highlight">Friends</span> and <span class="highlight">Chat</span> links to add friends, manage your list, and start conversations.</p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center mt-16">
+                <a href="playnow.html" class="btn-cta inline-block px-12 py-4 text-xl font-bold text-white rounded-lg shadow-lg" data-translate-key="homeCtaButton">
+                    Find Your Buddy Now!
+                </a>
             </div>
         </main>
     </div>
 
     <!-- Reusable components -->
-    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
-    <div id="status-popup" class="hidden">
-        <div class="popup-header"><h4 id="popup-username" class="popup-username"></h4><p id="popup-status-text" class="popup-status-text"></p></div><hr class="popup-separator">
-        <div class="popup-option" data-status="online"><span class="status-dot status-online"></span><span data-translate-key="statusOnline"></span></div>
-        <div class="popup-option" data-status="idle"><span class="status-dot status-idle"></span><span data-translate-key="statusIdle"></span></div>
-        <div class="popup-option" data-status="dnd"><span class="status-dot status-dnd"></span><span data-translate-key="statusDnd"></span></div>
-        <div class="popup-option" data-status="invisible"><span class="status-dot status-invisible"></span><span data-translate-key="statusInvisible"></span></div>
-        <hr class="popup-separator">
-        <a href="profiles.html" class="popup-option"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L14.732 3.732z"/></path></svg><span data-translate-key="popupEditProfile"></span></a>
-        <a href="settings.html" class="popup-option"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0 3.35a1.724 1.724 0 001.066 2.573c-.94-1.543.826 3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span data-translate-key="popupSettings"></span></a>
-        <hr class="popup-separator"><a href="index.html" class="popup-option"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg><span data-translate-key="popupLogout"></span></a>
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-30 hidden md:hidden"></div>
+    <div id="status-popup" class="status-popup-custom hidden fixed z-50 w-60 rounded-lg p-2 text-white">
+        <div class="p-2"><h4 id="popup-username" class="font-bold text-base"></h4><p id="popup-status-text" class="text-sm text-slate-400"></p></div><hr class="border-slate-700 my-1">
+        <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="online"><span class="status-dot status-online static mr-3 border-none"></span><span data-translate-key="statusOnline" class="font-semibold">Online</span></div>
+        <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="idle"><span class="status-dot status-idle static mr-3 border-none"></span><span data-translate-key="statusIdle" class="font-semibold">Idle</span></div>
+        <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="dnd"><span class="status-dot status-dnd static mr-3 border-none"></span><span data-translate-key="statusDnd" class="font-semibold">Do Not Disturb</span></div>
+        <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="invisible"><span class="status-dot status-invisible static mr-3 border-none"></span><span data-translate-key="statusInvisible" class="font-semibold">Invisible</span></div>
+        <hr class="border-slate-700 my-1">
+        <a href="profiles.html" class="popup-option flex items-center p-2 rounded-md font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L14.732 3.732z"/></path></svg><span data-translate-key="popupEditProfile">Edit Profile</span></a>
+        <a href="settings.html" class="popup-option flex items-center p-2 rounded-md font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0 3.35a1.724 1.724 0 001.066 2.573c-.94-1.543.826 3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span data-translate-key="popupSettings">Settings</span></a>
+        <hr class="border-slate-700 my-1"><a href="index.html" class="popup-option flex items-center p-2 rounded-md font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg><span data-translate-key="popupLogout">Logout</span></a>
     </div>
 
+    <!-- Your existing JS will work with this new structure -->
     <script src="translation.js"></script>
     <script>
-        // IIFE to avoid polluting the global namespace
         (() => {
-            // Wait for the DOM to be fully loaded before running scripts
             document.addEventListener('DOMContentLoaded', () => {
-                // --- Get all required elements from the DOM ---
-                const body = document.body;
                 const mobileMenuButton = document.getElementById('mobile-menu-button');
                 const sidebar = document.getElementById('sidebar');
                 const sidebarOverlay = document.getElementById('sidebar-overlay');
@@ -175,66 +219,28 @@
                 const dashboardMenu = document.getElementById('dashboard-menu');
                 const profileTrigger = document.getElementById('profile-trigger');
                 const statusPopup = document.getElementById('status-popup');
-                
-                // --- Mock translations if translation.js is missing ---
+
                 if (typeof window.translations === 'undefined') {
                     console.warn("translation.js not found. Using mock data.");
-                    window.translations = {
-                        statusOnline: { en: 'Online' },
-                        statusIdle: { en: 'Idle' },
-                        statusDnd: { en: 'Do Not Disturb' },
-                        statusInvisible: { en: 'Invisible' },
-                    };
+                    window.translations = { statusOnline: { en: 'Online' }, statusIdle: { en: 'Idle' }, statusDnd: { en: 'Do Not Disturb' }, statusInvisible: { en: 'Invisible' } };
                 }
 
-                // --- Shared state and configs from localStorage ---
                 const lang = localStorage.getItem('gamicon_lang') || 'en';
-                const currentTheme = localStorage.getItem('gamicon_theme') || 'theme-default';
                 const currentStatus = localStorage.getItem('gamicon_status') || 'online';
                 const username = localStorage.getItem('gamicon_username') || 'PlayerOne';
-                const statusConfig = {
-                    online: { className: 'status-online', langKey: 'statusOnline' },
-                    idle: { className: 'status-idle', langKey: 'statusIdle' },
-                    dnd: { className: 'status-dnd', langKey: 'statusDnd' },
-                    invisible: { className: 'status-invisible', langKey: 'statusInvisible' },
-                };
-                
-                // --- Theme Manager ---
-                const applyTheme = (theme) => {
-                    body.className = ''; // Clear existing theme classes
-                    body.classList.add(theme);
-                    localStorage.setItem('gamicon_theme', theme);
-                };
+                const statusConfig = { online: { langKey: 'statusOnline' }, idle: { langKey: 'statusIdle' }, dnd: { langKey: 'statusDnd' }, invisible: { langKey: 'statusInvisible' } };
 
-                // --- Mobile Sidebar Functionality ---
-                const openSidebar = () => {
-                    if (!sidebar || !sidebarOverlay) return;
-                    sidebar.classList.remove('-translate-x-full');
-                    sidebar.classList.add('translate-x-0');
-                    sidebarOverlay.classList.remove('hidden');
-                };
-                const closeSidebar = () => {
-                    if (!sidebar || !sidebarOverlay) return;
-                    sidebar.classList.add('-translate-x-full');
-                    sidebar.classList.remove('translate-x-0');
-                    sidebarOverlay.classList.add('hidden');
-                };
+                const openSidebar = () => { if (sidebar && sidebarOverlay) { sidebar.classList.remove('-translate-x-full'); sidebar.classList.add('translate-x-0'); sidebarOverlay.classList.remove('hidden'); } };
+                const closeSidebar = () => { if (sidebar && sidebarOverlay) { sidebar.classList.add('-translate-x-full'); sidebar.classList.remove('translate-x-0'); sidebarOverlay.classList.add('hidden'); } };
                 if (mobileMenuButton) mobileMenuButton.addEventListener('click', (e) => { e.stopPropagation(); openSidebar(); });
                 if (sidebarCloseButton) sidebarCloseButton.addEventListener('click', (e) => { e.stopPropagation(); closeSidebar(); });
                 if (sidebarOverlay) sidebarOverlay.addEventListener('click', (e) => { e.stopPropagation(); closeSidebar(); });
 
-                // --- Dashboard Submenu Accordion ---
                 if (dashboardMenu) {
                     const dashboardTrigger = dashboardMenu.querySelector('.nav-menu-trigger');
-                    if (dashboardTrigger) {
-                        dashboardTrigger.addEventListener('click', (event) => {
-                            event.preventDefault();
-                            dashboardMenu.classList.toggle('is-open');
-                        });
-                    }
+                    if (dashboardTrigger) dashboardTrigger.addEventListener('click', (e) => { e.preventDefault(); dashboardMenu.classList.toggle('is-open'); });
                 }
 
-                // --- User Profile & Status Popup ---
                 if (profileTrigger && statusPopup) {
                     const statusDot = document.getElementById('status-dot');
                     const popupStatusText = document.getElementById('popup-status-text');
@@ -244,10 +250,8 @@
 
                     const setStatus = (status) => {
                         const config = statusConfig[status] || statusConfig.online;
-                        if (statusDot) statusDot.className = `status-dot ${config.className}`;
-                        if (popupStatusText && window.translations[config.langKey]) {
-                            popupStatusText.textContent = window.translations[config.langKey][lang] || config.langKey;
-                        }
+                        if (statusDot) statusDot.className = `status-dot status-${status}`;
+                        if (popupStatusText && window.translations[config.langKey]) popupStatusText.textContent = window.translations[config.langKey][lang] || config.langKey;
                         localStorage.setItem('gamicon_status', status);
                         statusPopup.classList.add('hidden');
                     };
@@ -259,8 +263,8 @@
                     const currentPage = window.location.pathname.split('/').pop() || 'home1.html';
                     const editProfileLink = statusPopup.querySelector('a[href^="profiles.html"]');
                     const settingsLink = statusPopup.querySelector('a[href^="settings.html"]');
-                    if(editProfileLink) editProfileLink.href = `profiles.html?from=${currentPage}`;
-                    if(settingsLink) settingsLink.href = `settings.html?from=${currentPage}`;
+                    if (editProfileLink) editProfileLink.href = `profiles.html?from=${currentPage}`;
+                    if (settingsLink) settingsLink.href = `settings.html?from=${currentPage}`;
                     
                     profileTrigger.addEventListener('click', (event) => {
                         event.stopPropagation();
@@ -270,24 +274,13 @@
                         statusPopup.classList.toggle('hidden');
                     });
                     document.querySelectorAll('.popup-option[data-status]').forEach(option => {
-                        option.addEventListener('click', (event) => {
-                            event.stopPropagation();
-                            setStatus(event.currentTarget.dataset.status);
-                        });
+                        option.addEventListener('click', (e) => { e.stopPropagation(); setStatus(e.currentTarget.dataset.status); });
                     });
-                    window.addEventListener('click', () => {
-                        if (!statusPopup.classList.contains('hidden')) {
-                            statusPopup.classList.add('hidden');
-                        }
-                    });
+                    window.addEventListener('click', () => { if (!statusPopup.classList.contains('hidden')) { statusPopup.classList.add('hidden'); } });
                     setStatus(currentStatus);
                 }
 
-                // --- Apply initial settings ---
-                applyTheme(currentTheme);
-                if (window.setLanguage) {
-                     window.setLanguage(lang);
-                }
+                if (window.setLanguage) window.setLanguage(lang);
             });
         })();
     </script>
