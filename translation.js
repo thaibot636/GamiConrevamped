@@ -561,6 +561,22 @@ errorMax2Styles: {
             en: 'Please pick at least one of the options.',
             th: 'กรุณาเลือกอย่างน้อยหนึ่งตัวเลือก'
         },
+        placeholder_addChoice: {
+  en: 'Add a choice...',
+  th: 'เพิ่มตัวเลือก...'
+},
+placeholder_selectOption: {
+  en: 'Select an option...',
+  th: 'เลือกตัวเลือก...'
+},
+limit: {
+  en: 'limit',
+  th: 'จำกัด'
+},
+none: {
+  en: 'none',
+  th: 'ไม่มี'
+},
 
         reviewTitle: { en: 'GamiCon – Review Your Profile', th: 'GamiCon – ตรวจสอบโปรไฟล์ของคุณ' },
         reviewFinalCheck: { en: 'Final Check', th: 'ตรวจสอบครั้งสุดท้าย' },
