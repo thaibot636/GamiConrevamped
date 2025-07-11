@@ -296,8 +296,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         editMode.querySelectorAll('select[data-key]').forEach(selectEl => {
             const key = selectEl.dataset.key; const field = config.fields[key]; if (!field || !field.choices) return;
-            const placeholder = field.type === 'multi-tag' ? `Add a choice... (limit ${field.limit || 'none'})` : 'Select an option...';
-            selectEl.innerHTML = `<option value="" disabled selected>${placeholder}</option>${field.choices.map(opt => `<option value="${opt}">${opt}</option>`).join('')}`;
+            const placeholder = field.type === 'multi-tag'
+  ? `${translate('placeholder_addChoice')} (${translate('limit')}: ${field.limit || translate('none')})`
+  : translate('placeholder_selectOption');
+
+            selectEl.innerHTML = `<option value="" disabled selected>${placeholder}</option>` +
+    field.choices.map(opt => {
+        const key = reverseTranslationMap[opt] || opt;
+        const translated = translate(key);
+        return `<option value="${opt}">${translated}</option>`;
+    }).join('');
             if(field.type === 'multi-tag') selectEl.addEventListener('change', () => {
                 const choice = selectEl.value;
                 if (!choice) return;
