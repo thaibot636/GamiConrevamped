@@ -114,52 +114,108 @@
           <div data-mode="edit" class="hidden"><select data-key="intention" class="input-field-style w-full mt-2"></select></div>
         </section>
 
+        <!-- 5. Game DNA & Playstyle (MOVED) -->
         <section id="game-dna-section">
-            <div class="flex justify-between items-center section-header-border">
-                <h2 class="text-xl font-semibold" data-translate-key="reviewSectionGameDna">🧬 Game DNA & Playstyle</h2>
-                <div class="flex items-center gap-x-4">
-                    <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
-                    <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
-                    <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
-                </div>
+          <div class="flex justify-between items-center mb-3 border-b-2 border-blue-500 pb-2">
+            <h2 class="text-xl font-semibold" data-translate-key="reviewSectionGameDna">🧬 Game DNA & Playstyle</h2>
+            <div class="flex items-center gap-x-4">
+                <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+                <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+                <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
             </div>
-            <!-- ... content for Game DNA ... -->
+          </div>
+          <div id="dna-content-wrapper">
+            <div data-mode="view" class="space-y-4">
+              <div><h3 class="font-bold text-gray-300" data-translate-key="reviewGames">Games:</h3><div data-display-key="games" class="flex flex-wrap gap-1 mt-1"></div></div>
+              <div><h3 class="font-bold text-gray-300" data-translate-key="reviewGenres">Genres:</h3><div data-display-key="genre" class="flex flex-wrap gap-1 mt-1"></div></div>
+              <div><h3 class="font-bold text-gray-300" data-translate-key="reviewRoles">Roles:</h3><div data-display-key="roles" class="flex flex-wrap gap-1 mt-1"></div></div>
+              <div><h3 class="font-bold text-gray-300" data-translate-key="reviewPlatforms">Platforms:</h3><div data-display-key="platform" class="flex flex-wrap gap-1 mt-1"></div></div>
+              <div><h3 class="font-bold text-gray-300" data-translate-key="reviewPlaytime">Playtime:</h3><div data-display-key="active-time" class="flex flex-wrap gap-1 mt-1"></div></div>
+            </div>
+            <div data-mode="edit" class="space-y-4 hidden">
+               <div><label class="font-bold text-gray-300" data-translate-key="reviewGamesLabel">Games (select at least 1):</label><select data-key="games" class="input-field-style w-full mt-1"></select><div data-tags="games" class="border-t border-gray-700 mt-2 pt-2 min-h-[36px]"></div></div>
+               <div><label class="font-bold text-gray-300" data-translate-key="reviewGenresLabel">Genres:</label><select data-key="genre" class="input-field-style w-full mt-1"></select><div data-tags="genre" class="border-t border-gray-700 mt-2 pt-2 min-h-[36px]"></div></div>
+               <div id="moba-roles-editor" class="hidden transition-all duration-300 space-y-2 pt-2">
+                   <label class="font-bold text-gray-300" data-translate-key="gameDnaQ_MobaRoles">MOBA Roles:</label><select data-key="moba-roles" class="input-field-style w-full mt-1"></select><div data-tags="moba-roles" class="border-t border-gray-700 mt-2 pt-2 min-h-[36px]"></div>
+               </div>
+               <div id="fps-roles-editor" class="hidden transition-all duration-300 space-y-2 pt-2">
+                   <label class="font-bold text-gray-300" data-translate-key="gameDnaQ_FpsRoles">FPS Roles:</label><select data-key="fps-roles" class="input-field-style w-full mt-1"></select><div data-tags="fps-roles" class="border-t border-gray-700 mt-2 pt-2 min-h-[36px]"></div>
+               </div>
+               <div><label class="font-bold text-gray-300" data-translate-key="reviewPlatformsLabel">Platforms:</label><select data-key="platform" class="input-field-style w-full mt-1"></select><div data-tags="platform" class="border-t border-gray-700 mt-2 pt-2 min-h-[36px]"></div></div>
+               <div><label class="font-bold text-gray-300" data-translate-key="reviewPlaytimeLabel">Playtime:</label><select data-key="active-time" class="input-field-style w-full mt-1"></select><div data-tags="active-time" class="border-t border-gray-700 mt-2 pt-2 min-h-[36px]"></div></div>
+               <p class="text-xs text-gray-400 pt-2" data-translate-key="reviewGameDnaTip">Tip: Add a "Genre" like MOBA or FPS to edit the available roles for it.</p>
+            </div>
+          </div>
         </section>
 
+        <!-- 6. Personality (MOVED) -->
         <section id="personality-section">
-            <div class="flex justify-between items-center section-header-border">
-                <h2 class="text-xl font-semibold" data-translate-key="reviewSectionLangPers">💬 Personality</h2>
-                <div class="flex items-center gap-x-4">
-                    <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
-                    <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
-                    <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
-                </div>
+          <div class="flex justify-between items-center mb-3 border-b-2 border-blue-500 pb-2">
+            <h2 class="text-xl font-semibold" data-translate-key="reviewSectionLangPers">💬 Personality</h2> <!-- Changed title for clarity as per your list -->
+            <div class="flex items-center gap-x-4">
+              <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+              <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+              <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
             </div>
-            <!-- ... content for Personality ... -->
+          </div>
+          <div id="pers-content-wrapper">
+              <div data-mode="view" class="space-y-4">
+                <div><h3 class="font-bold text-gray-300" data-translate-key="reviewLanguages">Languages:</h3><div data-display-key="languages" class="flex flex-wrap gap-1 mt-1"></div></div>
+                <div><h3 class="font-bold text-gray-300" data-translate-key="reviewInGameVibe">In-Game Vibe:</h3><div data-display-key="vibe" class="flex flex-wrap gap-1 mt-1"></div></div>
+                <div><h3 class="font-bold text-gray-300" data-translate-key="reviewMbtiType">MBTI Type:</h3><div data-display-key="mbti" class="mt-1"></div></div>
+              </div>
+              <div data-mode="edit" class="space-y-4 hidden">
+                <div><label class="font-bold text-gray-300" data-translate-key="reviewLanguages">Languages:</label><select data-key="languages" class="input-field-style w-full mt-1"></select><div data-tags="languages" class="border-t border-gray-700 mt-2 pt-2 min-h-[36px]"></div></div>
+                <div><label class="font-bold text-gray-300" data-translate-key="reviewInGameVibe">In-Game Vibe:</label><select data-key="vibe" class="input-field-style w-full mt-1"></select><div data-tags="vibe" class="border-t border-gray-700 mt-2 pt-2 min-h-[36px]"></div></div>
+                <div><label class="font-bold text-gray-300" data-translate-key="reviewMbtiType">MBTI Type:</label><select data-key="mbti" class="input-field-style w-full mt-1"></select></div>
+              </div>
+          </div>
         </section>
 
+        <!-- 7. Identity (MOVED) -->
         <section id="identity-section">
-            <div class="flex justify-between items-center section-header-border">
-                <h2 class="text-xl font-semibold" data-translate-key="reviewSectionIdentity">✨ Identity</h2>
-                <div class="flex items-center gap-x-4">
-                    <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
-                    <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
-                    <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
+            <div class="flex justify-between items-center mb-3 border-b-2 border-blue-500 pb-2">
+              <h2 class="text-xl font-semibold" data-translate-key="reviewSectionIdentity">✨ Identity</h2>
+              <div class="flex items-center gap-x-4">
+                <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+                <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+                <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
+              </div>
+            </div>
+            <div id="identity-content-wrapper">
+                <div data-mode="view" class="space-y-4">
+                  <div><h3 class="font-bold text-gray-300" data-translate-key="reviewCommMethod">Communication Method:</h3><div data-display-key="comm-method" class="flex flex-wrap gap-1 mt-1"></div></div>
+                  <div><h3 class="font-bold text-gray-300" data-translate-key="reviewCommStyle">Communication Style:</h3><div data-display-key="comm-style" class="flex flex-wrap gap-1 mt-1"></div></div>
+                  <div><h3 class="font-bold text-gray-300" data-translate-key="reviewEducation">Education:</h3><div data-display-key="education" class="mt-1"></div></div>
+                  <div><h3 class="font-bold text-gray-300" data-translate-key="reviewZodiac">Zodiac:</h3><div data-display-key="zodiac" class="mt-1"></div></div>
+                </div>
+                <div data-mode="edit" class="space-y-4 hidden">
+                  <div><label class="font-bold text-gray-300" data-translate-key="reviewLabelCommMethod">Comm. Method:</label><select data-key="comm-method" class="input-field-style w-full mt-1"></select></div>
+                  <div><label class="font-bold text-gray-300" data-translate-key="reviewLabelCommStyle">Comm. Style:</label><select data-key="comm-style" class="input-field-style w-full mt-1"></select><div data-tags="comm-style" class="border-t border-gray-700 mt-2 pt-2 min-h-[36px]"></div></div>
+                  <div><label class="font-bold text-gray-300" data-translate-key="reviewLabelEducation">Education:</label><select data-key="education" class="input-field-style w-full mt-1"></select></div>
+                  <div><label class="font-bold text-gray-300" data-translate-key="reviewLabelZodiac">Zodiac:</label><select data-key="zodiac" class="input-field-style w-full mt-1"></select></div>
                 </div>
             </div>
-            <!-- ... content for Identity ... -->
         </section>
-        
+
+        <!-- 8. Interests & Hobbies (MOVED) -->
         <section id="interests-section">
-            <div class="flex justify-between items-center section-header-border">
-                <h2 class="text-xl font-semibold" data-translate-key="reviewSectionInterests">💖 Interests & Hobbies</h2>
-                 <div class="flex items-center gap-x-4">
-                    <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
-                    <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
-                    <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
-                </div>
+          <div class="flex justify-between items-center mb-3 border-b-2 border-blue-500 pb-2">
+            <h2 class="text-xl font-semibold" data-translate-key="reviewSectionInterests">💖 Interests & Hobbies</h2>
+            <div class="flex items-center gap-x-4">
+              <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+              <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+              <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
             </div>
-             <!-- ... content for Interests ... -->
+          </div>
+          <div id="interests-content-wrapper">
+              <div data-mode="view" class="space-y-4">
+                <div><h3 class="font-bold text-gray-300" data-translate-key="reviewYourInterests">Your Interests:</h3><div data-display-key="hobbies" class="flex flex-wrap gap-1 mt-1"></div></div>
+              </div>
+              <div data-mode="edit" class="space-y-4 hidden">
+                <div><label class="font-bold text-gray-300" data-translate-key="reviewHobbiesLabel">Hobbies (select at least 1):</label><select data-key="hobbies" class="input-field-style w-full mt-1"></select><div data-tags="hobbies" class="border-t border-gray-700 mt-2 pt-2 min-h-[36px]"></div></div>
+              </div>
+          </div>
         </section>
 
         <!-- NOTE: The rest of your HTML structure remains the same inside the review-content div. -->
