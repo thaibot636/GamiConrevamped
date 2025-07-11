@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             warningsContainer.innerHTML = '';
             alert(translate('alert_profileComplete'));
-            window.location.href = 'home.html';
+            window.location.href = 'home1.html';
         }
     });
 
