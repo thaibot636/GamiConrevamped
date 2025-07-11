@@ -183,11 +183,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Main Data Loading Function ---
     const loadProfileData = () => {
         const profile = getProfile();
+
+        // ========== MODIFIED SECTION: START ==========
+        // If the user's profile (specifically the username) is missing, they cannot be on this page.
         if (!profile.username) {
-            reviewContent.innerHTML = '<p class="text-center text-red-400 font-semibold" data-translate-key="errorProfileNotFound">Profile data not found. Please start over.</p>';
-            if (typeof setLanguage === 'function') setLanguage(localStorage.getItem('gamicon_lang') || 'en');
-            return;
+            // 1. (Optional but recommended) Inform the user so the redirect isn't confusing.
+            alert("Your session may have expired or your profile is not set up. You will be redirected to the home page.");
+            
+            // 2. Redirect to the main landing page, which handles both login and signup flows.
+            window.location.href = 'index.html'; 
+            
+            // 3. Stop any more code from running on this broken page.
+            return; 
         }
+        // ========== MODIFIED SECTION: END ==========
 
         for (const [id, config] of Object.entries(SECTION_CONFIGS)) {
             const dataSlice = config.profileKey ? (profile[config.profileKey] || {}) : profile;
