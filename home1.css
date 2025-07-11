@@ -1,0 +1,73 @@
+/* Base styles */
+body { font-family: 'Poppins', sans-serif; transition: background-color 0.3s, color 0.3s; }
+.font-gamer { font-family: 'Press Start 2P', cursive; }
+
+/* --- THEME STYLES (CORRECTED) --- */
+
+/* 1. New GamiCon Default Theme */
+body.theme-default {
+    background-color: #090a0f;
+    background-image: radial-gradient(ellipse at top, #1b2735, #090a0f);
+    color: #d1d5db;
+}
+.theme-default .font-gamer { color: white; text-shadow: 0 0 5px rgba(139, 92, 246, 0.4), 0 0 10px rgba(139, 92, 246, 0.3); }
+.theme-default header p { color: #9ca3af; }
+.theme-default .sidebar-custom { background-color: rgba(17, 24, 39, 0.8); backdrop-filter: blur(12px); border-right: 1px solid rgba(139, 92, 246, 0.2); }
+.theme-default .nav-link { color: #9ca3af; }
+.theme-default .nav-link:hover { background-color: rgba(55, 65, 81, 0.5); color: white; }
+.theme-default .nav-link.active { background: linear-gradient(90deg, #8b5cf6, #6366f1); color: white; box-shadow: 0 0 15px rgba(139, 92, 246, 0.5); }
+.theme-default .step-card { background-color: rgba(30, 41, 59, 0.6); border: 1px solid #374151; }
+.theme-default .step-card:hover { transform: translateY(-8px); border-color: #8b5cf6; }
+.theme-default .step-icon-container { background-color: #1f2937; color: #8b5cf6; /* Icon color */ }
+.theme-default .highlight { background-color: rgba(139, 92, 246, 0.1); color: #c4b5fd; }
+.theme-default .btn-cta { background: linear-gradient(90deg, #8b5cf6, #4f46e5); }
+.theme-default .btn-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(139, 92, 246, 0.6); }
+.theme-default .status-popup-custom { background-color: #111827; border: 1px solid #374151; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+.theme-default .status-popup-custom .popup-option:hover { background-color: #8b5cf6; color: white; }
+
+/* 2. Light Gray Theme */
+body.theme-light-gray { background-color: #f4f4f5; color: #334155; }
+.theme-light-gray .font-gamer { color: #1f2937; text-shadow: none; }
+.theme-light-gray header p { color: #64748b; }
+.theme-light-gray .sidebar-custom { background-color: #ffffff; border-right: 1px solid #e5e7eb; backdrop-filter: none; }
+.theme-light-gray .nav-link { color: #475569; }
+.theme-light-gray .nav-link:hover { background-color: #f1f5f9; color: #1e293b; }
+.theme-light-gray .nav-link.active { background: #3b82f6; color: white; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+.theme-light-gray .step-card { background-color: #ffffff; border: 1px solid #e5e7eb; }
+.theme-light-gray .step-card:hover { transform: translateY(-8px); border-color: #3b82f6; }
+.theme-light-gray .step-icon-container { background-color: #eef2ff; color: #3b82f6; /* Icon color */ }
+.theme-light-gray .highlight { background-color: #dbeafe; color: #1e3a8a; }
+.theme-light-gray .btn-cta { background: #3b82f6; color: white; }
+.theme-light-gray .btn-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+.theme-light-gray .status-popup-custom { background-color: #ffffff; border: 1px solid #e5e7eb; color: #334155; }
+.theme-light-gray .status-popup-custom .popup-option:hover { background-color: #3b82f6; color: white; }
+
+/* 3. True Dark Theme */
+body.theme-true-dark { background-color: #000; color: #e5e5e5; }
+.theme-true-dark .font-gamer { color: #fff; text-shadow: none; }
+.theme-true-dark header p { color: #a3a3a3; }
+.theme-true-dark .sidebar-custom { background-color: #101010; border-right: 1px solid #333; backdrop-filter: none; }
+.theme-true-dark .nav-link { color: #a3a3a3; }
+.theme-true-dark .nav-link:hover { background-color: #27272a; color: #ffffff; }
+.theme-true-dark .nav-link.active { background: #fafafa; color: #18181b; box-shadow: none; }
+.theme-true-dark .step-card { background-color: #181818; border: 1px solid #333; }
+.theme-true-dark .step-card:hover { transform: translateY(-8px); border-color: #fff; }
+.theme-true-dark .step-icon-container { background-color: #27272a; color: #e5e5e5; /* Icon color */ }
+.theme-true-dark .highlight { background-color: #3f3f46; color: #e4e4e7; }
+.theme-true-dark .btn-cta { background: #fafafa; color: #18181b; }
+.theme-true-dark .btn-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+.theme-true-dark .status-popup-custom { background-color: #181818; border: 1px solid #333; }
+.theme-true-dark .status-popup-custom .popup-option:hover { background-color: #fafafa; color: #18181b; }
+
+/* Shared Component Styles */
+.step-card { transition: all 0.3s ease; transform: translateY(0); }
+.btn-cta { transition: all 0.3s ease; }
+.nav-menu.is-open > .nav-menu-trigger .chevron { transform: rotate(180deg); }
+.nav-submenu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; }
+.nav-menu.is-open .nav-submenu { max-height: 200px; }
+.status-dot { width: 12px; height: 12px; border-radius: 50%; position: absolute; bottom: 0; right: 0; border: 3px solid #111827; }
+.theme-light-gray .status-dot { border-color: #fff; } /* Specific override for light theme */
+.status-online { background-color: #22c55e; }
+.status-idle { background-color: #f59e0b; }
+.status-dnd { background-color: #ef4444; }
+.status-invisible { background-color: #6b7280; }
