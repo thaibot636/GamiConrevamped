@@ -65,26 +65,30 @@
           </div>
         </section>
         
-        <section id="user-info-section">
-          <div class="flex justify-between items-center mb-3 border-b-2 border-blue-500 pb-2">
-            <h2 class="text-xl font-semibold">👤 User Info</h2>
-            <div class="flex items-center gap-x-4">
-              <button data-action="edit" class="text-sm text-blue-400 hover:underline">Edit</button>
-              <button data-action="save" class="text-sm text-green-400 hover:underline hidden">Save</button>
-              <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden">Cancel</button>
-            </div>
-          </div>
-          <div data-mode="view" class="space-y-3 text-gray-200 text-md">
-            <div class="flex justify-between"><span class="font-bold">Username:</span><span data-display-key="username"></span></div>
-            <div class="flex justify-between"><span class="font-bold">Birthday:</span><span data-display-key="birthday"></span></div>
-            <div class="flex justify-between"><span class="font-bold">Gender:</span><span data-display-key="gender"></span></div>
-          </div>
-          <div data-mode="edit" class="space-y-3 hidden">
-            <div class="flex justify-between items-center"><label for="username-edit" class="font-bold">Username:</label><input id="username-edit" data-key="username" type="text" class="input-field-style w-2/3"></div>
-            <div class="flex justify-between items-center"><label for="birthday-edit" class="font-bold">Birthday:</label><input id="birthday-edit" data-key="birthday" type="date" class="input-field-style w-2/3" style="color-scheme: dark;"></div>
-            <div class="flex justify-between items-center"><label for="gender-edit" class="font-bold">Gender:</label><select id="gender-edit" data-key="gender" class="input-field-style w-2/3"><option value="male">Male</option><option value="female">Female</option><option value="non-binary">Non-binary</option></select></div>
-          </div>
-        </section>
+   <section id="user-info-section">
+  <div class="flex justify-between items-center mb-3 border-b-2 border-blue-500 pb-2">
+    <h2 class="text-xl font-semibold">👤 User Info</h2>
+    <div class="flex items-center gap-x-4">
+      <button data-action="edit" class="text-sm text-blue-400 hover:underline">Edit</button>
+      <button data-action="save" class="text-sm text-green-400 hover:underline hidden">Save</button>
+      <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden">Cancel</button>
+    </div>
+  </div>
+  <div data-mode="view" class="space-y-3 text-gray-200 text-md">
+    <div class="flex justify-between"><span class="font-bold">Username:</span><span data-display-key="username"></span></div>
+    <!-- ADD THIS LINE FOR VIEW MODE -->
+    <div class="flex justify-between"><span class="font-bold">Email:</span><span data-display-key="email"></span></div>
+    <div class="flex justify-between"><span class="font-bold">Birthday:</span><span data-display-key="birthday"></span></div>
+    <div class="flex justify-between"><span class="font-bold">Gender:</span><span data-display-key="gender"></span></div>
+  </div>
+  <div data-mode="edit" class="space-y-3 hidden">
+    <div class="flex justify-between items-center"><label for="username-edit" class="font-bold">Username:</label><input id="username-edit" data-key="username" type="text" class="input-field-style w-2/3"></div>
+    <!-- ADD THIS LINE FOR EDIT MODE (READ-ONLY) -->
+    <div class="flex justify-between items-center"><label for="email-edit" class="font-bold">Email:</label><input id="email-edit" data-key="email" type="email" class="input-field-style w-2/3 bg-gray-700 cursor-not-allowed" readonly></div>
+    <div class="flex justify-between items-center"><label for="birthday-edit" class="font-bold">Birthday:</label><input id="birthday-edit" data-key="birthday" type="date" class="input-field-style w-2/3" style="color-scheme: dark;"></div>
+    <div class="flex justify-between items-center"><label for="gender-edit" class="font-bold">Gender:</label><select id="gender-edit" data-key="gender" class="input-field-style w-2/3"><option value="male">Male</option><option value="female">Female</option><option value="non-binary">Non-binary</option></select></div>
+  </div>
+</section>
         
         <section id="bio-section">
           <div class="flex justify-between items-center mb-3 border-b-2 border-blue-500 pb-2">
@@ -166,7 +170,7 @@
 
         <section id="personality-section">
           <div class="flex justify-between items-center mb-3 border-b-2 border-blue-500 pb-2">
-            <h2 class="text-xl font-semibold">💬 Personality</h2>
+            <h2 class="text-xl font-semibold">💬 Languages & Personality</h2>
             <div class="flex items-center gap-x-4">
               <button data-action="edit" class="text-sm text-blue-400 hover:underline">Edit</button>
               <button data-action="save" class="text-sm text-green-400 hover:underline hidden">Save</button>
