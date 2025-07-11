@@ -1,0 +1,124 @@
+/* --- Base Styles --- */
+body { 
+    font-family: 'Poppins', sans-serif; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+.font-gamer { 
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* --- Shared Panel Style for Settings & Profile --- */
+.content-panel {
+    width: 100%;
+    max-width: 42rem; /* From profile page's max-w-2xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem; /* Corresponds to p-8 */
+    border-radius: 12px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* --- Shared Section Header Border --- */
+.section-header-border {
+    border-bottom-width: 2px;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+/*
+====================================
+1. New GamiCon Default Theme
+====================================
+*/
+
+body.theme-default {
+    background-color: #090a0f;
+    color: #d1d5db;
+}
+
+/* Animated background from profiles.css, now scoped to this theme */
+body.theme-default::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -12;
+    background-image: radial-gradient(ellipse at 70% 30%, hsla(300, 50%, 30%, 0.4), transparent 40%),
+                      radial-gradient(ellipse at 20% 80%, hsla(240, 50%, 40%, 0.3), transparent 40%);
+}
+
+@keyframes move-stars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2000px); }
+}
+
+body.theme-default::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -11;
+    image-rendering: pixelated;
+    background-image: radial-gradient(3px 3px at 25px 25px, white, transparent),
+                      radial-gradient(2px 2px at 50px 100px, #DDD, transparent),
+                      radial-gradient(1px 1px at 75px 175px, #777, transparent);
+    background-size: 200px 200px, 300px 300px, 150px 150px;
+    animation: move-stars 100s linear infinite;
+}
+
+.theme-default .font-gamer {
+    text-shadow: 0 0 5px rgba(139, 92, 246, 0.4), 0 0 10px rgba(139, 92, 246, 0.3);
+}
+.theme-default .content-panel {
+    background-color: rgba(17, 24, 39, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+.theme-default .back-button { color: #9ca3af; }
+.theme-default .back-button:hover { color: #ffffff; }
+.theme-default p.text-gray-300 { color: #a1a1aa; }
+.theme-default h2 { color: #e5e7eb; }
+.theme-default .section-header-border { border-color: rgba(139, 92, 246, 0.3); }
+.theme-default .input-field-style {
+    background-color: #1f2937;
+    color: white;
+    border: 1px solid #4b5567;
+}
+.theme-default input[type="date"] { color-scheme: dark; }
+
+
+/*
+===========================
+2. Light Gray Theme
+===========================
+*/
+body.theme-light-gray { background-color: #f4f4f5; color: #334155; }
+.theme-light-gray .content-panel { background-color: #ffffff; border: 1px solid #e5e7eb; }
+.theme-light-gray .back-button { color: #6b7280; }
+.theme-light-gray .back-button:hover { color: #1f2937; }
+.theme-light-gray p.text-gray-300 { color: #64748b; }
+.theme-light-gray h2 { color: #334155; }
+.theme-light-gray .section-header-border { border-color: #e5e7eb; }
+.theme-light-gray .input-field-style {
+    background-color: #f9fafb;
+    color: #1f2937;
+    border: 1px solid #d1d5db;
+}
+.theme-light-gray input[type="date"] { color-scheme: light; }
+
+/*
+===========================
+3. True Dark Theme
+===========================
+*/
+body.theme-true-dark { background-color: #000; color: #fff; }
+.theme-true-dark .content-panel { background-color: #101010; border: 1px solid #333; }
+.theme-true-dark .back-button { color: #a1a1aa; }
+.theme-true-dark .back-button:hover { color: #ffffff; }
+.theme-true-dark p.text-gray-300 { color: #aaa; }
+.theme-true-dark h2 { color: #f4f4f5; }
+.theme-true-dark .section-header-border { border-color: #333; }
+.theme-true-dark .input-field-style {
+    background-color: #181818;
+    color: white;
+    border: 1px solid #333;
+}
+.theme-true-dark input[type="date"] { color-scheme: dark; }

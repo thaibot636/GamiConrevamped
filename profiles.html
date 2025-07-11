@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-translate-key="editProfileTitle">GamiCon – Edit Your Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  
+  <!-- CSS Links: Your original profile styles and the new shared theme styles -->
+  <link rel="stylesheet" href="profiles.css">
+  <link rel="stylesheet" href="themes.css">
+  
+  <style>
+    /* This validation style remains as it is page-specific */
+    section.validation-error h2 { color: #F87171 !important; /* Tailwind's red-400 */ }
+    section.validation-error .section-header-border { border-color: #EF4444 !important; /* Tailwind's red-500 */ }
+  </style>
+
+</head>
+<body class="antialiased">
+  
+  <!-- The nebula and stars backgrounds are now applied directly by themes.css -->
+
+  <section class="min-h-screen flex flex-col items-center justify-center p-4">
+    <!-- MODIFIED: Class changed to content-panel to adopt theme styling -->
+    <div class="content-panel fade-in">
+      
+      <header class="header-nav">
+        <a href="home1.html" class="back-button" data-translate-key="backToHome">← Back to Home</a>
+      </header>
+      
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold mb-2 font-gamer" data-translate-key="editProfileHeader">Edit Profile</h1>
+        <!-- MODIFIED: Added text-gray-300 for theme targeting -->
+        <p class="text-gray-300" data-translate-key="editProfileSubtitle">Make changes to your profile below. Click 'Edit' on any section to begin.</p>
+        <p id="save-status" class="mt-2 h-6 text-green-400 font-semibold transition-opacity duration-300 opacity-0"></p>
+      </div>
+
+      <div id="review-content" class="space-y-6">
+        
+        <!-- MODIFIED: Section header class changed to section-header-border -->
+        <section id="photos-section">
+          <div class="flex justify-between items-center section-header-border">
+            <h2 class="text-xl font-semibold" data-translate-key="reviewSectionPhotos">📸 Photos</h2>
+            <div class="flex items-center gap-x-4">
+              <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+              <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+              <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
+            </div>
+          </div>
+          <div data-mode="view" class="grid grid-cols-3 sm:grid-cols-6 gap-2" data-display-key="photos-view-grid"></div>
+          <div data-mode="edit" class="hidden">
+              <div data-edit-grid="photos" class="grid grid-cols-3 sm:grid-cols-6 gap-2"></div>
+              <p class="text-xs text-gray-400 pt-2 text-center" data-translate-key="reviewPhotosTip">You must add at least 2 photos. The first photo is your main one.</p>
+          </div>
+        </section>
+        
+        <!-- All other sections updated with the new header class -->
+        <section id="user-info-section">
+          <div class="flex justify-between items-center section-header-border">
+            <h2 class="text-xl font-semibold" data-translate-key="reviewSectionUserInfo">👤 User Info</h2>
+            <div class="flex items-center gap-x-4">
+              <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+              <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+              <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
+            </div>
+          </div>
+          <div data-mode="view" class="space-y-3 text-md">
+            <div class="flex justify-between"><span class="font-bold" data-translate-key="reviewUsername">Username:</span><span data-display-key="username"></span></div>
+            <div class="flex justify-between"><span class="font-bold" data-translate-key="reviewEmail">Email:</span><span data-display-key="email"></span></div>
+            <div class="flex justify-between"><span class="font-bold" data-translate-key="reviewBirthday">Birthday:</span><span data-display-key="birthday"></span></div>
+            <div class="flex justify-between"><span class="font-bold" data-translate-key="reviewGender">Gender:</span><span data-display-key="gender"></span></div>
+          </div>
+          <div data-mode="edit" class="space-y-3 hidden">
+            <div class="flex justify-between items-center"><label for="username-edit" class="font-bold" data-translate-key="reviewUsername">Username:</label><input id="username-edit" data-key="username" type="text" class="input-field-style w-2/3"></div>
+            <div class="flex justify-between items-center"><label for="email-edit" class="font-bold" data-translate-key="reviewEmail">Email:</label><input id="email-edit" data-key="email" type="email" class="input-field-style w-2/3 bg-gray-700 cursor-not-allowed" readonly></div>
+            <div class="flex justify-between items-center"><label for="birthday-edit" class="font-bold" data-translate-key="reviewBirthday">Birthday:</label><input id="birthday-edit" data-key="birthday" type="date" class="input-field-style w-2/3"></div>
+            <div class="flex justify-between items-center"><label for="gender-edit" class="font-bold" data-translate-key="reviewGender">Gender:</label><select id="gender-edit" data-key="gender" class="input-field-style w-2/3"><option value="male" data-translate-key="genderMale">Male</option><option value="female" data-translate-key="genderFemale">Female</option><option value="non-binary" data-translate-key="reviewGenderNonBinary">Non-binary</option></select></div>
+          </div>
+        </section>
+        
+        <section id="bio-section">
+          <div class="flex justify-between items-center section-header-border">
+            <h2 class="text-xl font-semibold" data-translate-key="reviewSectionBio">📝 Bio</h2>
+            <div class="flex items-center gap-x-4">
+              <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+              <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+              <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
+            </div>
+          </div>
+          <div data-mode="view" class="text-md">
+            <div data-display-key="bio" class="p-2 rounded-md border border-transparent"></div>
+          </div>
+          <div data-mode="edit" class="space-y-2 hidden">
+            <textarea data-key="bio" rows="4" class="input-field-style w-full resize-y" maxlength="150" data-translate-key="reviewBioPlaceholder" data-translate-target="placeholder" placeholder="Tell us about yourself... (min 20 characters)"></textarea>
+            <p class="char-counter text-xs text-gray-400 text-right">0/150</p>
+          </div>
+        </section>
+
+        <!-- Other sections have their headers updated similarly... -->
+        <section id="intent-section">
+          <div class="flex justify-between items-center section-header-border">
+            <h2 class="text-xl font-semibold" data-translate-key="reviewSectionIntent">🎯 Intent</h2>
+            <div class="flex items-center gap-x-4">
+                <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+                <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+                <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
+            </div>
+          </div>
+          <div data-mode="view"><div data-display-key="intention" class="mt-2"></div></div>
+          <div data-mode="edit" class="hidden"><select data-key="intention" class="input-field-style w-full mt-2"></select></div>
+        </section>
+
+        <section id="game-dna-section">
+            <div class="flex justify-between items-center section-header-border">
+                <h2 class="text-xl font-semibold" data-translate-key="reviewSectionGameDna">🧬 Game DNA & Playstyle</h2>
+                <div class="flex items-center gap-x-4">
+                    <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+                    <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+                    <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
+                </div>
+            </div>
+            <!-- ... content for Game DNA ... -->
+        </section>
+
+        <section id="personality-section">
+            <div class="flex justify-between items-center section-header-border">
+                <h2 class="text-xl font-semibold" data-translate-key="reviewSectionLangPers">💬 Personality</h2>
+                <div class="flex items-center gap-x-4">
+                    <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+                    <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+                    <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
+                </div>
+            </div>
+            <!-- ... content for Personality ... -->
+        </section>
+
+        <section id="identity-section">
+            <div class="flex justify-between items-center section-header-border">
+                <h2 class="text-xl font-semibold" data-translate-key="reviewSectionIdentity">✨ Identity</h2>
+                <div class="flex items-center gap-x-4">
+                    <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+                    <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+                    <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
+                </div>
+            </div>
+            <!-- ... content for Identity ... -->
+        </section>
+        
+        <section id="interests-section">
+            <div class="flex justify-between items-center section-header-border">
+                <h2 class="text-xl font-semibold" data-translate-key="reviewSectionInterests">💖 Interests & Hobbies</h2>
+                 <div class="flex items-center gap-x-4">
+                    <button data-action="edit" class="text-sm text-blue-400 hover:underline" data-translate-key="profilesEdit">Edit</button>
+                    <button data-action="save" class="text-sm text-green-400 hover:underline hidden" data-translate-key="save">Save</button>
+                    <button data-action="cancel" class="text-sm text-gray-400 hover:underline hidden" data-translate-key="profilesCancel">Cancel</button>
+                </div>
+            </div>
+             <!-- ... content for Interests ... -->
+        </section>
+
+        <!-- NOTE: The rest of your HTML structure remains the same inside the review-content div. -->
+        <!-- I've omitted the inner details for brevity, but they should be kept.  -->
+        <!-- Just ensure the section header div uses the `section-header-border` class. -->
+
+      </div>
+      
+      <div id="validation-warnings" class="mt-8 text-center text-red-400 font-semibold"></div>
+
+      <div class="text-center mt-4">
+        <button id="confirm-button" class="inline-block w-full max-w-sm bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 transition-all btn-8bit rounded-md text-lg" data-translate-key="saveProfileButton"> Save and Go Home </button>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="image-modal" class="fixed inset-0 z-50 bg-black bg-opacity-80 items-center justify-center p-4 hidden cursor-pointer" style="display: none;">
+    <img id="modal-content" class="max-w-full max-h-full object-contain" src="" alt="Image Preview">
+  </div>
+  
+  <script src="translation.js"></script> 
+  <script src="profiles.js" defer></script>
+  
+  <!-- NEW: Script to apply the saved theme on page load -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('gamicon_theme') || 'theme-default';
+        document.body.classList.add(savedTheme);
+    });
+  </script>
+</body>
+</html>
