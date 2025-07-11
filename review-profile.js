@@ -1,4 +1,4 @@
-// review-profile.js - REFACTORED to match original options
+// review-profile.js - FINAL CORRECTED VERSION
 document.addEventListener('DOMContentLoaded', () => {
     // --- Centralized Data & Configuration ---
     const getProfile = () => JSON.parse(localStorage.getItem('userProfile')) || {};
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalContent = document.getElementById('modal-content');
     const reviewContent = document.getElementById('review-content');
 
-    // --- Data Choices & Styling (Reverted to match original files) ---
+    // --- Data Choices & Styling ---
     const CHOICES = {
         intention: ['Long term Buddy', 'Play Now, Chill Later', 'Climb the Ranks', 'One Match Wonder', 'Form a Team', 'Still figuring it out'], 
         'comm-method': ['Text Chat', 'Voice Chat (External)', 'In-Game Voice', 'No Communication'], 
@@ -31,100 +31,125 @@ document.addEventListener('DOMContentLoaded', () => {
     const TAG_STYLES = {
         intention: 'bg-green-600', 'comm-method': 'bg-cyan-600', 'comm-style': 'bg-orange-600', education: 'bg-lime-600', zodiac: 'bg-fuchsia-600', languages: 'bg-pink-600', vibe: 'bg-yellow-600', mbti: 'bg-teal-600',  games: 'bg-blue-600', genre: 'bg-purple-600', roles: 'bg-gray-600', 'moba-roles': 'bg-gray-600', 'fps-roles': 'bg-gray-600', platform: 'bg-indigo-600', 'active-time': 'bg-red-600', hobbies: 'bg-rose-600', default: 'bg-gray-500'
     };
+
+    // --- Reverse lookup map for translations ---
+    const createReverseLookup = () => {
+        if (typeof translations === 'undefined') {
+            console.error("The 'translations' object is not available. Make sure translation.js is loaded before this script.");
+            return {};
+        }
+        const lookup = {};
+        for (const key in translations) {
+            if (translations[key].en) {
+                lookup[translations[key].en] = key;
+            }
+        }
+        return lookup;
+    };
+    const reverseTranslationMap = createReverseLookup();
     
-   // --- Section Definitions (Refactored with updated limits) ---
-const SECTION_CONFIGS = {
-    'photos-section': {
-        profileKey: 'media', message: 'Photos updated!', fields: { photos: { type: 'photo-grid' } }
-    },
-    'user-info-section': { 
-        profileKey: null, message: 'User info updated!', 
-        // HIGHLIGHT: Added 'email' to this list
-        fields: { 
-            username: { type: 'simple' }, 
-            email: { type: 'simple' }, // <-- ADD THIS
-            birthday: { type: 'simple' }, 
-            gender: { type: 'simple' } 
-        } 
-    },
-    'bio-section': {
-            profileKey: null, message: 'Bio updated!', fields: { bio: { type: 'simple' } },
-            onEdit: (sectionEl) => {
-                const textarea = sectionEl.querySelector('textarea[data-key="bio"]');
-                const charCounter = sectionEl.querySelector('.char-counter');
-                const updateCounter = () => { charCounter.textContent = `${textarea.value.length}/150`; };
-                textarea.addEventListener('input', updateCounter);
-                updateCounter();
-            }
+   // --- Section Definitions ---
+    const SECTION_CONFIGS = {
+        'photos-section': {
+            profileKey: 'media', message: 'Photos updated!', fields: { photos: { type: 'photo-grid' } }
         },
-        'intent-section': { 
-            profileKey: null, message: 'Intent updated!', fields: { intention: { type: 'single-select', choices: CHOICES.intention } } 
-        },
-        'interests-section': {
-            profileKey: 'interests', message: 'Interests & hobbies updated!',
-            // UPDATED: Limit changed to 10 to match Interest-Hobbies.js
-            fields: { hobbies: { type: 'multi-tag', choices: CHOICES.hobbies, limit: 10 } } 
-        },
-        'identity-section': {
-            profileKey: 'identity', message: 'Identity info updated!',
+        'user-info-section': { 
+            profileKey: null, message: 'User info updated!', 
             fields: { 
-                'comm-method': { type: 'single-select', choices: CHOICES['comm-method'] }, 
-                // UPDATED: Limit changed to 2 to match ur-identity.js
-                'comm-style': { type: 'multi-tag', choices: CHOICES['comm-style'], limit: 2 }, 
-                education: { type: 'single-select', choices: CHOICES.education }, 
-                zodiac: { type: 'single-select', choices: CHOICES.zodiac } 
-            }
-        },
-        'personality-section': { 
-            profileKey: 'personality', message: 'Personality info updated!', 
-            fields: { 
-                languages: { type: 'multi-tag', choices: CHOICES.languages }, // lang-pers.js has no explicit max limit
-                vibe: { type: 'multi-tag', choices: CHOICES.vibe }, // lang-pers.js has no explicit max limit
-                mbti: { type: 'single-select', choices: CHOICES.mbti } 
+                username: { type: 'simple' }, 
+                email: { type: 'simple' }, 
+                birthday: { type: 'simple' }, 
+                gender: { type: 'simple' } 
             } 
         },
-        'game-dna-section': {
-            profileKey: 'gameDna', message: 'Game DNA updated!',
-            fields: { 
-                games: { type: 'multi-tag', choices: CHOICES.games, limit: 5 }, 
-                genre: { type: 'multi-tag', choices: CHOICES.genre, limit: 3 }, 
-                'moba-roles': { type: 'multi-tag', choices: CHOICES['moba-roles'], limit: 5 }, 
-                'fps-roles': { type: 'multi-tag', choices: CHOICES['fps-roles'], limit: 5 }, 
-                platform: { type: 'multi-tag', choices: CHOICES.platform, limit: 5 }, 
-                'active-time': { type: 'multi-tag', choices: CHOICES['active-time'], limit: 4 } 
+        'bio-section': {
+                profileKey: null, message: 'Bio updated!', fields: { bio: { type: 'simple' } },
+                onEdit: (sectionEl) => {
+                    const textarea = sectionEl.querySelector('textarea[data-key="bio"]');
+                    const charCounter = sectionEl.querySelector('.char-counter');
+                    const updateCounter = () => { charCounter.textContent = `${textarea.value.length}/150`; };
+                    textarea.addEventListener('input', updateCounter);
+                    updateCounter();
+                }
             },
-            onEdit: (sectionEl, data) => toggleRoleEditors(data.genre || []),
-            onSave: (data) => { if (!data.genre?.includes('MOBA')) data['moba-roles'] = []; if (!data.genre?.includes('FPS')) data['fps-roles'] = []; return data; },
-            onChange: { genre: (newData) => toggleRoleEditors(newData) }
-        }
+            'intent-section': { 
+                profileKey: null, message: 'Intent updated!', fields: { intention: { type: 'single-select', choices: CHOICES.intention } } 
+            },
+            'interests-section': {
+                profileKey: 'interests', message: 'Interests & hobbies updated!',
+                fields: { hobbies: { type: 'multi-tag', choices: CHOICES.hobbies, limit: 10 } } 
+            },
+            'identity-section': {
+                profileKey: 'identity', message: 'Identity info updated!',
+                fields: { 
+                    'comm-method': { type: 'single-select', choices: CHOICES['comm-method'] }, 
+                    'comm-style': { type: 'multi-tag', choices: CHOICES['comm-style'], limit: 2 }, 
+                    education: { type: 'single-select', choices: CHOICES.education }, 
+                    zodiac: { type: 'single-select', choices: CHOICES.zodiac } 
+                }
+            },
+            'personality-section': { 
+                profileKey: 'personality', message: 'Personality info updated!', 
+                fields: { 
+                    languages: { type: 'multi-tag', choices: CHOICES.languages }, 
+                    vibe: { type: 'multi-tag', choices: CHOICES.vibe },
+                    mbti: { type: 'single-select', choices: CHOICES.mbti } 
+                } 
+            },
+            'game-dna-section': {
+                profileKey: 'gameDna', message: 'Game DNA updated!',
+                fields: { 
+                    games: { type: 'multi-tag', choices: CHOICES.games, limit: 5 }, 
+                    genre: { type: 'multi-tag', choices: CHOICES.genre, limit: 3 }, 
+                    'moba-roles': { type: 'multi-tag', choices: CHOICES['moba-roles'], limit: 5 }, 
+                    'fps-roles': { type: 'multi-tag', choices: CHOICES['fps-roles'], limit: 5 }, 
+                    platform: { type: 'multi-tag', choices: CHOICES.platform, limit: 5 }, 
+                    'active-time': { type: 'multi-tag', choices: CHOICES['active-time'], limit: 4 } 
+                },
+                onEdit: (sectionEl, data) => toggleRoleEditors(data.genre || []),
+                onSave: (data) => { if (!data.genre?.includes('MOBA')) data['moba-roles'] = []; if (!data.genre?.includes('FPS')) data['fps-roles'] = []; return data; },
+                onChange: { genre: (newData) => toggleRoleEditors(newData) }
+            }
     };
     
-    // --- All Generic Helper Functions ---
+    // --- Generic Helper Functions ---
     const openModal = src => { modalContent.src = src; imageModal.style.display = "flex"; };
     const closeModal = () => { modalContent.src = ""; imageModal.style.display = "none"; };
     const statusEl = document.getElementById("save-status");
     const showSaveStatus = msg => { statusEl.textContent = msg; statusEl.classList.remove("opacity-0"); setTimeout(() => statusEl.classList.add("opacity-0"), 2500); };
     const toggleRoleEditors = genres => { document.getElementById("moba-roles-editor")?.classList.toggle("hidden", !genres?.includes("MOBA")); document.getElementById("fps-roles-editor")?.classList.toggle("hidden", !genres?.includes("FPS")); };
 
+    // --- REFINED renderTags Function ---
     const renderTags = (container, items, styleKey, isEditable = false) => {
         if (!container) return;
         const itemsArr = Array.isArray(items) ? items.filter(Boolean) : [items].filter(Boolean);
-        const transformedItems = itemsArr.map(item => item === 'duo' ? 'Find a Duo Partner' : item); // Transform 'duo' for display
-        if (transformedItems.length === 0 || (transformedItems.length === 1 && (!transformedItems[0] || transformedItems[0].toLowerCase() === "not specified"))) {
-            container.innerHTML = '<span class="text-gray-400">Not specified</span>';
+        const transformedItems = itemsArr.map(item => item === 'duo' ? 'Find a Duo Partner' : item);
+        const isEmpty = transformedItems.length === 0 || (transformedItems.length === 1 && (!transformedItems[0] || transformedItems[0].toLowerCase() === "not specified"));
+
+        if (isEmpty) {
+            container.innerHTML = '<span class="text-gray-400" data-translate-key="notSpecified">Not specified</span>';
             return;
         }
+
         container.innerHTML = transformedItems.map(item => {
             const style = TAG_STYLES[styleKey] || TAG_STYLES.default;
             const removeBtn = isEditable ? `<button class="remove-btn" data-key="${styleKey}" data-item="${item}">x</button>` : "";
-            return `<span class="tag ${style}">${item}${removeBtn}</span>`;
+            const translationKey = reverseTranslationMap[item];
+
+            if (translationKey) {
+                return `<span class="tag ${style}" data-translate-key="${translationKey}">${item}${removeBtn}</span>`;
+            } else {
+                return `<span class="tag ${style}">${item}${removeBtn}</span>`;
+            }
         }).join("");
     };
-
+    
+    // --- REFINED renderPhotoGrid Function ---
     const renderPhotoGrid = (container) => (photos = []) => {
         if (!container) return;
-        container.innerHTML = (photos.length === 0) 
-            ? '<span class="text-gray-400 col-span-full">No photos uploaded.</span>'
+        const hasPhotos = photos && photos.filter(Boolean).length > 0;
+        container.innerHTML = !hasPhotos
+            ? '<span class="text-gray-400 col-span-full" data-translate-key="notSpecifiedPhotos">No photos uploaded.</span>'
             : photos.map(src => `<img src="${src}" class="w-full h-full object-cover rounded-md aspect-square bg-gray-700 cursor-pointer">`).join('');
     };
     
@@ -146,34 +171,65 @@ const SECTION_CONFIGS = {
         }
     };
     
-    // --- Main Data Loading Function ---
+    // --- **FULLY CORRECTED** Main Data Loading Function ---
     const loadProfileData = () => {
         const profile = getProfile();
         if (!profile.username) {
-            reviewContent.innerHTML = '<p class="text-center text-red-400 font-semibold">Profile data not found. Please start over.</p>';
+            reviewContent.innerHTML = '<p class="text-center text-red-400 font-semibold" data-translate-key="errorProfileNotFound">Profile data not found. Please start over.</p>';
+            if (typeof setLanguage === 'function') setLanguage(localStorage.getItem('gamicon_lang') || 'en');
             return;
         }
+
         for (const [id, config] of Object.entries(SECTION_CONFIGS)) {
             const dataSlice = config.profileKey ? (profile[config.profileKey] || {}) : profile;
-            for(const key in config.fields){
+            for (const key in config.fields) {
+                
+                // --- FIX START ---
+                // Handle the photo grid as a special case because its display key is different from its data key.
                 if (config.fields[key].type === "photo-grid") {
-                    renderPhotoGrid(document.querySelector(`[data-display-key="photos-view-grid"]`))(dataSlice.photos);
+                    const gridContainer = document.querySelector('[data-display-key="photos-view-grid"]');
+                    renderPhotoGrid(gridContainer)(dataSlice.photos);
+                    continue; // Skip the rest of the loop for this field
+                }
+                // --- FIX END ---
+
+                const displayEl = document.querySelector(`[data-display-key="${key}"]`);
+                if (!displayEl) continue;
+
+                const finalValue = config.profileKey === null ? profile[key] : dataSlice[key];
+                const isTagType = TAG_STYLES[key] || Array.isArray(finalValue);
+                
+                if (isTagType) {
+                    renderTags(displayEl, finalValue, key);
                 } else {
-                    const displayEl = document.querySelector(`[data-display-key="${key}"]`);
-                    if (displayEl) {
-                        const value = dataSlice[key];
-                        const finalValue = config.profileKey === null ? profile[key] : value;
-                        const isTagType = TAG_STYLES[key] || Array.isArray(finalValue);
-                        isTagType ? renderTags(displayEl, finalValue, key) : displayEl.textContent = finalValue || "Not specified";
+                    const valueIsMissing = !finalValue || String(finalValue).trim() === '' || String(finalValue).toLowerCase() === 'not specified';
+                    if (valueIsMissing) {
+                        displayEl.setAttribute('data-translate-key', 'notSpecified');
+                        displayEl.textContent = 'Not specified';
+                    } else if (key === 'gender') {
+                        const genderKey = 'gender' + finalValue.charAt(0).toUpperCase() + finalValue.slice(1);
+                        displayEl.setAttribute('data-translate-key', genderKey);
+                        displayEl.textContent = finalValue;
+                    } else {
+                        displayEl.removeAttribute('data-translate-key');
+                        displayEl.textContent = finalValue;
                     }
                 }
             }
         }
+        
         const roles = [...profile.gameDna?.['moba-roles'] || [], ...profile.gameDna?.['fps-roles'] || []];
         renderTags(document.querySelector('[data-display-key="roles"]'), roles, 'roles');
+        
+        if (typeof setLanguage === 'function') {
+            const currentLang = localStorage.getItem('gamicon_lang') || 'en';
+            setLanguage(currentLang);
+        } else {
+            console.error("setLanguage function not found. Ensure translation.js is loaded first.");
+        }
     };
     
-    // --- Generic Section Editor Creator Function ---
+    // --- Generic Section Editor Creator Function (unchanged) ---
     const createSectionEditor = (id) => {
         const config = SECTION_CONFIGS[id]; if (!config) return;
         const sectionEl = document.getElementById(id);
@@ -226,7 +282,7 @@ const SECTION_CONFIGS = {
             config.profileKey ? (profile[config.profileKey] = { ...(profile[config.profileKey] || {}), ...finalData }) : (profile = { ...profile, ...finalData });
             
             saveProfile(profile);
-            loadProfileData();
+            loadProfileData(); 
             showSaveStatus(config.message);
             toggleMode(false);
         });
@@ -256,11 +312,7 @@ const SECTION_CONFIGS = {
             if (e.target.matches('.remove-btn')) {
                 const { key, item } = e.target.dataset;
                 if (!tempData[key]) return;
-                if (item === 'Find a Duo Partner' && key === 'intention') { // Handle transformed value on remove
-                    tempData[key] = [];
-                } else {
-                    tempData[key] = tempData[key].filter(i => i !== item);
-                }
+                tempData[key] = tempData[key].filter(i => i !== item);
                 renderTags(e.target.closest('[data-tags]'), tempData[key], key, true);
                 config.onChange?.[key]?.(tempData[key]);
             }
@@ -277,9 +329,10 @@ const SECTION_CONFIGS = {
                 const file = e.target.files?.[0];
                 if (e.target.type !== 'file' || !file) return;
                 const index = parseInt(e.target.dataset.slotIndex, 10);
-                tempData.photos = tempData.photos || [];
+                tempData.photos = tempData.photos || Array(6).fill(null);
                 if (tempData.photos.filter(p => p).length >= 6 && !tempData.photos[index]) {
                      alert("You can add up to 6 photos.");
+                     e.target.value = '';
                      return;
                 }
                 const reader = new FileReader();
@@ -292,7 +345,7 @@ const SECTION_CONFIGS = {
         }
     };
     
-    // --- Validation and Confirmation Logic ---
+    // --- Validation and Confirmation Logic (unchanged) ---
     const confirmButton = document.getElementById('confirm-button');
     const warningsContainer = document.getElementById('validation-warnings');
 
@@ -348,10 +401,11 @@ const SECTION_CONFIGS = {
         if (errors.length > 0) {
             const uniqueErrorMessages = [...new Set(errors.map(e => e.message))];
             warningsContainer.innerHTML = `
-                <p class="mb-2">Please complete the highlighted sections:</p>
+                <p class="mb-2" data-translate-key="validationWarningHeader">Please complete the highlighted sections:</p>
                 <ul class="list-none text-left inline-block">
                     ${uniqueErrorMessages.map(msg => `<li>${msg}</li>`).join('')}
                 </ul>`;
+            if (typeof setLanguage === 'function') setLanguage(localStorage.getItem('gamicon_lang') || 'en');
             document.querySelector('.validation-error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
             warningsContainer.innerHTML = '';
@@ -362,7 +416,7 @@ const SECTION_CONFIGS = {
 
     // --- Initialization & Main Event Listeners ---
     if (!reviewContent) return;
-    loadProfileData();
+    loadProfileData(); 
     Object.keys(SECTION_CONFIGS).forEach(createSectionEditor);
     reviewContent.addEventListener('click', e => {if (e.target.matches('[data-display-key="photos-view-grid"] img')) openModal(e.target.src)});
     imageModal?.addEventListener('click', closeModal);
