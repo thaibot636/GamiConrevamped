@@ -28,7 +28,7 @@ h1, .font-8bit, .brand-logo {
 
 /* Header & Navigation */
 .header-custom {
-    background-color: rgba(9, 10, 15, 0.6);
+    background-color: rgba(9, 10, 15, 0.85); /* Increased from 0.6 to 0.85 */
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(139, 92, 246, 0.15);
 }
