@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         menu: { en: 'MENU', th: 'เมนู' },
         footer: { en: '© 2025 GamiCon. All rights reserved.', th: '© 2025 GamiCon สงวนลิขสิทธิ์' },
         back: { en: 'BACK', th: 'กลับ' },
-        skip: { en: 'SKIP >>', th: 'ข้าม >>' },
+        skip: { en: 'SKIP ', th: 'ข้าม' },
         backToHome: { en: '.. Back to Home', th: '.. กลับหน้าหลัก' },
         select: { en: 'SELECT', th: 'เลือก' },
         navResources: { en: 'Resources', th: 'คลังข้อมูล'},
@@ -604,7 +604,12 @@ errorMax2Styles: {
         reviewPlaytimeLabel: { en: 'Playtime:', th: 'เวลาเล่น:' },
         reviewGameDnaTip: { en: 'Tip: Add a "Genre" like MOBA or FPS to edit the available roles for it.', th: 'เคล็ดลับ: เพิ่ม "แนวเกม" เช่น MOBA หรือ FPS เพื่อแก้ไขตำแหน่งที่สามารถเลือกได้' },
         reviewConfirmButton: { en: ' Confirm & Proceed ', th: ' ยืนยันและไปต่อ ' },
-        
+        notSpecified: { en: "Not specified", th: "ไม่ระบุ" },
+        validationWarningHeader: {en:"Please complete the highlighted sections:" , th: 'กรุณากรอกข้อมูลในส่วนที่เน้นไว้ให้สมบูรณ์:'},
+         notSpecifiedPhotos: {
+        "en": "No photos uploaded.",
+        "th": "ไม่มีการอัพโหลดรูปภาพ"
+    },
         // --- write-bios.html (Bio Page) ---
 writeBioTitle: { en: 'Your Bio', th: 'ไบโอของคุณ' },
 writeBioSubtitle: { en: 'Craft your legend. Tell the world who you are.', th: 'สร้างตำนานของคุณ บอกให้โลกรู้ว่าคุณเป็นใคร' },
