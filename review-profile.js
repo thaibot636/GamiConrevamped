@@ -1,4 +1,4 @@
-// review-profile.js - FINAL CORRECTED VERSION
+// review-profile.js - FULLY INTEGRATED WITH TRANSLATION KEYS
 document.addEventListener('DOMContentLoaded', () => {
     // --- Centralized Data & Configuration ---
     const getProfile = () => JSON.parse(localStorage.getItem('userProfile')) || {};
@@ -111,6 +111,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 onChange: { genre: (newData) => toggleRoleEditors(newData) }
             }
     };
+
+    // --- Translation Helper ---
+    const translate = (key) => {
+        if (typeof translations === 'undefined' || !translations[key]) {
+            console.warn(`Translation key not found: ${key}`);
+            return key; // Fallback to the key itself if not found
+        }
+        const currentLang = localStorage.getItem('gamicon_lang') || 'en';
+        return translations[key][currentLang] || translations[key]['en'];
+    };
     
     // --- Generic Helper Functions ---
     const openModal = src => { modalContent.src = src; imageModal.style.display = "flex"; };
@@ -119,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const showSaveStatus = msg => { statusEl.textContent = msg; statusEl.classList.remove("opacity-0"); setTimeout(() => statusEl.classList.add("opacity-0"), 2500); };
     const toggleRoleEditors = genres => { document.getElementById("moba-roles-editor")?.classList.toggle("hidden", !genres?.includes("MOBA")); document.getElementById("fps-roles-editor")?.classList.toggle("hidden", !genres?.includes("FPS")); };
 
-    // --- REFINED renderTags Function ---
+    // --- Rendering Functions ---
     const renderTags = (container, items, styleKey, isEditable = false) => {
         if (!container) return;
         const itemsArr = Array.isArray(items) ? items.filter(Boolean) : [items].filter(Boolean);
@@ -144,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join("");
     };
     
-    // --- REFINED renderPhotoGrid Function ---
     const renderPhotoGrid = (container) => (photos = []) => {
         if (!container) return;
         const hasPhotos = photos && photos.filter(Boolean).length > 0;
@@ -171,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // --- **FULLY CORRECTED** Main Data Loading Function ---
+    // --- Main Data Loading Function ---
     const loadProfileData = () => {
         const profile = getProfile();
         if (!profile.username) {
@@ -183,15 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const [id, config] of Object.entries(SECTION_CONFIGS)) {
             const dataSlice = config.profileKey ? (profile[config.profileKey] || {}) : profile;
             for (const key in config.fields) {
-                
-                // --- FIX START ---
-                // Handle the photo grid as a special case because its display key is different from its data key.
                 if (config.fields[key].type === "photo-grid") {
                     const gridContainer = document.querySelector('[data-display-key="photos-view-grid"]');
                     renderPhotoGrid(gridContainer)(dataSlice.photos);
-                    continue; // Skip the rest of the loop for this field
+                    continue; 
                 }
-                // --- FIX END ---
 
                 const displayEl = document.querySelector(`[data-display-key="${key}"]`);
                 if (!displayEl) continue;
@@ -229,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // --- Generic Section Editor Creator Function (unchanged) ---
+    // --- Section Editor Logic ---
     const createSectionEditor = (id) => {
         const config = SECTION_CONFIGS[id]; if (!config) return;
         const sectionEl = document.getElementById(id);
@@ -345,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // --- Validation and Confirmation Logic (unchanged) ---
+    // --- Validation, Confirmation, and Submission Logic ---
     const confirmButton = document.getElementById('confirm-button');
     const warningsContainer = document.getElementById('validation-warnings');
 
@@ -360,56 +365,58 @@ document.addEventListener('DOMContentLoaded', () => {
         const profile = getProfile();
         const errors = [];
         
+        // REPLACED to use translation keys instead of hardcoded messages
         if (!profile.media?.photos?.filter(Boolean).length || profile.media.photos.filter(Boolean).length < 2) {
-            errors.push({ sectionId: 'photos-section', message: '• You must upload at least 2 photos.' });
+            errors.push({ sectionId: 'photos-section', messageKey: 'validation_min_2_photos' });
         }
         if (!profile.bio || profile.bio.trim().length < 20) {
-            errors.push({ sectionId: 'bio-section', message: '• Your bio must be at least 20 characters long.' });
+            errors.push({ sectionId: 'bio-section', messageKey: 'validation_bio_min_20_chars' });
         }
         if (!profile.intention || profile.intention.toLowerCase() === 'not specified' || profile.intention === '') {
-            errors.push({ sectionId: 'intent-section', message: '• Please select your intent.' });
+            errors.push({ sectionId: 'intent-section', messageKey: 'validation_select_intent' });
         }
         if (!profile.interests?.hobbies?.length || profile.interests.hobbies.length < 1) {
-            errors.push({ sectionId: 'interests-section', message: '• Please select at least 1 interest or hobby.' });
+            errors.push({ sectionId: 'interests-section', messageKey: 'validation_min_1_hobby' });
         }
         if (!profile.identity?.['comm-method']?.length) {
-            errors.push({ sectionId: 'identity-section', message: '• Please select a communication method.' });
+            errors.push({ sectionId: 'identity-section', messageKey: 'validation_select_comm_method' });
         }
         if (!profile.identity?.['comm-style']?.length) {
-            errors.push({ sectionId: 'identity-section', message: '• Please select at least 1 communication style.' });
+            errors.push({ sectionId: 'identity-section', messageKey: 'validation_min_1_comm_style' });
         }
         if (!profile.personality?.languages?.length) {
-            errors.push({ sectionId: 'personality-section', message: '• Please select at least 1 language.' });
+            errors.push({ sectionId: 'personality-section', messageKey: 'validation_min_1_language' });
         }
         if (!profile.personality?.vibe?.length) {
-            errors.push({ sectionId: 'personality-section', message: '• Please select at least 1 in-game vibe.' });
+            errors.push({ sectionId: 'personality-section', messageKey: 'validation_min_1_vibe' });
         }
         if (!profile.gameDna?.games?.length || profile.gameDna.games.length < 1) {
-            errors.push({ sectionId: 'game-dna-section', message: '• Please add at least 1 game to your profile.' });
+            errors.push({ sectionId: 'game-dna-section', messageKey: 'validation_min_1_game' });
         }
         if (!profile.gameDna?.genre?.length || profile.gameDna.genre.length < 1) {
-            errors.push({ sectionId: 'game-dna-section', message: '• Please select at least 1 game genre.' });
+            errors.push({ sectionId: 'game-dna-section', messageKey: 'validation_min_1_genre' });
         }
         
         return errors;
     };
 
+    // REPLACED to look up translation keys before displaying messages
     confirmButton?.addEventListener('click', () => {
         const errors = checkAllRequirements();
         applyValidationStyles(errors);
 
         if (errors.length > 0) {
-            const uniqueErrorMessages = [...new Set(errors.map(e => e.message))];
+            const uniqueErrorMessageKeys = [...new Set(errors.map(e => e.messageKey))];
             warningsContainer.innerHTML = `
                 <p class="mb-2" data-translate-key="validationWarningHeader">Please complete the highlighted sections:</p>
                 <ul class="list-none text-left inline-block">
-                    ${uniqueErrorMessages.map(msg => `<li>${msg}</li>`).join('')}
+                    ${uniqueErrorMessageKeys.map(key => `<li>• ${translate(key)}</li>`).join('')}
                 </ul>`;
             if (typeof setLanguage === 'function') setLanguage(localStorage.getItem('gamicon_lang') || 'en');
             document.querySelector('.validation-error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
             warningsContainer.innerHTML = '';
-            alert('Profile complete! Proceeding to dashboard...');
+            alert(translate('alert_profileComplete'));
             window.location.href = 'home.html';
         }
     });
