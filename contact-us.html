@@ -12,106 +12,100 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
-    <!-- Your existing stylesheet for header/footer consistency -->
-    <link rel="stylesheet" href="styleindex.css">
-    <!-- Link to the new contact page stylesheet -->
+    <!-- Main Stylesheet for Contact Page -->
     <link rel="stylesheet" href="contact-us.css">
 </head>
-<body class="bg-black text-white antialiased">
+<body class="antialiased">
 
-    <!-- GamiCon Header (Consistent with other pages) -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-black">
+    <!-- GamiCon Header -->
+    <header class="fixed top-0 left-0 w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center space-x-8">
-                    <a href="index.html" class="flex items-center"><img src="logo/logo1.png" alt="GamiCon Logo" class="h-8 mr-2"><span class="text-xl font-bold text-white brand-logo">GamiCon</span></a>
-                    <div class="hidden md:flex items-center space-x-8">
-                        <a href="index.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors hover-underline" data-translate-key="navHome">Home</a>
-                        <a href="products.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors hover-underline" data-translate-key="navProducts">Products</a>
-                        <a href="resources.html" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors hover-underline" data-translate-key="navResources">Resources</a>
-                        <a href="contact-us.html" class="text-sm font-semibold text-white transition-colors hover-underline" data-translate-key="navContactus">About Us</a>
+                    <a href="index.html" class="flex items-center">
+                        <img src="logo/logo1.png" alt="GamiCon Logo" class="h-8 mr-2"><span class="brand-logo">GamiCon</span>
+                    </a>
+                    <div class="hidden md:flex items-center space-x-6">
+                        <!-- UPDATED: Added nav-link class -->
+                        <a href="index.html" class="nav-link" data-translate-key="navHome">Home</a>
+                        <a href="products.html" class="nav-link" data-translate-key="navProducts">Products</a>
+                        <a href="resources.html" class="nav-link" data-translate-key="navResources">Resources</a>
+                        <a href="contact-us.html" class="nav-link" data-translate-key="navContactus">Contact Us</a>
                     </div>
                 </div>
                 <div class="flex items-center">
-                    <div class="hidden md:flex items-center space-x-2">
-                        <button class="lang-toggle text-sm font-semibold text-gray-400 hover:text-white px-3 py-2 transition-colors">ไทย</button>
-                        <a href="loading.html?action=login" class="text-sm font-semibold text-gray-300 hover:text-white px-3 py-2 transition-colors" data-translate-key="login">Log In</a>
-                        <a href="loading.html?action=signup" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-4 py-2 transition-colors rounded-md" data-translate-key="signup">Sign Up</a>
+                    <div class="hidden md:flex items-center space-x-4">
+                         <!-- UPDATED: Replaced Tailwind classes with nav-link & btn-cta -->
+                        <button class="lang-toggle nav-link">ไทย</button>
+                        <a href="loading.html?action=login" class="nav-link" data-translate-key="login">Log In</a>
+                        <a href="loading.html?action=signup" class="btn-cta" data-translate-key="signup">Sign Up</a>
                     </div>
-                    <div class="md:hidden"><button id="mobile-menu-button" class="p-2 text-gray-400 hover:text-white font-8bit" data-translate-key="menu">MENU</button></div>
+                    <div class="md:hidden"><button id="mobile-menu-button" class="p-2 text-gray-400 hover:text-white" data-translate-key="menu">MENU</button></div>
                 </div>
             </div>
         </div>
-        <!-- FIXED: Added all the necessary links for the mobile menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-black border-t-2 border-gray-800">
+        <div id="mobile-menu" class="md:hidden hidden">
              <div class="p-4 space-y-4">
-                <a href="index.html" class="block text-base text-gray-300" data-translate-key="navHome">Home</a>
-                <a href="products.html" class="block text-base text-gray-300" data-translate-key="navProducts">Products</a>
-                <a href="resources.html" class="block text-base text-gray-300" data-translate-key="navResources">Resources</a>
-                <a href="contact-us.html" class="block text-base text-gray-300" data-translate-key="navContactus">About Us</a>
-                <a href="loading.html?action=login" class="block text-base text-gray-300" data-translate-key="login">Log In</a>
-                <a href="loading.html?action=signup" class="block text-base text-gray-300" data-translate-key="signup">Sign Up</a>
-                <a href="#" class="lang-toggle block text-base text-blue-400">ไทย</a>
+                <a href="index.html" class="block" data-translate-key="navHome">Home</a>
+                <a href="products.html" class="block" data-translate-key="navProducts">Products</a>
+                <a href="resources.html" class="block" data-translate-key="navResources">Resources</a>
+                <a href="contact-us.html" class="block" data-translate-key="navContactus">Contact Us</a>
+                <a href="loading.html?action=login" class="block" data-translate-key="login">Log In</a>
+                <a href="loading.html?action=signup" class="block" data-translate-key="signup">Sign Up</a>
+                <a href="#" class="lang-toggle block text-purple-400">ไทย</a>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section class="contact-hero">
             <div class="hero-content">
-                <!-- FIXED: Added data-translate-key attributes -->
-                <h1 class="font-8bit" data-translate-key="contactH1">Contact HQ</h1>
+                <h1 data-translate-key="contactH1">Contact HQ</h1>
                 <p class="subtitle" data-translate-key="contactSubtitle">Have a question, feedback, or a partnership idea? Open a comms channel.</p>
             </div>
         </section>
 
-        <!-- Contact Form Section -->
         <section class="contact-section">
             <div class="container-8bit">
                 <div class="contact-panel">
-                    <!-- FIXED: Added data-translate-key attribute -->
-                    <h2 class="font-8bit" data-translate-key="contactFormTitle">TRANSMISSION FORM</h2>
-                    <!-- FIXED: Added form ID -->
+                    <h2 data-translate-key="contactFormTitle">TRANSMISSION FORM</h2>
                     <form action="#" method="POST" class="contact-form" id="contact-form">
-                        <!-- FIXED: Added data-translate-key attributes to all form elements -->
                         <div class="form-group">
-                            <label for="name" class="font-8bit" data-translate-key="formPlayerTag">PLAYER_TAG:</label>
+                            <label for="name" data-translate-key="formPlayerTag">PLAYER_TAG:</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="font-8bit" data-translate-key="formEmail">EMAIL_ADDRESS:</label>
+                            <label for="email" data-translate-key="formEmail">EMAIL_ADDRESS:</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="subject" class="font-8bit" data-translate-key="formSubject">SUBJECT:</label>
+                            <label for="subject" data-translate-key="formSubject">SUBJECT:</label>
                             <input type="text" id="subject" name="subject" required>
                         </div>
                         <div class="form-group">
-                            <label for="message" class="font-8bit" data-translate-key="formMessage">MESSAGE:</label>
+                            <label for="message" data-translate-key="formMessage">MESSAGE:</label>
                             <textarea id="message" name="message" rows="6" required></textarea>
                         </div>
-                        <button type="submit" class="submit-btn font-8bit" data-translate-key="formSubmit">SEND MESSAGE</button>
+                        <button type="submit" class="submit-btn" data-translate-key="formSubmit">SEND MESSAGE</button>
                     </form>
-                    <!-- FIXED: Added div to show form status messages -->
                     <div id="form-status" class="mt-4 text-center"></div>
                 </div>
 
                 <div class="contact-panel">
-                    <h2 class="font-8bit" data-translate-key="contactDirectLinks">DIRECT LINKS</h2>
+                    <h2 data-translate-key="contactDirectLinks">DIRECT LINKS</h2>
                     <div class="info-group">
                         <div class="info-item">
-                            <h3 class="font-8bit" data-translate-key="contactSupportTitle">SUPPORT</h3>
+                            <h3 data-translate-key="contactSupportTitle">SUPPORT</h3>
                             <p data-translate-key="contactSupportDesc">For technical issues & support.</p>
                             <a href="mailto:support@gamicon.com" class="info-link">support@gamicon.com</a>
                         </div>
                         <div class="info-item">
-                            <h3 class="font-8bit" data-translate-key="contactPartnershipsTitle">PARTNERSHIPS</h3>
+                            <h3 data-translate-key="contactPartnershipsTitle">PARTNERSHIPS</h3>
                             <p data-translate-key="contactPartnershipsDesc">For business & collaboration.</p>
                             <a href="mailto:partners@gamicon.com" class="info-link">partners@gamicon.com</a>
                         </div>
                         <div class="info-item">
-                            <h3 class="font-8bit" data-translate-key="contactSocialsTitle">SOCIALS</h3>
+                            <h3 data-translate-key="contactSocialsTitle">SOCIALS</h3>
                             <p data-translate-key="contactSocialsDesc">Find us on the network.</p>
                             <div class="social-links">
                                 <a href="#" class="info-link">Discord</a>
@@ -125,13 +119,11 @@
         </section>
     </main>
 
-    <!-- GamiCon Footer (Consistent with other pages) -->
-    <footer class="bg-gray-900 py-6 text-center text-gray-500 text-sm" data-translate-key="footer">
-        © 2025 GamiCon. All rights reserved.
+    <footer>
+        <p class="py-6 text-center" data-translate-key="footer">© 2025 GamiCon. All rights reserved.</p>
     </footer>
 
-  <script src="translation.js"></script>
-    <!-- 'contact-us.js' now handles the mobile menu AND the form -->
+    <script src="translation.js"></script>
     <script src="contact-us.js"></script>
 </body>
 </html>
