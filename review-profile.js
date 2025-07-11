@@ -1,3 +1,4 @@
+// review-profile.js - REFACTORED to match original options
 document.addEventListener('DOMContentLoaded', () => {
     // --- Centralized Data & Configuration ---
     const getProfile = () => JSON.parse(localStorage.getItem('userProfile')) || {};
@@ -8,24 +9,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalContent = document.getElementById('modal-content');
     const reviewContent = document.getElementById('review-content');
 
-    // --- Data Choices & Styling ---
+    // --- Data Choices & Styling (Reverted to match original files) ---
     const CHOICES = {
-        intention: ['Long term Buddy', 'Play Now, Chill Later', 'Climb the Ranks', 'One Match Wonder', 'Form a Team', 'Still figuring it out'], 'comm-method': ['Text Chat', 'Voice Chat (External)', 'In-Game Voice', 'No Communication'], 'comm-style': ['Talkative & Strategic', 'Quiet & Responsive', 'Mostly Types', 'Solo Preferred', 'Open To Anything'], education: ['High School', 'Bachelor', 'Trade School', 'Master', 'PhD'], zodiac: ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'], languages: ['Thai', 'English', 'Burmese', 'Chinese', 'Khmer'], vibe: ['Talkative', 'Quiet', 'Funny', 'Supportive', 'Thinker', 'Planner', 'Calm', 'Spontaneous'], mbti: ['Not Specified', 'INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'], games: ['PUBG', 'VALO', 'ROV', 'Other'], genre: ['MOBA', 'FPS', 'Other'], 'moba-roles': ['Top', 'Mid', 'ADC', 'Support', 'Jungle', 'All-rounder', 'Not sure'], 'fps-roles': ['Entry Fragger', 'Support', 'Sniper', 'IGL', 'Lurker', 'All-rounder', 'Not sure'], platform: ['PC', 'Mobile', 'PlayStation', 'Xbox', 'Others'], 'active-time': ['Morning', 'Afternoon', 'Evening', 'Late Night', 'After work', 'Weekdays', 'Weekends', 'No fixed time', '24/7 Gamer'], hobbies: [ 'K-pop / J-pop / Thai Pop', 'Western Pop / Hip-hop / Indie', 'Making music / DJ-ing', 'Playing instruments', 'Concerts / Music festivals', 'Karaoke', 'Netflix / Streaming shows', 'Anime / Manga', 'Cartoons / Animated series', 'Horror / Sci-fi / Action', 'Romcoms / Slice of life', 'Film analysis / Editing', 'Fiction / Non-fiction', 'Light novels / Webtoons / Comics', 'Poetry / Journaling', 'Fanfiction writing', 'Philosophy / Psychology', 'Game development', 'Modding / Map creation', 'Speedrunning', 'Competitive eSports viewer', 'VR/AR gaming', 'Game lore & theory', 'Gym / Weight training', 'Running / Biking / Hiking', 'Team sports', 'Dance / Choreography', 'Martial arts / Boxing', 'Travel & Adventure', 'Urban exploring', 'Hanging with friends', 'Trying new cafes / Bars', 'Events / Conventions', 'Drawing / Illustration', 'Graphic design / UI/UX', 'Cosplay / Costume design', 'Digital art / NFTs', 'Painting / Crafts / DIY', 'Cooking / Baking', 'Foodie / Restaurant hunter', 'Coffee / Tea enthusiast', 'Interior design / Home setup', 'Pet care / Animal lover', 'Board games / Chess / DnD', 'Puzzles / Rubik’s cube', 'Collecting (cards, figures, etc.)', 'Memes / Internet culture', 'Astrology / MBTI / Typology' ]
+        intention: ['Long term Buddy', 'Play Now, Chill Later', 'Climb the Ranks', 'One Match Wonder', 'Form a Team', 'Still figuring it out'], 
+        'comm-method': ['Text Chat', 'Voice Chat (External)', 'In-Game Voice', 'No Communication'], 
+        'comm-style': ['Talkative & Strategic', 'Quiet & Responsive', 'Mostly Types', 'Solo Preferred', 'Open To Anything'], 
+        education: ['High School', 'Bachelor', 'Trade School', 'Master', 'PhD'], 
+        zodiac: ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'], 
+        languages: ['Thai', 'English', 'Burmese', 'Chinese', 'Khmer'],
+        vibe: ['Talkative', 'Quiet', 'Funny', 'Supportive', 'Thinker', 'Planner', 'Calm', 'Spontaneous'], 
+        mbti: ['Not Specified', 'INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'], 
+        games: ['PUBG', 'VALO', 'ROV', 'Other'], 
+        genre: ['MOBA', 'FPS', 'Other'], 
+        'moba-roles': ['Top', 'Mid', 'ADC', 'Support', 'Jungle', 'All-rounder', 'Not sure'], 
+        'fps-roles': ['Entry Fragger', 'Support', 'Sniper', 'IGL', 'Lurker', 'All-rounder', 'Not sure'], 
+        platform: ['PC', 'Mobile', 'PlayStation', 'Xbox', 'Others'], 
+        'active-time': ['Morning', 'Afternoon', 'Evening', 'Late Night', 'After work', 'Weekdays', 'Weekends', 'No fixed time', '24/7 Gamer'], 
+        hobbies: [ 'K-pop / J-pop / Thai Pop', 'Western Pop / Hip-hop / Indie', 'Making music / DJ-ing', 'Playing instruments', 'Concerts / Music festivals', 'Karaoke', 'Netflix / Streaming shows', 'Anime / Manga', 'Cartoons / Animated series', 'Horror / Sci-fi / Action', 'Romcoms / Slice of life', 'Film analysis / Editing', 'Fiction / Non-fiction', 'Light novels / Webtoons / Comics', 'Poetry / Journaling', 'Fanfiction writing', 'Philosophy / Psychology', 'Game development', 'Modding / Map creation', 'Speedrunning', 'Competitive eSports viewer', 'VR/AR gaming', 'Game lore & theory', 'Gym / Weight training', 'Running / Biking / Hiking', 'Team sports', 'Dance / Choreography', 'Martial arts / Boxing', 'Travel & Adventure', 'Urban exploring', 'Hanging with friends', 'Trying new cafes / Bars', 'Events / Conventions', 'Drawing / Illustration', 'Graphic design / UI/UX', 'Cosplay / Costume design', 'Digital art / NFTs', 'Painting / Crafts / DIY', 'Cooking / Baking', 'Foodie / Restaurant hunter', 'Coffee / Tea enthusiast', 'Interior design / Home setup', 'Pet care / Animal lover', 'Board games / Chess / DnD', 'Puzzles / Rubik’s cube', 'Collecting (cards, figures, etc.)', 'Memes / Internet culture', 'Astrology / MBTI / Typology' ]
     };
 
     const TAG_STYLES = {
         intention: 'bg-green-600', 'comm-method': 'bg-cyan-600', 'comm-style': 'bg-orange-600', education: 'bg-lime-600', zodiac: 'bg-fuchsia-600', languages: 'bg-pink-600', vibe: 'bg-yellow-600', mbti: 'bg-teal-600',  games: 'bg-blue-600', genre: 'bg-purple-600', roles: 'bg-gray-600', 'moba-roles': 'bg-gray-600', 'fps-roles': 'bg-gray-600', platform: 'bg-indigo-600', 'active-time': 'bg-red-600', hobbies: 'bg-rose-600', default: 'bg-gray-500'
     };
     
-    // --- Section Definitions ---
-    const SECTION_CONFIGS = {
-        'photos-section': {
-            profileKey: 'media', message: 'Photos updated!', fields: { photos: { type: 'photo-grid' } }
-        },
-        'user-info-section': { 
-            profileKey: null, message: 'User info updated!', fields: { username: { type: 'simple' }, birthday: { type: 'simple' }, gender: { type: 'simple' } } 
-        },
-        'bio-section': {
+   // --- Section Definitions (Refactored with updated limits) ---
+const SECTION_CONFIGS = {
+    'photos-section': {
+        profileKey: 'media', message: 'Photos updated!', fields: { photos: { type: 'photo-grid' } }
+    },
+    'user-info-section': { 
+        profileKey: null, message: 'User info updated!', 
+        // HIGHLIGHT: Added 'email' to this list
+        fields: { 
+            username: { type: 'simple' }, 
+            email: { type: 'simple' }, // <-- ADD THIS
+            birthday: { type: 'simple' }, 
+            gender: { type: 'simple' } 
+        } 
+    },
+    'bio-section': {
             profileKey: null, message: 'Bio updated!', fields: { bio: { type: 'simple' } },
             onEdit: (sectionEl) => {
                 const textarea = sectionEl.querySelector('textarea[data-key="bio"]');
@@ -40,18 +62,37 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'interests-section': {
             profileKey: 'interests', message: 'Interests & hobbies updated!',
-            fields: { hobbies: { type: 'multi-tag', choices: CHOICES.hobbies, limit: 10 } } // MODIFICATION: Changed limit from 5 to 10
+            // UPDATED: Limit changed to 10 to match Interest-Hobbies.js
+            fields: { hobbies: { type: 'multi-tag', choices: CHOICES.hobbies, limit: 10 } } 
         },
         'identity-section': {
             profileKey: 'identity', message: 'Identity info updated!',
-            fields: { 'comm-method': { type: 'single-select', choices: CHOICES['comm-method'] }, 'comm-style': { type: 'multi-tag', choices: CHOICES['comm-style'], limit: 3 }, education: { type: 'single-select', choices: CHOICES.education }, zodiac: { type: 'single-select', choices: CHOICES.zodiac } }
+            fields: { 
+                'comm-method': { type: 'single-select', choices: CHOICES['comm-method'] }, 
+                // UPDATED: Limit changed to 2 to match ur-identity.js
+                'comm-style': { type: 'multi-tag', choices: CHOICES['comm-style'], limit: 2 }, 
+                education: { type: 'single-select', choices: CHOICES.education }, 
+                zodiac: { type: 'single-select', choices: CHOICES.zodiac } 
+            }
         },
         'personality-section': { 
-            profileKey: 'personality', message: 'Personality info updated!', fields: { languages: { type: 'multi-tag', choices: CHOICES.languages, limit: 3 }, vibe: { type: 'multi-tag', choices: CHOICES.vibe, limit: 3 }, mbti: { type: 'single-select', choices: CHOICES.mbti } } 
+            profileKey: 'personality', message: 'Personality info updated!', 
+            fields: { 
+                languages: { type: 'multi-tag', choices: CHOICES.languages }, // lang-pers.js has no explicit max limit
+                vibe: { type: 'multi-tag', choices: CHOICES.vibe }, // lang-pers.js has no explicit max limit
+                mbti: { type: 'single-select', choices: CHOICES.mbti } 
+            } 
         },
         'game-dna-section': {
             profileKey: 'gameDna', message: 'Game DNA updated!',
-            fields: { games: { type: 'multi-tag', choices: CHOICES.games, limit: 5 }, genre: { type: 'multi-tag', choices: CHOICES.genre }, 'moba-roles': { type: 'multi-tag', choices: CHOICES['moba-roles'] }, 'fps-roles': { type: 'multi-tag', choices: CHOICES['fps-roles'] }, platform: { type: 'multi-tag', choices: CHOICES.platform }, 'active-time': { type: 'multi-tag', choices: CHOICES['active-time'], limit: 3 } },
+            fields: { 
+                games: { type: 'multi-tag', choices: CHOICES.games, limit: 5 }, 
+                genre: { type: 'multi-tag', choices: CHOICES.genre, limit: 3 }, 
+                'moba-roles': { type: 'multi-tag', choices: CHOICES['moba-roles'], limit: 5 }, 
+                'fps-roles': { type: 'multi-tag', choices: CHOICES['fps-roles'], limit: 5 }, 
+                platform: { type: 'multi-tag', choices: CHOICES.platform, limit: 5 }, 
+                'active-time': { type: 'multi-tag', choices: CHOICES['active-time'], limit: 4 } 
+            },
             onEdit: (sectionEl, data) => toggleRoleEditors(data.genre || []),
             onSave: (data) => { if (!data.genre?.includes('MOBA')) data['moba-roles'] = []; if (!data.genre?.includes('FPS')) data['fps-roles'] = []; return data; },
             onChange: { genre: (newData) => toggleRoleEditors(newData) }
@@ -68,11 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderTags = (container, items, styleKey, isEditable = false) => {
         if (!container) return;
         const itemsArr = Array.isArray(items) ? items.filter(Boolean) : [items].filter(Boolean);
-        if (itemsArr.length === 0 || (itemsArr.length === 1 && (!itemsArr[0] || itemsArr[0].toLowerCase() === "not specified"))) {
+        const transformedItems = itemsArr.map(item => item === 'duo' ? 'Find a Duo Partner' : item); // Transform 'duo' for display
+        if (transformedItems.length === 0 || (transformedItems.length === 1 && (!transformedItems[0] || transformedItems[0].toLowerCase() === "not specified"))) {
             container.innerHTML = '<span class="text-gray-400">Not specified</span>';
             return;
         }
-        container.innerHTML = itemsArr.map(item => {
+        container.innerHTML = transformedItems.map(item => {
             const style = TAG_STYLES[styleKey] || TAG_STYLES.default;
             const removeBtn = isEditable ? `<button class="remove-btn" data-key="${styleKey}" data-item="${item}">x</button>` : "";
             return `<span class="tag ${style}">${item}${removeBtn}</span>`;
@@ -98,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img class="preview-img absolute w-full h-full object-cover rounded-md ${isFilled ? 'block' : 'hidden'}" src="${src}" alt="Photo slot ${i+1}">
                 <span class="plus-icon text-gray-400 text-3xl ${isFilled ? 'hidden' : 'block'}">+</span>
                 <input type="file" class="hidden" accept="image/*" data-slot-index="${i}">
-                ${isFilled ? `<div class="delete-btn absolute top-1 right-1 w-6 h-6 bg-black/60 text-white rounded-full flex items-center justify-center text-sm font-bold border border-white hover:bg-red-600 transition-colors" data-slot-index="${i}">×</div>` : ""}
+                ${isFilled ? `<div class="delete-btn absolute top-1 right-1 w-6 h-6 bg-black/60 text-white rounded-full flex items-center justify-center text-sm font-bold border border-white hover:bg-red-600 transition-colors" data-slot-index="${i}">x</div>` : ""}
             `;
             container.appendChild(slot);
         }
@@ -120,8 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const displayEl = document.querySelector(`[data-display-key="${key}"]`);
                     if (displayEl) {
                         const value = dataSlice[key];
-                        const isTagType = TAG_STYLES[key] || Array.isArray(value);
-                        isTagType ? renderTags(displayEl, value, key) : displayEl.textContent = value || "Not specified";
+                        const finalValue = config.profileKey === null ? profile[key] : value;
+                        const isTagType = TAG_STYLES[key] || Array.isArray(finalValue);
+                        isTagType ? renderTags(displayEl, finalValue, key) : displayEl.textContent = finalValue || "Not specified";
                     }
                 }
             }
@@ -149,16 +192,18 @@ document.addEventListener('DOMContentLoaded', () => {
         editBtn.addEventListener('click', () => {
             const profile = getProfile();
             const dataSlice = config.profileKey ? (profile[config.profileKey] || {}) : profile;
-            tempData = JSON.parse(JSON.stringify(dataSlice));
+            tempData = config.profileKey === null ? JSON.parse(JSON.stringify(profile)) : JSON.parse(JSON.stringify(dataSlice));
             
             for (const key in config.fields) {
                 const field = config.fields[key];
                 const input = editMode.querySelector(`[data-key="${key}"]`);
+                const dataValue = tempData[key];
+
                 if(input) {
                    if (field.type === 'simple' || field.type === 'single-select') {
-                        input.value = tempData[key] || '';
+                        input.value = dataValue || '';
                     } else if (field.type === 'multi-tag') {
-                        renderTags(editMode.querySelector(`[data-tags="${key}"]`), tempData[key] || [], key, true);
+                        renderTags(editMode.querySelector(`[data-tags="${key}"]`), dataValue || [], key, true);
                     }
                 }
                 if (field.type === 'photo-grid') {
@@ -190,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         editMode.querySelectorAll('select[data-key]').forEach(selectEl => {
             const key = selectEl.dataset.key; const field = config.fields[key]; if (!field || !field.choices) return;
-            const placeholder = field.type === 'multi-tag' ? `Add a choice... (limit ${field.limit || '∞'})` : 'Select an option...';
+            const placeholder = field.type === 'multi-tag' ? `Add a choice... (limit ${field.limit || 'none'})` : 'Select an option...';
             selectEl.innerHTML = `<option value="" disabled selected>${placeholder}</option>${field.choices.map(opt => `<option value="${opt}">${opt}</option>`).join('')}`;
             if(field.type === 'multi-tag') selectEl.addEventListener('change', () => {
                 const choice = selectEl.value;
@@ -211,7 +256,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target.matches('.remove-btn')) {
                 const { key, item } = e.target.dataset;
                 if (!tempData[key]) return;
-                tempData[key] = tempData[key].filter(i => i !== item);
+                if (item === 'Find a Duo Partner' && key === 'intention') { // Handle transformed value on remove
+                    tempData[key] = [];
+                } else {
+                    tempData[key] = tempData[key].filter(i => i !== item);
+                }
                 renderTags(e.target.closest('[data-tags]'), tempData[key], key, true);
                 config.onChange?.[key]?.(tempData[key]);
             }
@@ -257,26 +306,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkAllRequirements = () => {
         const profile = getProfile();
         const errors = [];
-        // Rule 1: Must have at least 2 photos
+        
         if (!profile.media?.photos?.filter(Boolean).length || profile.media.photos.filter(Boolean).length < 2) {
             errors.push({ sectionId: 'photos-section', message: '• You must upload at least 2 photos.' });
         }
-        // Rule 2: Bio must be at least 20 characters
         if (!profile.bio || profile.bio.trim().length < 20) {
             errors.push({ sectionId: 'bio-section', message: '• Your bio must be at least 20 characters long.' });
         }
-        // Rule 3: Intent must be selected
         if (!profile.intention || profile.intention.toLowerCase() === 'not specified' || profile.intention === '') {
             errors.push({ sectionId: 'intent-section', message: '• Please select your intent.' });
         }
-        // Rule 4: Hobbies must have at least 1 item
-        if (!profile.interests?.hobbies?.length || profile.interests.hobbies.length < 1) { // MODIFICATION: Changed minimum from 3 to 1
-            errors.push({ sectionId: 'interests-section', message: '• Please select at least 1 interest or hobby.' }); // MODIFICATION: Updated error message
+        if (!profile.interests?.hobbies?.length || profile.interests.hobbies.length < 1) {
+            errors.push({ sectionId: 'interests-section', message: '• Please select at least 1 interest or hobby.' });
         }
-        // Rule 5: Games must have at least 1 item
+        if (!profile.identity?.['comm-method']?.length) {
+            errors.push({ sectionId: 'identity-section', message: '• Please select a communication method.' });
+        }
+        if (!profile.identity?.['comm-style']?.length) {
+            errors.push({ sectionId: 'identity-section', message: '• Please select at least 1 communication style.' });
+        }
+        if (!profile.personality?.languages?.length) {
+            errors.push({ sectionId: 'personality-section', message: '• Please select at least 1 language.' });
+        }
+        if (!profile.personality?.vibe?.length) {
+            errors.push({ sectionId: 'personality-section', message: '• Please select at least 1 in-game vibe.' });
+        }
         if (!profile.gameDna?.games?.length || profile.gameDna.games.length < 1) {
             errors.push({ sectionId: 'game-dna-section', message: '• Please add at least 1 game to your profile.' });
         }
+        if (!profile.gameDna?.genre?.length || profile.gameDna.genre.length < 1) {
+            errors.push({ sectionId: 'game-dna-section', message: '• Please select at least 1 game genre.' });
+        }
+        
         return errors;
     };
 
@@ -285,19 +346,17 @@ document.addEventListener('DOMContentLoaded', () => {
         applyValidationStyles(errors);
 
         if (errors.length > 0) {
-            const errorMessages = errors.map(e => e.message);
+            const uniqueErrorMessages = [...new Set(errors.map(e => e.message))];
             warningsContainer.innerHTML = `
                 <p class="mb-2">Please complete the highlighted sections:</p>
                 <ul class="list-none text-left inline-block">
-                    ${errorMessages.map(msg => `<li>${msg}</li>`).join('')}
+                    ${uniqueErrorMessages.map(msg => `<li>${msg}</li>`).join('')}
                 </ul>`;
-            // Scroll the first errored section into view for better UX
             document.querySelector('.validation-error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-            // If all good, clear warnings and proceed
             warningsContainer.innerHTML = '';
-            alert('Profile complete! Proceeding to dashboard...'); // Or just navigate directly
-            window.location.href = 'dash-board.html';
+            alert('Profile complete! Proceeding to dashboard...');
+            window.location.href = 'home.html';
         }
     });
 
