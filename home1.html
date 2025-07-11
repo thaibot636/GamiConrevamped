@@ -9,118 +9,102 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        /* A more vibrant, modern, and engaging theme for a gaming platform */
-        body {
-            font-family: 'Poppins', sans-serif;
-            /* A deep space gradient for the background adds depth */
+        /* Base styles */
+        body { font-family: 'Poppins', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .font-gamer { font-family: 'Press Start 2P', cursive; }
+        
+        /* --- THEME STYLES (CORRECTED) --- */
+
+        /* 1. New GamiCon Default Theme */
+        body.theme-default {
             background-color: #090a0f;
             background-image: radial-gradient(ellipse at top, #1b2735, #090a0f);
+            color: #d1d5db;
         }
-
-        /* The "gamer" font for headers, with a neon glow effect */
-        .font-gamer {
-            font-family: 'Press Start 2P', cursive;
-            text-shadow:
-                0 0 5px rgba(139, 92, 246, 0.4),
-                0 0 10px rgba(139, 92, 246, 0.3);
-        }
-
-        /* Sidebar: semi-transparent with a blurred backdrop for a modern glassmorphism effect */
-        .sidebar-custom {
-            background-color: rgba(17, 24, 39, 0.8);
-            backdrop-filter: blur(12px);
-            border-right: 1px solid rgba(139, 92, 246, 0.2);
-        }
-
-        /* Nav links: Clean with a clear hover state */
-        .nav-link {
-            transition: all 0.2s ease-in-out;
-            color: #9ca3af;
-        }
-        .nav-link:hover {
-            background-color: rgba(55, 65, 81, 0.5);
-            color: white;
-        }
-
-        /* Active Nav Link: Make it "glow" with a gradient and shadow */
-        .nav-link.active {
-            background: linear-gradient(90deg, #8b5cf6, #6366f1);
-            color: white;
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
-        }
+        .theme-default .font-gamer { color: white; text-shadow: 0 0 5px rgba(139, 92, 246, 0.4), 0 0 10px rgba(139, 92, 246, 0.3); }
+        .theme-default header p { color: #9ca3af; }
+        .theme-default .sidebar-custom { background-color: rgba(17, 24, 39, 0.8); backdrop-filter: blur(12px); border-right: 1px solid rgba(139, 92, 246, 0.2); }
+        .theme-default .nav-link { color: #9ca3af; }
+        .theme-default .nav-link:hover { background-color: rgba(55, 65, 81, 0.5); color: white; }
+        .theme-default .nav-link.active { background: linear-gradient(90deg, #8b5cf6, #6366f1); color: white; box-shadow: 0 0 15px rgba(139, 92, 246, 0.5); }
+        .theme-default .step-card { background-color: rgba(30, 41, 59, 0.6); border: 1px solid #374151; }
+        .theme-default .step-card:hover { transform: translateY(-8px); border-color: #8b5cf6; }
+        .theme-default .step-icon-container { background-color: #1f2937; color: #8b5cf6; /* Icon color */ }
+        .theme-default .highlight { background-color: rgba(139, 92, 246, 0.1); color: #c4b5fd; }
+        .theme-default .btn-cta { background: linear-gradient(90deg, #8b5cf6, #4f46e5); }
+        .theme-default .btn-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(139, 92, 246, 0.6); }
+        .theme-default .status-popup-custom { background-color: #111827; border: 1px solid #374151; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+        .theme-default .status-popup-custom .popup-option:hover { background-color: #8b5cf6; color: white; }
         
+        /* 2. Light Gray Theme */
+        body.theme-light-gray { background-color: #f4f4f5; color: #334155; }
+        .theme-light-gray .font-gamer { color: #1f2937; text-shadow: none; }
+        .theme-light-gray header p { color: #64748b; }
+        .theme-light-gray .sidebar-custom { background-color: #ffffff; border-right: 1px solid #e5e7eb; backdrop-filter: none; }
+        .theme-light-gray .nav-link { color: #475569; }
+        .theme-light-gray .nav-link:hover { background-color: #f1f5f9; color: #1e293b; }
+        .theme-light-gray .nav-link.active { background: #3b82f6; color: white; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+        .theme-light-gray .step-card { background-color: #ffffff; border: 1px solid #e5e7eb; }
+        .theme-light-gray .step-card:hover { transform: translateY(-8px); border-color: #3b82f6; }
+        .theme-light-gray .step-icon-container { background-color: #eef2ff; color: #3b82f6; /* Icon color */ }
+        .theme-light-gray .highlight { background-color: #dbeafe; color: #1e3a8a; }
+        .theme-light-gray .btn-cta { background: #3b82f6; color: white; }
+        .theme-light-gray .btn-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+        .theme-light-gray .status-popup-custom { background-color: #ffffff; border: 1px solid #e5e7eb; color: #334155; }
+        .theme-light-gray .status-popup-custom .popup-option:hover { background-color: #3b82f6; color: white; }
+
+        /* 3. True Dark Theme */
+        body.theme-true-dark { background-color: #000; color: #e5e5e5; }
+        .theme-true-dark .font-gamer { color: #fff; text-shadow: none; }
+        .theme-true-dark header p { color: #a3a3a3; }
+        .theme-true-dark .sidebar-custom { background-color: #101010; border-right: 1px solid #333; backdrop-filter: none; }
+        .theme-true-dark .nav-link { color: #a3a3a3; }
+        .theme-true-dark .nav-link:hover { background-color: #27272a; color: #ffffff; }
+        .theme-true-dark .nav-link.active { background: #fafafa; color: #18181b; box-shadow: none; }
+        .theme-true-dark .step-card { background-color: #181818; border: 1px solid #333; }
+        .theme-true-dark .step-card:hover { transform: translateY(-8px); border-color: #fff; }
+        .theme-true-dark .step-icon-container { background-color: #27272a; color: #e5e5e5; /* Icon color */ }
+        .theme-true-dark .highlight { background-color: #3f3f46; color: #e4e4e7; }
+        .theme-true-dark .btn-cta { background: #fafafa; color: #18181b; }
+        .theme-true-dark .btn-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+        .theme-true-dark .status-popup-custom { background-color: #181818; border: 1px solid #333; }
+        .theme-true-dark .status-popup-custom .popup-option:hover { background-color: #fafafa; color: #18181b; }
+
+        /* Shared Component Styles */
+        .step-card { transition: all 0.3s ease; transform: translateY(0); }
+        .btn-cta { transition: all 0.3s ease; }
         .nav-menu.is-open > .nav-menu-trigger .chevron { transform: rotate(180deg); }
         .nav-submenu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; }
         .nav-menu.is-open .nav-submenu { max-height: 200px; }
-
-        /* Step Cards: Interactive and clean design */
-        .step-card {
-            background-color: rgba(30, 41, 59, 0.6);
-            border: 1px solid #374151;
-            transition: all 0.3s ease;
-            transform: translateY(0);
-        }
-        .step-card:hover {
-            transform: translateY(-8px);
-            border-color: #8b5cf6;
-        }
-
-        /* Highlighted text inside descriptions, for emphasis */
-        .highlight {
-            background-color: rgba(139, 92, 246, 0.1);
-            color: #c4b5fd;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        /* Main CTA Button: impossible to miss */
-        .btn-cta {
-            background: linear-gradient(90deg, #8b5cf6, #4f46e5);
-            transition: all 0.3s ease;
-        }
-        .btn-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
-        }
-        
-        /* Status dot styles */
         .status-dot { width: 12px; height: 12px; border-radius: 50%; position: absolute; bottom: 0; right: 0; border: 3px solid #111827; }
+        .theme-light-gray .status-dot { border-color: #fff; } /* Specific override for light theme */
         .status-online { background-color: #22c55e; }
         .status-idle { background-color: #f59e0b; }
         .status-dnd { background-color: #ef4444; }
         .status-invisible { background-color: #6b7280; }
-
-        /* Status popup styles to match the new theme */
-        .status-popup-custom {
-            background-color: #111827; /* Darker than sidebar for contrast */
-            border: 1px solid #374151;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        .popup-option:hover { background-color: #8b5cf6; color: white; }
     </style>
 </head>
-<body class="text-slate-200">
+<body class="theme-default"> <!-- Default theme is applied initially, JS will override with user's choice -->
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <aside id="sidebar" class="sidebar-custom w-64 p-4 flex-col justify-between fixed inset-y-0 left-0 z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:flex">
              <div>
                 <div class="flex items-center justify-between pb-6 md:justify-start">
-                    <h2 class="font-gamer text-xl text-white">GamiCon</h2>
+                    <h2 class="font-gamer text-xl">GamiCon</h2>
                     <button id="sidebar-close-button" class="p-2 -mr-2 text-slate-400 hover:text-white md:hidden">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
                 </div>
                 <nav class="space-y-2">
                     <a href="home1.html" class="nav-link active flex items-center p-2 rounded-lg font-semibold">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                        <span class="ml-3" data-translate-key="dashHome">Home</span>
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        <span data-translate-key="dashHome">Home</span>
                     </a>
                     <div class="nav-menu" id="dashboard-menu">
                         <button class="nav-link nav-menu-trigger w-full flex items-center justify-between p-2 rounded-lg font-semibold">
                             <div class="flex items-center">
-                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-                                <span class="ml-3" data-translate-key="dashDashboard">Dashboard</span>
+                                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                                <span data-translate-key="dashDashboard">Dashboard</span>
                             </div>
                             <svg class="w-4 h-4 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -135,14 +119,14 @@
                             </a>
                         </div>
                     </div>
-                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span class="ml-3" data-translate-key="dashChat">Chat</span></a>
-                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M12 14a4 4 0 100-8 4 4 0 000 8z"></path></svg><span class="ml-3" data-translate-key="dashFriends">Friends</span></a>
-                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg><span class="ml-3" data-translate-key="dashNotifications">Notifications</span></a>
+                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span data-translate-key="dashChat">Chat</span></a>
+                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M12 14a4 4 0 100-8 4 4 0 000 8z"></path></svg><span data-translate-key="dashFriends">Friends</span></a>
+                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg><span data-translate-key="dashNotifications">Notifications</span></a>
                 </nav>
             </div>
             <div id="profile-trigger" class="flex items-center space-x-3 p-2 rounded-lg cursor-pointer transition-colors hover:bg-slate-700/50">
                  <div class="relative"><img src="https://i.pravatar.cc/50?u=player1" alt="Avatar" class="w-10 h-10 rounded-full"><span id="status-dot" class="status-dot"></span></div>
-                 <div><h3 id="sidebar-username" class="text-sm font-bold text-white"></h3></div>
+                 <div><h3 id="sidebar-username" class="text-sm font-bold"></h3></div>
             </div>
         </aside>
 
@@ -150,9 +134,9 @@
         <main class="flex-1 p-6 md:p-10">
             <header class="mb-10 flex justify-between items-center">
                 <div>
-                    <h1 class="font-gamer text-3xl md:text-4xl text-white" data-translate-key="homeWelcomeTitle">Welcome to GamiCon!</h1>
-                    <p class="text-slate-400 mt-3 text-lg" data-translate-key="homeWelcomeSub">
-                        We're thrilled to have you, <span id="main-username" class="font-semibold text-purple-400"></span>. Here's your mission brief.
+                    <h1 class="font-gamer text-3xl md:text-4xl" data-translate-key="homeWelcomeTitle">Welcome to GamiCon!</h1>
+                    <p class="mt-3 text-lg" data-translate-key="homeWelcomeSub">
+                        We're thrilled to have you, <span id="main-username" class="font-semibold"></span>. Here's your mission brief.
                     </p>
                 </div>
                 <button id="mobile-menu-button" class="p-2 -mr-2 text-slate-400 hover:text-white md:hidden">
@@ -164,29 +148,35 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Step 1 Card -->
                 <div class="step-card p-6 rounded-lg text-center">
-                    <div class="p-4 bg-slate-900 rounded-lg inline-block mb-4"><svg class="w-12 h-12 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></div>
-                    <h3 class="font-gamer text-lg mb-3 text-white" data-translate-key="homeStep1Title">Customize Profile</h3>
-                    <p class="text-slate-400 text-sm" data-translate-key="homeStep1Desc">Your journey begins with you! Click your avatar to <span class="highlight">Edit Profile</span> or tweak your <span class="highlight">Settings</span>.</p>
+                    <div class="step-icon-container p-4 rounded-lg inline-block mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </div>
+                    <h3 class="font-gamer text-lg mb-3" data-translate-key="homeStep1Title">Customize Profile</h3>
+                    <p class="text-sm" data-translate-key="homeStep1Desc">Your journey begins with you! Click your avatar to <span class="highlight">Edit Profile</span> or tweak your <span class="highlight">Settings</span>.</p>
                 </div>
 
                 <!-- Step 2 Card -->
                 <div class="step-card p-6 rounded-lg text-center">
-                    <div class="p-4 bg-slate-900 rounded-lg inline-block mb-4"><svg class="w-12 h-12 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-                    <h3 class="font-gamer text-lg mb-3 text-white" data-translate-key="homeStep2Title">Jump Into Action</h3>
-                    <p class="text-slate-400 text-sm" data-translate-key="homeStep2Desc">Ready for action? Hit <span class="highlight">Play Now</span> in the Dashboard to find game rooms and start your adventure.</p>
+                    <div class="step-icon-container p-4 rounded-lg inline-block mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-gamer text-lg mb-3" data-translate-key="homeStep2Title">Jump Into Action</h3>
+                    <p class="text-sm" data-translate-key="homeStep2Desc">Ready for action? Hit <span class="highlight">Play Now</span> in the Dashboard to find game rooms and start your adventure.</p>
                 </div>
                 
                 <!-- Step 3 Card -->
                 <div class="step-card p-6 rounded-lg text-center">
-                    <div class="p-4 bg-slate-900 rounded-lg inline-block mb-4"><svg class="w-12 h-12 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M12 14a4 4 0 100-8 4 4 0 000 8z"></path></svg></div>
-                    <h3 class="font-gamer text-lg mb-3 text-white" data-translate-key="homeStep3Title">Assemble Your Crew</h3>
-                    <p class="text-slate-400 text-sm" data-translate-key="homeStep3Desc">Use the <span class="highlight">Friends</span> and <span class="highlight">Chat</span> links to add friends, manage your list, and start conversations.</p>
+                    <div class="step-icon-container p-4 rounded-lg inline-block mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M12 14a4 4 0 100-8 4 4 0 000 8z"></path></svg>
+                    </div>
+                    <h3 class="font-gamer text-lg mb-3" data-translate-key="homeStep3Title">Assemble Your Crew</h3>
+                    <p class="text-sm" data-translate-key="homeStep3Desc">Use the <span class="highlight">Friends</span> and <span class="highlight">Chat</span> links to add friends, manage your list, and start conversations.</p>
                 </div>
             </div>
 
             <!-- CTA Section -->
             <div class="text-center mt-16">
-                <a href="playnow.html" class="btn-cta inline-block px-12 py-4 text-xl font-bold text-white rounded-lg shadow-lg" data-translate-key="homeCtaButton">
+                <a href="playnow.html" class="btn-cta inline-block px-12 py-4 text-xl font-bold rounded-lg shadow-lg" data-translate-key="homeCtaButton">
                     Find Your Buddy Now!
                 </a>
             </div>
@@ -195,23 +185,39 @@
 
     <!-- Reusable components -->
     <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-30 hidden md:hidden"></div>
-    <div id="status-popup" class="status-popup-custom hidden fixed z-50 w-60 rounded-lg p-2 text-white">
-        <div class="p-2"><h4 id="popup-username" class="font-bold text-base"></h4><p id="popup-status-text" class="text-sm text-slate-400"></p></div><hr class="border-slate-700 my-1">
+    <div id="status-popup" class="status-popup-custom hidden fixed z-50 w-60 rounded-lg p-2">
+        <div class="p-2">
+            <h4 id="popup-username" class="font-bold text-base"></h4>
+            <p id="popup-status-text" class="text-sm"></p>
+        </div>
+        <hr class="border-slate-700 my-1">
         <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="online"><span class="status-dot status-online static mr-3 border-none"></span><span data-translate-key="statusOnline" class="font-semibold">Online</span></div>
         <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="idle"><span class="status-dot status-idle static mr-3 border-none"></span><span data-translate-key="statusIdle" class="font-semibold">Idle</span></div>
         <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="dnd"><span class="status-dot status-dnd static mr-3 border-none"></span><span data-translate-key="statusDnd" class="font-semibold">Do Not Disturb</span></div>
         <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="invisible"><span class="status-dot status-invisible static mr-3 border-none"></span><span data-translate-key="statusInvisible" class="font-semibold">Invisible</span></div>
         <hr class="border-slate-700 my-1">
         <a href="profiles.html" class="popup-option flex items-center p-2 rounded-md font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L14.732 3.732z"/></path></svg><span data-translate-key="popupEditProfile">Edit Profile</span></a>
-        <a href="settings.html" class="popup-option flex items-center p-2 rounded-md font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0 3.35a1.724 1.724 0 001.066 2.573c-.94-1.543.826 3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span data-translate-key="popupSettings">Settings</span></a>
+        <a href="settings.html" class="popup-option flex items-center p-2 rounded-md font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924-1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0 3.35a1.724 1.724 0 001.066 2.573c-.94-1.543.826 3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span data-translate-key="popupSettings">Settings</span></a>
         <hr class="border-slate-700 my-1"><a href="index.html" class="popup-option flex items-center p-2 rounded-md font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg><span data-translate-key="popupLogout">Logout</span></a>
     </div>
 
-    <!-- Your existing JS will work with this new structure -->
     <script src="translation.js"></script>
     <script>
         (() => {
             document.addEventListener('DOMContentLoaded', () => {
+                // --- THEME CONTROL LOGIC ---
+                // This MUST run early to prevent a "flash" of the wrong theme.
+                const applyTheme = (theme) => {
+                    // Default to 'theme-default' if no theme is found in localStorage
+                    const effectiveTheme = theme || 'theme-default';
+                    // Remove any existing theme class from the body
+                    document.body.className = document.body.className.replace(/theme-\S+/g, '');
+                    // Add the new theme class
+                    document.body.classList.add(effectiveTheme);
+                };
+                applyTheme(localStorage.getItem('gamicon_theme'));
+
+                // --- Rest of the existing interactive script ---
                 const mobileMenuButton = document.getElementById('mobile-menu-button');
                 const sidebar = document.getElementById('sidebar');
                 const sidebarOverlay = document.getElementById('sidebar-overlay');
@@ -221,8 +227,13 @@
                 const statusPopup = document.getElementById('status-popup');
 
                 if (typeof window.translations === 'undefined') {
-                    console.warn("translation.js not found. Using mock data.");
-                    window.translations = { statusOnline: { en: 'Online' }, statusIdle: { en: 'Idle' }, statusDnd: { en: 'Do Not Disturb' }, statusInvisible: { en: 'Invisible' } };
+                    console.warn("translation.js not found or loaded. Using mock data.");
+                    window.translations = {
+                        statusOnline: { en: 'Online', th: 'ออนไลน์' },
+                        statusIdle: { en: 'Idle', th: 'ไม่ว่าง' },
+                        statusDnd: { en: 'Do Not Disturb', th: 'ห้ามรบกวน' },
+                        statusInvisible: { en: 'Invisible', th: 'ล่องหน' }
+                    };
                 }
 
                 const lang = localStorage.getItem('gamicon_lang') || 'en';
@@ -230,8 +241,8 @@
                 const username = localStorage.getItem('gamicon_username') || 'PlayerOne';
                 const statusConfig = { online: { langKey: 'statusOnline' }, idle: { langKey: 'statusIdle' }, dnd: { langKey: 'statusDnd' }, invisible: { langKey: 'statusInvisible' } };
 
-                const openSidebar = () => { if (sidebar && sidebarOverlay) { sidebar.classList.remove('-translate-x-full'); sidebar.classList.add('translate-x-0'); sidebarOverlay.classList.remove('hidden'); } };
-                const closeSidebar = () => { if (sidebar && sidebarOverlay) { sidebar.classList.add('-translate-x-full'); sidebar.classList.remove('translate-x-0'); sidebarOverlay.classList.add('hidden'); } };
+                const openSidebar = () => { if (sidebar && sidebarOverlay) { sidebar.classList.remove('-translate-x-full'); sidebarOverlay.classList.remove('hidden'); } };
+                const closeSidebar = () => { if (sidebar && sidebarOverlay) { sidebar.classList.add('-translate-x-full'); sidebarOverlay.classList.add('hidden'); } };
                 if (mobileMenuButton) mobileMenuButton.addEventListener('click', (e) => { e.stopPropagation(); openSidebar(); });
                 if (sidebarCloseButton) sidebarCloseButton.addEventListener('click', (e) => { e.stopPropagation(); closeSidebar(); });
                 if (sidebarOverlay) sidebarOverlay.addEventListener('click', (e) => { e.stopPropagation(); closeSidebar(); });
@@ -245,25 +256,25 @@
                     const statusDot = document.getElementById('status-dot');
                     const popupStatusText = document.getElementById('popup-status-text');
                     const sidebarUsername = document.getElementById('sidebar-username');
-                    const mainUsernameEl = document.getElementById('main-username'); 
+                    const mainUsernameEl = document.getElementById('main-username');
                     const popupUsername = document.getElementById('popup-username');
 
                     const setStatus = (status) => {
                         const config = statusConfig[status] || statusConfig.online;
                         if (statusDot) statusDot.className = `status-dot status-${status}`;
-                        if (popupStatusText && window.translations[config.langKey]) popupStatusText.textContent = window.translations[config.langKey][lang] || config.langKey;
+                        if (popupStatusText && window.translations[config.langKey]) {
+                            popupStatusText.textContent = window.translations[config.langKey][lang] || config.langKey;
+                        }
                         localStorage.setItem('gamicon_status', status);
-                        statusPopup.classList.add('hidden');
+                        if(statusPopup) statusPopup.classList.add('hidden');
                     };
 
                     if (sidebarUsername) sidebarUsername.textContent = username;
                     if (popupUsername) popupUsername.textContent = username;
                     if (mainUsernameEl) mainUsernameEl.textContent = username;
-
+                    
                     const currentPage = window.location.pathname.split('/').pop() || 'home1.html';
-                    const editProfileLink = statusPopup.querySelector('a[href^="profiles.html"]');
                     const settingsLink = statusPopup.querySelector('a[href^="settings.html"]');
-                    if (editProfileLink) editProfileLink.href = `profiles.html?from=${currentPage}`;
                     if (settingsLink) settingsLink.href = `settings.html?from=${currentPage}`;
                     
                     profileTrigger.addEventListener('click', (event) => {
@@ -276,10 +287,11 @@
                     document.querySelectorAll('.popup-option[data-status]').forEach(option => {
                         option.addEventListener('click', (e) => { e.stopPropagation(); setStatus(e.currentTarget.dataset.status); });
                     });
-                    window.addEventListener('click', () => { if (!statusPopup.classList.contains('hidden')) { statusPopup.classList.add('hidden'); } });
+                    window.addEventListener('click', () => { if (statusPopup && !statusPopup.classList.contains('hidden')) { statusPopup.classList.add('hidden'); } });
                     setStatus(currentStatus);
                 }
 
+                // Apply language translations after setting up everything else
                 if (window.setLanguage) window.setLanguage(lang);
             });
         })();
