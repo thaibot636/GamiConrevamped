@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings – GamiCon</title>
+    <title>Settings - GamiCon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
     <style>
         /* Base styles */
         body { font-family: 'Poppins', sans-serif; transition: background-color 0.3s, color 0.3s; }
-        .font-gamer { 
+        .font-gamer {
             font-family: 'Press Start 2P', cursive;
         }
 
@@ -20,7 +20,7 @@
         /* 1. New GamiCon Default Theme */
         body.theme-default {
             background-color: #090a0f;
-            background-image: 
+            background-image:
                 radial-gradient(ellipse at top, #1b2735, #090a0f),
                 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.06'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.59l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             color: #d1d5db;
@@ -88,8 +88,7 @@
         .preview-light-gray { border-color: #d1d5db; background-color: #f1f5f9; }
         .preview-light-gray .preview-sidebar { background-color: #e5e7eb; }
         .preview-light-gray .preview-content { background-color: #f9fafb; }
-        
-        /* UPDATED: Default theme preview now matches new design */
+
         .preview-default { border-color: rgba(139, 92, 246, 0.4); background-color: #090a0f; }
         .preview-default .preview-sidebar { background-color: #111827; }
         .preview-default .preview-content { background-color: rgba(139, 92, 246, 0.3); }
@@ -97,7 +96,6 @@
         .preview-true-dark { border-color: #555; background-color: #181818;}
         .preview-true-dark .preview-sidebar { background-color: #000; }
         .preview-true-dark .preview-content { background-color: #111; }
-
     </style>
 </head>
 <body class="theme-default">
@@ -150,7 +148,50 @@
         </div>
     </div>
     
-    <script src="translation.js"></script>
+    <!-- FIX: Recreated the missing translation logic and embedded it here -->
+    <script>
+        const translations = {
+            en: {
+                esc: "BACK",
+                settingsTitle: "SETTINGS",
+                settingsSubtitle: "Customize your GamiCon experience",
+                settingsAppearance: "Appearance",
+                settingsThemeDefault: "GamiCon",
+                settingsThemeDark: "True Dark",
+                settingsThemeLight: "Light Gray",
+                settingsLanguage: "Language",
+                settingsLangEn: "English",
+                settingsLangTh: "Thai",
+                settingsAccount: "Account",
+                settingsComingSoon: "Account management options are coming soon.",
+            },
+            th: {
+                esc: "กลับ",
+                settingsTitle: "การตั้งค่า",
+                settingsSubtitle: "ปรับแต่งประสบการณ์ GamiCon ของคุณ",
+                settingsAppearance: "ธีม",
+                settingsThemeDefault: "GamiCon",
+                settingsThemeDark: "มืดสนิท",
+                settingsThemeLight: "เทาสว่าง",
+                settingsLanguage: "ภาษา",
+                settingsLangEn: "อังกฤษ",
+                settingsLangTh: "ไทย",
+                settingsAccount: "บัญชี",
+                settingsComingSoon: "ตัวเลือกการจัดการบัญชีจะมาในเร็ว ๆ นี้",
+            }
+        };
+
+        function setLanguage(lang) {
+            const langData = translations[lang] || translations.en;
+            document.querySelectorAll('[data-translate-key]').forEach(el => {
+                const key = el.getAttribute('data-translate-key');
+                if (langData[key]) {
+                    el.textContent = langData[key];
+                }
+            });
+        }
+    </script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const body = document.body;
@@ -158,32 +199,25 @@
             // --- THEME LOGIC ---
             const themeButtons = document.querySelectorAll('#theme-light-gray, #theme-default, #theme-true-dark');
             const applyTheme = (theme) => {
-                // Remove any existing theme class from the body
                 body.className = body.className.replace(/theme-\S+/g, '').trim();
-                // Add the new theme class
                 body.classList.add(theme);
-                // Update the 'selected' state on buttons
                 themeButtons.forEach(btn => btn.classList.toggle('selected', btn.id === theme));
-                // Save the choice
                 localStorage.setItem('gamicon_theme', theme);
             };
             themeButtons.forEach(button => button.addEventListener('click', () => applyTheme(button.id)));
-            // Apply saved theme on load, or the default one
             applyTheme(localStorage.getItem('gamicon_theme') || 'theme-default');
 
             // --- LANGUAGE LOGIC ---
             const langButtons = document.querySelectorAll('#lang-en, #lang-th');
             const applyLanguageSelection = (lang) => {
+                // This function is now available from the script block above
                 if(typeof setLanguage === 'function') {
                     setLanguage(lang); 
                 }
-                // Update 'selected' state on language buttons
                 langButtons.forEach(btn => btn.classList.toggle('selected', btn.id === `lang-${lang}`));
-                // Save choice
                 localStorage.setItem('gamicon_lang', lang);
             };
             langButtons.forEach(button => button.addEventListener('click', () => applyLanguageSelection(button.id.split('-')[1])));
-            // Apply saved language on load, or default
             applyLanguageSelection(localStorage.getItem('gamicon_lang') || 'en');
 
             // --- DYNAMIC "BACK" BUTTON ---
@@ -192,10 +226,8 @@
             const returnPage = urlParams.get('from');
 
             if (returnPage) {
-                // Point back to the page the user came from
                 closeButton.href = returnPage;
             } else {
-                // Fallback to the main home page if 'from' is not specified
                 closeButton.href = 'home1.html'; 
             }
         });
