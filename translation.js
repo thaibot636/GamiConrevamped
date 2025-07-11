@@ -340,20 +340,17 @@ document.addEventListener('DOMContentLoaded', () => {
         premiumAdFree: { en: 'Ad-Free', th: 'ไม่มีโฆษณา' },
         premiumUpgradeBtn: { en: 'Upgrade Now', th: 'อัปเกรดทันที' },
 
-        // --- profiles.html (Edit Profile Page) ---
-        profilesTitle: { en: 'Edit Your Profile', th: 'แก้ไขโปรไฟล์ของคุณ' },
-        profilesSubtitle: { en: 'This is how other players will see you.', th: 'ผู้เล่นคนอื่นจะเห็นคุณแบบนี้' },
-        profilesAvatarSection: { en: 'Profile Picture', th: 'รูปโปรไฟล์' },
-        profilesChangeAvatar: { en: 'Change Avatar', th: 'เปลี่ยนรูปโปรไฟล์' },
-        profilesBioSection: { en: 'Your Bio', th: 'ประวัติของคุณ' },
-        profilesBioPlaceholder: { en: 'Tell others a little about yourself, your playstyle, and what you are looking for...', th: 'บอกเล่าเรื่องราวของคุณ สไตล์การเล่น และสิ่งที่คุณกำลังมองหาให้คนอื่นรู้...' },
-        profilesGamesSection: { en: 'Your Games', th: 'เกมของคุณ' },
-        profilesEditGames: { en: 'Edit Games', th: 'แก้ไขเกม' },
-        profilesTraitsSection: { en: 'Your Traits', th: 'ลักษณะของคุณ' },
-        profilesEditTraits: { en: 'Edit Traits', th: 'แก้ไขลักษณะ' },
-        profilesSave: { en: 'Save Changes', th: 'บันทึกการเปลี่ยนแปลง' },
-        profilesCancel: { en: 'Cancel', th: 'ยกเลิก' },
-        profilesEdit: { en: 'Edit', th: 'แก้ไข' }, 
+       editProfileTitle: { en: "GamiCon – Edit Your Profile", th: "GamiCon – แก้ไขโปรไฟล์ของคุณ" },
+editProfileHeader: { en: "Edit Profile", th: "แก้ไขโปรไฟล์" },
+editProfileSubtitle: { 
+  en: "Make changes to your profile below. Click 'Edit' on any section to begin.", 
+  th: "ปรับเปลี่ยนโปรไฟล์ของคุณด้านล่าง คลิก 'แก้ไข' ในแต่ละส่วนเพื่อเริ่มต้น"
+},
+backToHome: { en: "Back to Home", th: "กลับไปหน้าหลัก" },
+saveProfileButton: { en: "Save and Go Home", th: "บันทึกและกลับหน้าหลัก" },
+profilesEdit: { en: "Edit", th: "แก้ไข" },
+profilesCancel: {en: "Cancel", th:"ยกเลิก"},
+
 
         // --- friends.html ---
         friendsTitle: { en: 'Manage Friends', th: 'จัดการเพื่อน' },
