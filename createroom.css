@@ -1,0 +1,52 @@
+:root, body.theme-default {
+    --form-bg: rgba(30, 41, 59, 0.6); 
+    --input-bg: #090a0f; /* Darker input background */
+    --input-border: #374151;
+    --neon-blue: #8b5cf6; 
+    --neon-blue-glow: rgba(139, 92, 246, 0.5);
+    --btn-secondary-bg: #4b5563; 
+    --btn-secondary-hover-bg: #6b7280;
+}
+body.theme-light-gray {
+   --form-bg: #ffffff;
+   --input-bg: #f9fafb; /* Slightly off-white for light theme */
+   --input-border: #d1d5db;
+   --neon-blue: #3b82f6; 
+   --neon-blue-glow: rgba(59, 130, 246, 0.4);
+   --btn-secondary-bg: #e5e7eb; 
+   --btn-secondary-hover-bg: #d1d5db;
+}
+body.theme-true-dark {
+   --form-bg: #181818;
+   --input-bg: #000; /* Pure black for true dark */
+   --input-border: #333;
+   --neon-blue: #fff;
+   --neon-blue-glow: rgba(255, 255, 255, 0.5);
+   --btn-secondary-bg: #333; 
+   --btn-secondary-hover-bg: #444;
+}
+
+.form-section { background-color: var(--form-bg); border: 1px solid var(--input-border); padding: 1.5rem; border-radius: 0.5rem; }
+.btn { padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700; text-align: center; transition: all 0.2s; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.btn-secondary { background-color: var(--btn-secondary-bg); color: var(--text-color); }
+.btn-danger { background-color: #ef4444; color: white; }
+.form-label { font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 1rem; display: block; }
+
+/* CORRECTED DROPDOWN AND INPUT STYLING */
+.custom-select, .text-input { 
+    background-color: var(--input-bg); /* Using new darker variable */
+    border: 1px solid var(--input-border); 
+    color: var(--text-color);
+    border-radius: 6px; padding: 0.75rem; width: 100%;
+    transition: border-color 0.2s;
+}
+.custom-select:focus, .text-input:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 0 2px var(--neon-blue-glow);
+}
+
+.radio-option input[type="radio"] { opacity: 0; width: 0; height: 0; position: absolute; }
+.radio-option span { display: block; padding: 0.5rem 1rem; border: 2px solid var(--input-border); border-radius: 6px; cursor: pointer; transition: all 0.2s ease; text-align: center; font-family: 'Poppins', sans-serif; font-weight: 600;}
+.radio-option input[type="radio"]:checked + span { border-color: var(--neon-blue); background-color: var(--neon-blue); color: var(--link-active-text); box-shadow: 0 0 10px var(--neon-blue-glow); }
+input[type="range"] { accent-color: var(--neon-blue); }

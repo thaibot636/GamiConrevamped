@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Room - GamiCon</title>
+
+    <!-- External Scripts & Fonts (from home1) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Shared Stylesheet from home1 -->
+    <link rel="stylesheet" href="home1.css">
+
+    <!-- Page-Specific Styles -->
+    <link rel="stylesheet" href="createroom.css">
+</head>
+<body class="theme-default">
+    <div class="flex min-h-screen">
+        <!-- Sidebar (INHERITED FROM home1.html) -->
+        <aside id="sidebar" class="sidebar-custom w-64 p-4 flex-col justify-between fixed inset-y-0 left-0 z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:flex">
+             <div>
+                <div class="flex items-center justify-between pb-6 md:justify-start">
+                    <h2 class="font-gamer text-xl">GamiCon</h2>
+                    <button id="sidebar-close-button" class="p-2 -mr-2 text-slate-400 hover:text-white md:hidden">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <nav class="space-y-2">
+                    <a href="home1.html" class="nav-link flex items-center p-2 rounded-lg font-semibold">
+                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        <span data-translate-key="dashHome">Home</span>
+                    </a>
+                    <div class="nav-menu is-open" id="dashboard-menu">
+                        <button class="nav-link nav-menu-trigger w-full flex items-center justify-between p-2 rounded-lg font-semibold">
+                            <div class="flex items-center">
+                                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                                <span data-translate-key="dashDashboard">Dashboard</span>
+                            </div>
+                            <svg class="w-4 h-4 chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="nav-submenu ml-4 mt-1 space-y-1">
+                             <a href="playnow.html" class="nav-link active flex items-center p-2 rounded-md text-sm font-semibold">
+                                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.362-6.867 8.21 8.21 0 003 2.48z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1.001A3.75 3.75 0 0012 18z" /></svg>
+                                <span data-translate-key="dashPlayNow">Play Now</span>
+                            </a>
+                            <a href="swipevibe.html" class="nav-link flex items-center p-2 rounded-md text-sm font-semibold">
+                                 <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24"><path d="M6 3h12c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 15.55L10.9 14.54C8.61 12.46 7 11.02 7 9.25C7 7.8 8.2 6.67 9.72 6.67C10.58 6.67 11.41 7.03 12 7.64C12.59 7.03 13.42 6.67 14.28 6.67C15.8 6.67 17 7.8 17 9.25C17 11.02 15.39 12.46 13.1 14.54L12 15.55z" fill="currentColor"/></svg>
+                                <span data-translate-key="dashSwipeVipe">Swipe & Vibe</span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span data-translate-key="dashChat">Chat</span></a>
+                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M12 14a4 4 0 100-8 4 4 0 000 8z"></path></svg><span data-translate-key="dashFriends">Friends</span></a>
+                    <a href="#" class="nav-link flex items-center p-2 rounded-lg font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg><span data-translate-key="dashNotifications">Notifications</span></a>
+                </nav>
+            </div>
+            <div id="profile-trigger" class="flex items-center space-x-3 p-2 rounded-lg cursor-pointer transition-colors hover:bg-slate-700/50">
+                 <div class="relative"><img id="sidebar-avatar" src="https://i.pravatar.cc/50?u=player1" alt="Avatar" class="w-10 h-10 rounded-full object-cover"><span id="status-dot" class="status-dot"></span></div>
+                 <div><h3 id="sidebar-username" class="text-sm font-bold"></h3></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4 md:p-8">
+            <header class="mb-8 flex justify-between items-center">
+                <div>
+                    <a href="playnow.html" class="btn btn-secondary mb-6 text-sm">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        <span data-translate-key="backToLobbies">Back to Lobbies</span>
+                    </a>
+                    <h1 class="text-2xl md:text-3xl font-gamer mt-4" data-translate-key="playnowCreateTitle">Create a Room</h1>
+                    <p class="text-base mt-2" data-translate-key="playnowCreateSubtitle">Can't find the perfect squad? Set the rules yourself.</p>
+                </div>
+                 <button id="mobile-menu-button" class="p-2 -mr-2 md:hidden self-start">
+                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </header>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="form-section">
+                        <label for="game-select" class="form-label" data-translate-key="playnowStep1">Step 1: Select Your Game</label>
+                        <select id="game-select" class="custom-select"><option value="" data-translate-key="playnowChooseGame">-- Choose a Game --</option><option value="lol" data-genre="moba" data-translate-key="gameLeagueOfLegends">League of Legends</option><option value="valorant" data-genre="fps" data-translate-key="gameValorant">Valorant</option><option value="cs2" data-genre="fps" data-translate-key="gameCS2">Counter-Strike 2</option></select>
+                    </div>
+
+                    <div id="privacy-section" class="form-section hidden space-y-4">
+                        <label class="form-label" data-translate-key="playnowStep2">Step 2: Set Room Privacy</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="radio-option"><input type="radio" name="room-privacy" value="public" checked> <span data-translate-key="privacyPublic">Public</span></label>
+                            <label class="radio-option"><input type="radio" name="room-privacy" value="private"> <span data-translate-key="privacyPrivate">Private</span></label>
+                        </div>
+                        <p class="text-xs mt-2 text-slate-400"><span data-translate-key="privacyPublicDesc"><b>Public:</b> Anyone can see and join this room.</span><br><span data-translate-key="privacyPrivateDesc"><b>Private:</b> Only users you invite can join.</span></p>
+                    </div>
+                    
+                    <div id="dynamic-options-wrapper" class="hidden space-y-6"></div>
+                </div>
+
+                <div class="space-y-6">
+                    <div id="status-panel" class="form-section space-y-4 hidden">
+                        <div class="flex justify-between items-center"><label class="form-label !mb-0" data-translate-key="playnowRoomStatus">Room Status</label><button id="cancel-creation-btn" class="btn btn-danger btn-sm text-xs" data-translate-key="playnowCancel">Cancel</button></div>
+                        <hr class="border-t" style="border-color:var(--input-border);">
+                        <div class="flex items-center justify-between py-2"><label for="enable-timer-toggle" class="font-semibold cursor-pointer text-sm" data-translate-key="enableTimer">Expiry Timer</label><input type="checkbox" id="enable-timer-toggle" checked class="h-4 w-4 rounded" style="accent-color: var(--neon-blue); cursor: pointer;"></div>
+                        <div id="timer-controls-wrapper" class="space-y-2">
+                             <div class="text-sm text-center text-slate-400">
+                                <span data-translate-key="playnowRoomExpiresIn">Expires in:</span>
+                                <strong id="timer-value-display" class="text-lg text-amber-400 mx-1">15</strong>
+                                <span data-translate-key="playnowMinutes">minutes</span>
+                            </div>
+                            <input type="range" id="timer-slider" min="5" max="60" step="5" value="15" class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-slate-700">
+                        </div>
+                        <div class="mt-4"><button id="create-room-btn" type="button" class="w-full text-center py-3 rounded-lg font-bold text-white transition-transform hover:scale-105" style="background:var(--neon-blue)" data-translate-key="playnowFinalizeCreate">Create Room</button></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Reusable components (INHERITED FROM home1.html) -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-30 hidden md:hidden"></div>
+    <div id="status-popup" class="status-popup-custom hidden fixed z-50 w-60 rounded-lg p-2">
+        <div class="p-2">
+            <h4 id="popup-username" class="font-bold text-base"></h4>
+            <p id="popup-status-text" class="text-sm"></p>
+        </div>
+        <hr class="border-slate-700 my-1">
+        <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="online"><span class="status-dot status-online static mr-3 border-none"></span><span data-translate-key="statusOnline" class="font-semibold">Online</span></div>
+        <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="idle"><span class="status-dot status-idle static mr-3 border-none"></span><span data-translate-key="statusIdle" class="font-semibold">Idle</span></div>
+        <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="dnd"><span class="status-dot status-dnd static mr-3 border-none"></span><span data-translate-key="statusDnd" class="font-semibold">Do Not Disturb</span></div>
+        <div class="popup-option flex items-center p-2 rounded-md cursor-pointer" data-status="invisible"><span class="status-dot status-invisible static mr-3 border-none"></span><span data-translate-key="statusInvisible" class="font-semibold">Invisible</span></div>
+        <hr class="border-slate-700 my-1">
+        <a href="profiles.html" class="popup-option flex items-center p-2 rounded-md font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L14.732 3.732z"/></path></svg><span data-translate-key="popupEditProfile">Edit Profile</span></a>
+        <a href="settings.html" class="popup-option flex items-center p-2 rounded-md font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924-1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0 3.35a1.724 1.724 0 001.066 2.573c-.94-1.543.826 3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span data-translate-key="popupSettings">Settings</span></a>
+        <hr class="border-slate-700 my-1"><a href="index.html" class="popup-option flex items-center p-2 rounded-md font-semibold"><svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg><span data-translate-key="popupLogout">Logout</span></a>
+    </div>
+
+    <!-- HTML Templates -->
+    <template id="template-fps"><div class="form-section genre-options"><label class="form-label" data-translate-key="playnowStep3FPS">Step 3: FPS Settings</label><div class="space-y-4"><label class="form-label !text-sm !mb-2" data-translate-key="playnowRolePref">PREFERRED ROLE</label><div class="grid grid-cols-2 sm:grid-cols-4 gap-3"><label class="radio-option"><input type="radio" name="fps-role" value="entry" checked><span data-translate-key="playnowRoleEntry">Entry</span></label><label class="radio-option"><input type="radio" name="fps-role" value="sniper"><span data-translate-key="playnowRoleSniper">Sniper</span></label><label class="radio-option"><input type="radio" name="fps-role" value="igl"><span data-translate-key="playnowRoleIGL">IGL</span></label><label class="radio-option"><input type="radio" name="fps-role" value="flex"><span data-translate-key="playnowRoleFlex">Flex</span></label></div></div></div></template>
+    <template id="template-moba"><div class="form-section genre-options"><label class="form-label" data-translate-key="playnowStep3Moba">Step 3: MOBA Settings</label><div class="space-y-4"><label class="form-label !text-sm !mb-2" data-translate-key="playnowRole">ROLE</label><div class="grid grid-cols-2 sm:grid-cols-5 gap-3"><label class="radio-option"><input type="radio" name="moba-role" value="top" checked><span data-translate-key="playnowRoleTop">Top</span></label><label class="radio-option"><input type="radio" name="moba-role" value="mid"><span data-translate-key="playnowRoleMid">Mid</span></label><label class="radio-option"><input type="radio" name="moba-role" value="jungle"><span data-translate-key="playnowRoleJungle">Jungle</span></label><label class="radio-option"><input type="radio" name="moba-role" value="adc"><span data-translate-key="playnowRoleADC">ADC</span></label><label class="radio-option"><input type="radio" name="moba-role" value="support"><span data-translate-key="playnowRoleSupport">Support</span></label></div></div></div></template>
+    <template id="template-party"><div class="form-section genre-options"><label class="form-label" data-translate-key="playnowStep3Party">Step 3: Party Game Settings</label><div class="space-y-4"><label class="form-label !text-sm !mb-2" data-translate-key="playnowVibe">VIBE</label><div class="grid grid-cols-2 sm:grid-cols-4 gap-3"><label class="radio-option"><input type="radio" name="party-vibe" value="funny" checked><span data-translate-key="playnowVibeFunny">Funny</span></label><label class="radio-option"><input type="radio" name="party-vibe" value="casual"><span data-translate-key="playnowVibeCasual">Casual</span></label><label class="radio-option"><input type="radio" name="party-vibe" value="talkative"><span data-translate-key="playnowVibeTalkative">Talkative</span></label><label class="radio-option"><input type="radio" name="party-vibe" value="no-mic"><span data-translate-key="playnowVibeNoMic">No Mic</span></label></div></div></div></template>
+    
+    <!-- Script Dependencies -->
+    <script src="translation.js"></script>
+    <script src="home1.js" defer></script>
+    
+    <!-- Page-Specific Script -->
+    <script src="createroom.js" defer></script>
+</body>
+</html>
