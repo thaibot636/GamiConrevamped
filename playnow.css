@@ -1,0 +1,278 @@
+:root, body.theme-default {
+    --bg-body: #090a0f; 
+    --text-color: #d1d5db; 
+    --text-subtle: #9ca3af; 
+    --sidebar-bg: #111827; 
+    --sidebar-border: rgba(139, 92, 246, 0.2); 
+    --main-bg: transparent; 
+    --link-color: #9ca3af; 
+    --link-hover-bg: #374151; 
+    --link-hover-text: white; 
+    --link-active-bg: #8b5cf6; 
+    --link-active-text: white; 
+    --form-bg: rgba(17, 24, 39, 0.9); 
+    --btn-primary-bg: #8b5cf6; 
+    --btn-primary-text: white; 
+    --btn-secondary-bg: #4b5563; 
+    --btn-secondary-hover-bg: #6b7280; 
+    --room-card-bg: rgba(30, 41, 59, 0.6); 
+    --room-card-hover-bg: rgba(30, 41, 59, 1); 
+    --popup-bg: #111827; 
+    --popup-border: #374151; 
+    --popup-separator: rgba(139, 92, 246, 0.15); 
+    --popup-hover-bg: #8b5cf6; 
+    --popup-hover-text: white; 
+    --highlight-bg: #374151; 
+    --highlight-text: #e5e7eb;
+}
+
+body.theme-light-gray {
+     --bg-body: #f4f4f5; 
+     --text-color: #334155; 
+     --text-subtle: #64748b; 
+     --sidebar-bg: #ffffff; 
+     --sidebar-border: #e5e7eb; 
+     --main-bg: #f4f4f5; 
+     --link-color: #475569; 
+     --link-hover-bg: #f3f4f6; 
+     --link-hover-text: #1e293b; 
+     --link-active-bg: #3b82f6; 
+     --link-active-text: white; 
+     --form-bg: #ffffff; 
+     --btn-primary-bg: #3b82f6; 
+     --btn-primary-text: white; 
+     --btn-secondary-bg: #e5e7eb; 
+     --btn-secondary-hover-bg: #d1d5db; 
+     --room-card-bg: #ffffff; 
+     --room-card-hover-bg: #f9fafb; 
+     --popup-bg: #ffffff; 
+     --popup-border: #e5e7eb; 
+     --popup-separator: #f3f4f6; 
+     --popup-hover-bg: #3b82f6; 
+     --popup-hover-text: white; 
+     --highlight-bg: #e5e7eb; 
+     --highlight-text: #374151;
+}
+
+body.theme-true-dark {
+    --bg-body: #000; 
+    --text-color: #fff; 
+    --text-subtle: #aaa; 
+    --sidebar-bg: #101010; 
+    --sidebar-border: #333; 
+    --main-bg: #000; 
+    --link-color: #aaa; 
+    --link-hover-bg: #222; 
+    --link-hover-text: #fff; 
+    --link-active-bg: #fff; 
+    --link-active-text: #000; 
+    --form-bg: #181818; 
+    --btn-primary-bg: #fff; 
+    --btn-primary-text: #000; 
+    --btn-secondary-bg: #333; 
+    --btn-secondary-hover-bg: #444; 
+    --room-card-bg: #181818; 
+    --room-card-hover-bg: #222; 
+    --popup-bg: #181818; 
+    --popup-border: #333; 
+    --popup-separator: #333; 
+    --popup-hover-bg: #fff; 
+    --popup-hover-text: #000; 
+    --highlight-bg: #222; 
+    --highlight-text: #eee;
+}
+
+.form-label { 
+    font-family: 'Press Start 2P', cursive; 
+}
+
+.form-section { 
+    background-color: var(--form-bg); 
+    border: 1px solid var(--sidebar-border); 
+    padding: 1.5rem; 
+    border-radius: 8px; 
+    backdrop-filter: blur(10px); 
+}
+
+.btn { 
+    padding: 0.5rem 1rem; 
+    border-radius: 6px; 
+    font-weight: 700; 
+    text-align: center; 
+    transition: all 0.2s; 
+    border: none; 
+    cursor: pointer; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.btn-primary { 
+    background-color: var(--btn-primary-bg); 
+    color: var(--btn-primary-text); 
+}
+
+.btn-primary:hover { 
+    filter: brightness(1.1); 
+}
+
+.btn-secondary { 
+    background-color: var(--btn-secondary-bg); 
+    color: var(--text-color); 
+}
+
+.custom-select, .filter-select { 
+    background-color: var(--sidebar-bg); 
+    border: 1px solid var(--sidebar-border); 
+    color: var(--text-color); 
+    border-radius: 6px; 
+    padding: 0.5rem 0.75rem; 
+}
+
+.room-card { 
+    background-color: var(--room-card-bg); 
+    padding: 1rem; 
+    border-radius: 8px; 
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
+    transition: background-color 0.2s ease-in-out; 
+    border: 1px solid var(--sidebar-border); 
+}
+
+.room-card:hover { 
+    background-color: var(--room-card-hover-bg); 
+    border-color: var(--link-active-bg); 
+}
+
+.room-card-img { 
+    width: 80px; 
+    height: 80px; 
+    object-fit: cover; 
+    border-radius: 6px; 
+    flex-shrink: 0; 
+    background-color: var(--sidebar-bg); 
+}
+
+.room-card h3 { 
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 700; 
+}
+
+@keyframes blink-yellow-border { 
+    50% { border-color: #facc15; } 
+}
+
+@keyframes blink-red-border { 
+    50% { border-color: #f87171; } 
+}
+
+.is-loading { 
+    animation: blink-yellow-border 1s steps(1, end) infinite; 
+}
+
+.is-found { 
+    background-color: #166534 !important; 
+    border-color: #16a34a !important; 
+    color: white; 
+}
+
+.is-found #quick-join-status { 
+    color: white !important; 
+}
+
+.is-failed { 
+    animation: blink-red-border 1s steps(1, end) infinite; 
+    background-color: #450a0a !important; 
+    border-color: #ef4444 !important; 
+}
+
+.is-failed #quick-join-status { 
+    color: #fca5a5 !important; 
+}
+
+
+/* =================================================================== */
+/*  1. Theme Color Variable Definitions                              */
+/* =================================================================== */
+/*
+ * We now define variables for the block's background color and text
+ * colors, which is a more robust approach for a container component.
+*/
+
+.theme-default {
+    --profile-bg: rgba(30, 30, 40, 0.6); /* Semi-transparent dark bg */
+    --profile-hover-bg: rgba(55, 65, 81, 0.7);
+    --profile-text-primary: #f3f4f6; /* Off-white */
+    --profile-text-secondary: #9ca3af; /* Muted gray */
+}
+
+.theme-light-gray {
+    --profile-bg: #f3f4f6; /* Light gray background */
+    --profile-hover-bg: #e5e7eb;
+    --profile-text-primary: #1f2937; /* Dark gray */
+    --profile-text-secondary: #6b7280; /* Medium gray */
+}
+
+.theme-true-dark {
+    --profile-bg: #18181b; /* A deep, solid dark */
+    --profile-hover-bg: #27272a;
+    --profile-text-primary: #e4e4e7;
+    --profile-text-secondary: #a1a1aa;
+}
+
+
+/* =================================================================== */
+/*  2. Profile Block Component Styling                             */
+/* =================================================================== */
+
+/* --- The Main Container Block --- */
+#profile-trigger {
+    /* Flexbox Layout: This is key for aligning items horizontally */
+    display: flex;
+    align-items: center;      /* Vertically centers the avatar and text */
+    gap: 0.75rem;             /* Creates space between the avatar and the text block */
+
+    /* --- Spacing & Appearance --- */
+    margin-top: 1rem;         /* Space above the block */
+    padding: 0.5rem;          /* Inner spacing */
+    border-radius: 8px;
+    cursor: pointer;          /* Change cursor to indicate it's clickable */
+
+    /* --- Dynamic Colors & Animation --- */
+    background-color: var(--profile-bg);
+    transition: background-color 150ms ease-in-out;
+}
+
+#profile-trigger:hover {
+    background-color: var(--profile-hover-bg);
+}
+
+
+/* --- Child Elements within the Block --- */
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;      /* Makes the avatar a circle */
+    object-fit: cover;       /* Prevents the image from stretching */
+    flex-shrink: 0;          /* Prevents the avatar from shrinking if text is long */
+}
+
+.profile-info {
+    /* This container helps organize the text vertically */
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-username {
+    font-size: 0.9rem;
+    font-weight: 600;       /* Bold text for the name */
+    line-height: 1.2;
+    color: var(--profile-text-primary);
+}
+
+.profile-status {
+    font-size: 0.75rem;
+    color: var(--profile-text-secondary);
+}
