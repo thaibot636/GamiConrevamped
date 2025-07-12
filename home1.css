@@ -71,3 +71,89 @@ body.theme-true-dark { background-color: #000; color: #e5e5e5; }
 .status-idle { background-color: #f59e0b; }
 .status-dnd { background-color: #ef4444; }
 .status-invisible { background-color: #6b7280; }
+
+
+/* =================================================================== */
+/*  1. Theme Color Variable Definitions                              */
+/* =================================================================== */
+/*
+ * We now define variables for the block's background color and text
+ * colors, which is a more robust approach for a container component.
+*/
+
+.theme-default {
+    --profile-bg: rgba(30, 30, 40, 0.6); /* Semi-transparent dark bg */
+    --profile-hover-bg: rgba(55, 65, 81, 0.7);
+    --profile-text-primary: #f3f4f6; /* Off-white */
+    --profile-text-secondary: #9ca3af; /* Muted gray */
+}
+
+.theme-light-gray {
+    --profile-bg: #f3f4f6; /* Light gray background */
+    --profile-hover-bg: #e5e7eb;
+    --profile-text-primary: #1f2937; /* Dark gray */
+    --profile-text-secondary: #6b7280; /* Medium gray */
+}
+
+.theme-true-dark {
+    --profile-bg: #18181b; /* A deep, solid dark */
+    --profile-hover-bg: #27272a;
+    --profile-text-primary: #e4e4e7;
+    --profile-text-secondary: #a1a1aa;
+}
+
+
+/* =================================================================== */
+/*  2. Profile Block Component Styling                             */
+/* =================================================================== */
+
+/* --- The Main Container Block --- */
+#profile-trigger {
+    /* Flexbox Layout: This is key for aligning items horizontally */
+    display: flex;
+    align-items: center;      /* Vertically centers the avatar and text */
+    gap: 0.75rem;             /* Creates space between the avatar and the text block */
+
+    /* --- Spacing & Appearance --- */
+    margin-top: 1rem;         /* Space above the block */
+    padding: 0.5rem;          /* Inner spacing */
+    border-radius: 8px;
+    cursor: pointer;          /* Change cursor to indicate it's clickable */
+
+    /* --- Dynamic Colors & Animation --- */
+    background-color: var(--profile-bg);
+    transition: background-color 150ms ease-in-out;
+}
+
+#profile-trigger:hover {
+    background-color: var(--profile-hover-bg);
+}
+
+
+/* --- Child Elements within the Block --- */
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;      /* Makes the avatar a circle */
+    object-fit: cover;       /* Prevents the image from stretching */
+    flex-shrink: 0;          /* Prevents the avatar from shrinking if text is long */
+}
+
+.profile-info {
+    /* This container helps organize the text vertically */
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-username {
+    font-size: 0.9rem;
+    font-weight: 600;       /* Bold text for the name */
+    line-height: 1.2;
+    color: var(--profile-text-primary);
+}
+
+.profile-status {
+    font-size: 0.75rem;
+    color: var(--profile-text-secondary);
+}
