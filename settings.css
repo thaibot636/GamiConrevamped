@@ -111,3 +111,96 @@ body.theme-true-dark { background-color: #000; color: #fff; }
 .preview-true-dark { border-color: #555; background-color: #181818;}
 .preview-true-dark .preview-sidebar { background-color: #000; }
 .preview-true-dark .preview-content { background-color: #111; }
+
+/* --- EXTENDED NEBULA STYLES FOR ALL THEMES (Add to End of settings.css) --- */
+
+/* This prevents a "flash" when switching themes by ensuring the pseudo-elements
+   are always available to have their backgrounds changed. */
+body::before, body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none; /* Ensure they don't block clicks */
+    transition: opacity 0.5s ease-in-out; /* Smooth transition between themes */
+}
+
+/* --- 1. GamiCon Default Theme (Your existing nebula) --- */
+/* We just add the z-index to match the new ones. */
+body.theme-default::before {
+    z-index: -12;
+}
+body.theme-default::after {
+    z-index: -11;
+}
+
+/* --- 2. New "Light Nebula" for Light Gray Theme --- */
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Light, ethereal "clouds" for the background */
+body.theme-light-gray::before {
+    z-index: -12;
+    background-image:
+        radial-gradient(ellipse at 10% 20%, hsla(210, 100%, 95%, 0.8), transparent 50%),
+        radial-gradient(ellipse at 80% 30%, hsla(280, 100%, 95%, 0.7), transparent 50%);
+    opacity: 1; /* Make it visible */
+}
+
+/* Subtle, twinkling "stars" */
+body.theme-light-gray::after {
+    z-index: -11;
+    image-rendering: auto; /* Smoother rendering for light stars */
+    background-image: 
+        radial-gradient(1.5px 1.5px at 30px 40px, hsla(210, 100%, 70%, 0.8), transparent),
+        radial-gradient(1px 1px at 150px 100px, hsla(0, 100%, 80%, 0.7), transparent),
+        radial-gradient(1px 1px at 90px 180px, hsla(60, 100%, 75%, 0.5), transparent);
+    background-size: 200px 200px;
+    animation: twinkle 8s infinite linear; /* Use a gentle twinkle effect instead of moving */
+    opacity: 1; /* Make it visible */
+}
+
+
+/* --- 3. New "Black Nebula" for True Dark Theme --- */
+
+/* Deep, dark "void" effect with a hint of dark matter */
+body.theme-true-dark::before {
+    z-index: -12;
+    background-image:
+        radial-gradient(ellipse at 80% 80%, hsla(0, 0%, 50%, 0.05), transparent 40%),
+        radial-gradient(ellipse at 10% 20%, hsla(240, 20%, 30%, 0.08), transparent 40%);
+    opacity: 1;
+}
+
+/* Slower, more distant stars for the pure black background */
+body.theme-true-dark::after {
+    z-index: -11;
+    image-rendering: pixelated;
+    background-image:
+                      radial-gradient(2px 2px at 25px 25px, #999, transparent),
+                      radial-gradient(1px 1px at 100px 100px, #777, transparent);
+    background-size: 250px 250px;
+    animation: move-stars 250s linear infinite; /* Much slower star scroll for a vast feel */
+    opacity: 1;
+}
+
+/* Hide other theme backgrounds when they are not active */
+body:not(.theme-light-gray) .theme-light-gray::before,
+body:not(.theme-light-gray) .theme-light-gray::after { opacity: 0; }
+
+body:not(.theme-true-dark) .theme-true-dark::before,
+body:not(.theme-true-dark) .theme-true-dark::after { opacity: 0; }
+
+body:not(.theme-default)::before,
+body:not(.theme-default)::after {
+  /* Only override the default background animation if a different theme is active */
+  animation-name: none;
+}
+
+body:not(.theme-default) .theme-default::before,
+body:not(.theme-default) .theme-default::after {
+    /* If the theme is not default, fade out its nebulae */
+    opacity: 0;
+}
